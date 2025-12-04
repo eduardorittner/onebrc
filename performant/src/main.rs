@@ -13,7 +13,7 @@ use std::{
 };
 
 // Config
-static CHUNK_SIZE: usize = 0x100;
+static CHUNK_SIZE: OnceLock<usize> = OnceLock::new();
 
 // Shared counters
 static WORK_COUNTER: OnceLock<AtomicUsize> = OnceLock::new();
@@ -43,17 +43,18 @@ fn main() {
     let _ = args.next().unwrap(); // Ignore first arg
     let file_name = args.next().expect("Expected input file");
 
-    let result = entrypoint(file_name);
-    println!("{result}");
+    let result = entrypoint(file_name, 0x100);
+    print!("{result}");
 }
 
-fn entrypoint(file: String) -> String {
+fn entrypoint(file: String, chunk_size: usize) -> String {
+    CHUNK_SIZE.get_or_init(|| chunk_size);
     WORKERS_COUNT.get_or_init(|| available_parallelism().unwrap().into());
-    // WORKERS_COUNT.get_or_init(|| 4);
     WORKERS_DONE.get_or_init(|| AtomicUsize::new(0));
     WORK_COUNTER.get_or_init(|| AtomicUsize::new(0));
 
     let cores = WORKERS_COUNT.get().unwrap();
+    let reader_count = cores - 1;
 
     let (send, recv) = mpsc::channel();
     let reader_state = ReaderState {
@@ -62,15 +63,15 @@ fn entrypoint(file: String) -> String {
     };
     let joiner_state = JoinerState { channel: recv };
 
-    let mut threads = Vec::with_capacity(*cores);
+    let mut threads = Vec::with_capacity(reader_count);
 
-    for id in 0..*cores - 1 {
+    for id in 0..reader_count {
         let state = reader_state.clone();
 
         threads.push(thread::spawn(move || reader(id, state)));
     }
 
-    let joiner_thread = thread::spawn(move || joiner(*cores - 1, joiner_state));
+    let joiner_thread = thread::spawn(move || joiner(reader_count, joiner_state));
 
     for handle in threads {
         handle.join().unwrap();
@@ -89,7 +90,7 @@ fn reader(id: usize, state: ReaderState) {
 
     // NOTE: Since we may need to read more than CHUNK_SIZE bytes when the last line of the chunk
     // ends after the chunk itself, we read more data upfront.
-    let mut buf = vec![0; CHUNK_SIZE * 2];
+    let mut buf = vec![0; CHUNK_SIZE.get().unwrap() * 2];
 
     loop {
         let offset = next_chunk_offset();
@@ -99,7 +100,7 @@ fn reader(id: usize, state: ReaderState) {
         // reader? The problem then is how can the joiner send it after it's done with it?
         let mut records = ChunkResult(HashMap::with_capacity(10000));
         // We know we're done when the next chunk starts after the end of the file
-        if offset > (len - 1) as usize {
+        if offset >= len as usize {
             break;
         }
 
@@ -153,13 +154,8 @@ fn process_chunk(buf: &[u8], offset: usize, records: &mut ChunkResult) {
     let mut bytes = offset;
     let buf = &buf[offset..];
 
-    let mut seen = false;
-
     for line in buf.split(|c| *c == b'\n') {
-        if line.is_empty() || bytes > CHUNK_SIZE {
-            if seen {
-                println!("{records:?}");
-            }
+        if line.is_empty() || bytes > *CHUNK_SIZE.get().unwrap() {
             return;
         }
         bytes += line.len();
@@ -175,9 +171,6 @@ fn process_chunk(buf: &[u8], offset: usize, records: &mut ChunkResult) {
                 entry
             } else {
                 let name = name.to_string();
-                if name == "Aasiaat" {
-                    seen = true;
-                }
                 records.0.entry(name).or_insert(Record::new())
             };
             entry.min = entry.min.min(temp);
@@ -195,7 +188,7 @@ fn process_chunk(buf: &[u8], offset: usize, records: &mut ChunkResult) {
 /// Since chunks are arbitrarily sized, they may not start at line boundaries. So for every chunk
 /// besides the first, the actual offset is the character after the first line break. For this to
 /// work, every chunk besides the last ends at the first line break after the chunk's end.
-fn start_offset(buf: &Vec<u8>) -> usize {
+fn start_offset(buf: &[u8]) -> usize {
     buf.iter()
         .position(|c| *c == b'\n')
         .map(|idx| idx + 1)
@@ -219,16 +212,17 @@ fn next_chunk_offset() -> usize {
         }
     }
 
-    old * CHUNK_SIZE
+    old * CHUNK_SIZE.get().unwrap()
 }
 
 fn joiner(_id: usize, state: JoinerState) -> String {
     let worker_count = WORKERS_COUNT.get().unwrap();
     let workers_done = WORKERS_DONE.get().unwrap();
+    let reader_count = worker_count - 1;
 
     let mut results: BTreeMap<String, Record> = BTreeMap::new();
 
-    while workers_done.load(Ordering::Relaxed) < worker_count - 2 {
+    while workers_done.load(Ordering::Relaxed) < reader_count {
         if let Ok(chunk_result) = state.channel.try_recv() {
             if chunk_result.0.get("Aasiaat").is_some() {
                 println!("recv shit");
@@ -307,6 +301,7 @@ fn format_results(stations: BTreeMap<String, Record>) -> String {
     string.pop(); // Remove ','
     string.pop(); // Remove ' '
     string.push('}');
+    string.push('\n');
 
     string
 }
@@ -317,8 +312,8 @@ mod tests {
 
     #[test]
     fn diff_to_plain() {
-        let result = entrypoint("../data/small-measurements.txt".to_string());
-        let expected = std::fs::read_to_string("../data/small-result-ref.txt").unwrap();
+        let result = entrypoint("../data/small-measurements.txt".to_string(), 0x100);
+        let expected = std::fs::read_to_string("../data/small-ref.txt").unwrap();
         assert_eq!(expected, result);
     }
 }
