@@ -41,9 +41,17 @@ struct JoinerState {
 fn main() {
     let mut args = std::env::args();
     let _ = args.next().unwrap(); // Ignore first arg
-    let file_name = args.next().expect("Expected input file");
+    let input = args.next().expect("Expected input file");
 
-    let result = entrypoint(file_name, 0x100);
+    let file = match input.as_str() {
+        "tiny" => "./data/small-small-measurements.txt",
+        "small" => "./data/small-measurements.txt",
+        "full" => "./data/measurements.txt",
+        _ => panic!("Unknown mode: {input}"),
+    }
+    .to_string();
+
+    let result = entrypoint(file, 0x100);
     print!("{result}");
 }
 
