@@ -3,7 +3,7 @@ use std::{
     fs::File,
     io::ErrorKind,
     os::unix::fs::FileExt,
-    str::from_utf8_unchecked,
+    str::{from_utf8, from_utf8_unchecked},
     sync::{
         OnceLock,
         atomic::{AtomicUsize, Ordering},
@@ -123,7 +123,12 @@ fn reader(id: usize, state: ReaderState) {
                 }
             }
         }
-        let offset = start_offset(&mut buf);
+        let offset = if offset != 0 {
+            start_offset(&mut buf)
+        } else {
+            // We do not look-ahead for the first chunk
+            offset
+        };
 
         process_chunk(&buf, offset, &mut records);
 
@@ -155,7 +160,6 @@ fn process_chunk(buf: &[u8], offset: usize, records: &mut ChunkResult) {
 
         if let (Some(name), Some(temp)) = (fields.next(), fields.next()) {
             let temp: f64 = unsafe { from_utf8_unchecked(temp) }.parse().unwrap();
-
             let name = unsafe { from_utf8_unchecked(name) };
 
             // TODO compare String with &[u8] without incurring an allocation
@@ -170,7 +174,7 @@ fn process_chunk(buf: &[u8], offset: usize, records: &mut ChunkResult) {
             entry.acc += temp;
             entry.count += 1;
         } else {
-            panic!();
+            panic!("{}", from_utf8(line).unwrap());
         }
     }
 }
