@@ -99,6 +99,7 @@ fn reader(id: usize, state: ReaderState) {
         // Maybe have two allocations per-thread so that one is with the joiner and one with the
         // reader? The problem then is how can the joiner send it after it's done with it?
         let mut records = ChunkResult(HashMap::with_capacity(10000));
+
         // We know we're done when the next chunk starts after the end of the file
         if offset >= len as usize {
             break;
@@ -138,16 +139,7 @@ fn reader(id: usize, state: ReaderState) {
         state.channel.send(records).unwrap();
     }
 
-    let workers_done = WORKERS_DONE.get().unwrap();
-
-    let mut old = workers_done.load(Ordering::Relaxed);
-    loop {
-        match workers_done.compare_exchange_weak(old, old + 1, Ordering::Relaxed, Ordering::Relaxed)
-        {
-            Ok(_) => break,
-            Err(x) => old = x,
-        }
-    }
+    atomic_increment(WORKERS_DONE.get().unwrap());
 }
 
 fn process_chunk(buf: &[u8], offset: usize, records: &mut ChunkResult) {
@@ -183,6 +175,18 @@ fn process_chunk(buf: &[u8], offset: usize, records: &mut ChunkResult) {
     }
 }
 
+/// Increments an atomic integer
+fn atomic_increment(val: &AtomicUsize) -> usize {
+    let mut old = val.load(Ordering::Relaxed);
+    loop {
+        match val.compare_exchange_weak(old, old + 1, Ordering::Relaxed, Ordering::Relaxed) {
+            Ok(_) => break,
+            Err(x) => old = x,
+        }
+    }
+    old
+}
+
 /// Returns the actual offset to start reading from
 ///
 /// Since chunks are arbitrarily sized, they may not start at line boundaries. So for every chunk
@@ -201,18 +205,8 @@ fn start_offset(buf: &[u8]) -> usize {
 /// that succeeds, returns WORK_COUNTER * CHUNK_SIZE. Loops until the cmp_exch is successful.
 fn next_chunk_offset() -> usize {
     let work_counter = WORK_COUNTER.get().unwrap();
-    let mut old = work_counter.load(Ordering::Relaxed);
-    // TODO use std::hint::spin_loop()?
-    loop {
-        // Load current value
-        match work_counter.compare_exchange_weak(old, old + 1, Ordering::Relaxed, Ordering::Relaxed)
-        {
-            Ok(_) => break,
-            Err(x) => old = x,
-        }
-    }
-
-    old * CHUNK_SIZE.get().unwrap()
+    let chunk_size = CHUNK_SIZE.get().unwrap();
+    atomic_increment(work_counter) * chunk_size
 }
 
 fn joiner(_id: usize, state: JoinerState) -> String {
@@ -276,8 +270,6 @@ impl Record {
 fn format_results(stations: BTreeMap<String, Record>) -> String {
     let mut string = String::with_capacity(stations.len() * 10);
 
-    println!("printy: {:?}", stations.get("Aasiaat").unwrap());
-
     string.push('{');
 
     string.push_str(
@@ -312,8 +304,8 @@ mod tests {
 
     #[test]
     fn diff_to_plain() {
-        let result = entrypoint("../data/small-measurements.txt".to_string(), 0x100);
-        let expected = std::fs::read_to_string("../data/small-ref.txt").unwrap();
+        let result = entrypoint("../data/small-small-measurements.txt".to_string(), 0x100);
+        let expected = std::fs::read_to_string("../data/small-small-ref.txt").unwrap();
         assert_eq!(expected, result);
     }
 }
