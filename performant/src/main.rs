@@ -132,15 +132,6 @@ fn reader(id: usize, state: ReaderState) {
 
         process_chunk(&buf, offset, &mut records);
 
-        if records.0.get("Aasiaat").is_some() {
-            THREAD_ID.with(|id| {
-                println!(
-                    "{}, sending shit, workers done: {}",
-                    id.get().unwrap(),
-                    WORKERS_DONE.get().unwrap().load(Ordering::Relaxed)
-                );
-            });
-        };
         state.channel.send(records).unwrap();
     }
 
@@ -222,17 +213,11 @@ fn joiner(_id: usize, state: JoinerState) -> String {
 
     while workers_done.load(Ordering::Relaxed) < reader_count {
         if let Ok(chunk_result) = state.channel.try_recv() {
-            if chunk_result.0.get("Aasiaat").is_some() {
-                println!("recv shit");
-            }
             merge(&mut results, chunk_result.0);
         }
     }
 
     while let Ok(chunk_result) = state.channel.try_recv() {
-        if chunk_result.0.get("Aasiaat").is_some() {
-            println!("recv shitty");
-        }
         merge(&mut results, chunk_result.0);
     }
 
@@ -308,8 +293,8 @@ mod tests {
 
     #[test]
     fn diff_to_plain() {
-        let result = entrypoint("../data/small-small-measurements.txt".to_string(), 0x100);
-        let expected = std::fs::read_to_string("../data/small-small-ref.txt").unwrap();
+        let result = entrypoint("../data/small-measurements.txt".to_string(), 0x100);
+        let expected = std::fs::read_to_string("../data/small-ref.txt").unwrap();
         assert_eq!(expected, result);
     }
 }
