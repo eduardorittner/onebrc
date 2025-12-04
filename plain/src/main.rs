@@ -14,25 +14,7 @@ fn main() {
     println!("{results}");
 }
 
-struct Record {
-    min: f64,
-    max: f64,
-    acc: f64,
-    count: usize,
-}
-
-impl Default for Record {
-    fn default() -> Self {
-        Self {
-            min: f64::MAX,
-            max: f64::MIN,
-            acc: 0.,
-            count: 0,
-        }
-    }
-}
-
-fn calculate_averages(file_name: String) -> String {
+pub fn calculate_averages(file_name: String) -> String {
     let file = File::open(file_name).expect("Unable to open file");
     let reader = BufReader::new(file);
 
@@ -61,6 +43,24 @@ fn calculate_averages(file_name: String) -> String {
     format_results(sorted_stations)
 }
 
+struct Record {
+    min: f64,
+    max: f64,
+    acc: f64,
+    count: usize,
+}
+
+impl Default for Record {
+    fn default() -> Self {
+        Self {
+            min: f64::MAX,
+            max: f64::MIN,
+            acc: 0.,
+            count: 0,
+        }
+    }
+}
+
 fn format_results(stations: Vec<(String, Record)>) -> String {
     let mut string = String::with_capacity(stations.len() * 10);
 
@@ -87,6 +87,19 @@ fn format_results(stations: Vec<(String, Record)>) -> String {
     string.pop(); // Remove ','
     string.pop(); // Remove ' '
     string.push('}');
+    string.push('\n');
 
     string
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn test_calculate_averages() {
+        let result = calculate_averages("../data/small-measurements.txt".to_string());
+        let expected = std::fs::read_to_string("../data/small-result-ref.txt").unwrap();
+        assert_eq!(expected, result);
+    }
 }
