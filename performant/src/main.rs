@@ -51,7 +51,7 @@ fn main() {
     }
     .to_string();
 
-    let result = entrypoint(file, 0x100);
+    let result = entrypoint(file, 0x4000000);
     print!("{result}");
 }
 
