@@ -106,7 +106,7 @@ fn reader(id: usize, state: ReaderState) {
         // TODO how can we avoid creating a new hashmap everytime?
         // Maybe have two allocations per-thread so that one is with the joiner and one with the
         // reader? The problem then is how can the joiner send it after it's done with it?
-        let mut records = ChunkResult(HashMap::with_capacity(10000));
+        let mut records = ChunkResult(HashMap::with_capacity(100));
 
         // We know we're done when the next chunk starts after the end of the file
         if offset >= len as usize {
@@ -115,8 +115,8 @@ fn reader(id: usize, state: ReaderState) {
 
         // TODO this shouldnt work for the last chunk because it errors when it cannot read as many
         // bytes as buf's len
-        match file.read_exact_at(&mut buf, offset as u64) {
-            Ok(_) => (),
+        let bytes_read = match file.read_exact_at(&mut buf, offset as u64) {
+            Ok(_) => buf.len(),
             Err(e) => {
                 if e.kind() == ErrorKind::UnexpectedEof {
                     // TODO it may be that this doesn't actually read all bytes up until the end of
@@ -126,11 +126,12 @@ fn reader(id: usize, state: ReaderState) {
                     if offset + bytes != len as usize {
                         panic!("read {} of total {len} bytes", offset + bytes);
                     }
+                    bytes
                 } else {
                     panic!();
                 }
             }
-        }
+        };
         let offset = if offset != 0 {
             start_offset(&mut buf)
         } else {
@@ -138,7 +139,7 @@ fn reader(id: usize, state: ReaderState) {
             offset
         };
 
-        process_chunk(&buf, offset, &mut records);
+        process_chunk(&buf[..bytes_read], offset, &mut records);
 
         state.channel.send(records).unwrap();
     }
@@ -172,8 +173,8 @@ fn process_chunk(buf: &[u8], offset: usize, records: &mut ChunkResult) {
             entry.max = entry.max.max(temp);
             entry.acc += temp;
             entry.count += 1;
+
         } else {
-            panic!("{}", from_utf8(line).unwrap());
         }
     }
 }
