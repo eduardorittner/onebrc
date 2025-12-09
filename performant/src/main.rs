@@ -105,7 +105,8 @@ fn reader(id: usize, state: ReaderState) {
 
         // TODO how can we avoid creating a new hashmap everytime?
         // Maybe have two allocations per-thread so that one is with the joiner and one with the
-        // reader? The problem then is how can the joiner send it after it's done with it?
+        // reader? The problem then is how can the joiner send it back to the reader after it's
+        // done with it?
         let mut records = ChunkResult(HashMap::with_capacity(100));
 
         // We know we're done when the next chunk starts after the end of the file
@@ -113,14 +114,11 @@ fn reader(id: usize, state: ReaderState) {
             break;
         }
 
-        // TODO this shouldnt work for the last chunk because it errors when it cannot read as many
-        // bytes as buf's len
+        // TODO call read_bytes() instead of doing the logic here
         let bytes_read = match file.read_exact_at(&mut buf, offset as u64) {
             Ok(_) => buf.len(),
             Err(e) => {
                 if e.kind() == ErrorKind::UnexpectedEof {
-                    // TODO it may be that this doesn't actually read all bytes up until the end of
-                    // the file
                     let bytes = file.read_at(&mut buf, offset as u64).unwrap();
 
                     if offset + bytes != len as usize {
@@ -145,6 +143,28 @@ fn reader(id: usize, state: ReaderState) {
     }
 
     atomic_increment(WORKERS_DONE.get().unwrap());
+}
+
+// TODO finish this fn impl
+fn read_bytes(mut buf: &mut [u8], offset: usize, file: File, len: usize) -> usize {
+    let bytes_read = match file.read_exact_at(&mut buf, offset as u64) {
+        Ok(_) => buf.len(),
+        Err(e) => {
+            if e.kind() == ErrorKind::UnexpectedEof {
+                // TODO it may be that this doesn't actually read all bytes up until the end of
+                // the file
+                let bytes = file.read_at(&mut buf, offset as u64).unwrap();
+
+                if offset + bytes != len as usize {
+                    panic!("read {} of total {len} bytes", offset + bytes);
+                }
+                bytes
+            } else {
+                panic!("error reading file: {e:?}");
+            }
+        }
+    };
+    bytes_read
 }
 
 fn process_chunk(buf: &[u8], offset: usize, records: &mut ChunkResult) {
