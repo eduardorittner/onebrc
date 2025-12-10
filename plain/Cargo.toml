@@ -3,3 +3,9 @@ name = "plain"
 version = "0.1.0"
 edition = "2024"
 
+[dev-dependencies]
+criterion = "0.5"
+
+[[bench]]
+name = "plain_benchmark"
+harness = false
