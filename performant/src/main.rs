@@ -402,7 +402,7 @@ mod tests {
         map
     }
 
-    fn assert_results_eq(expected: String, result: String) {
+    fn compare_results(expected: String, result: String) -> Result<(), String> {
         if expected != result {
             let expected_map = parse(&expected);
             let actual_map = parse(&result);
@@ -410,21 +410,25 @@ mod tests {
             for (key, val) in &expected_map {
                 if let Some(actual_val) = actual_map.get(key) {
                     if val != actual_val {
-                        panic!(
+                        return Err(format!(
                             "Station '{}' should have values {:?}, had {:?}",
                             key, val, actual_val
-                        );
+                        ));
                     }
                 } else {
-                    panic!(
+                    return Err(format!(
                         "Should contain station '{}' with values {:?}, but doesn't",
                         key, val
-                    );
+                    ));
                 }
             }
 
-            assert_eq!(expected, result);
+            return Err(format!(
+                "Results don't match:\nExpected: {}\nActual: {}",
+                expected, result
+            ));
         }
+        Ok(())
     }
 
     #[test]
@@ -432,7 +436,7 @@ mod tests {
         let result = entrypoint("../data/small-measurements.txt".to_string(), 0x100);
         let expected = std::fs::read_to_string("../data/small-ref.txt").unwrap();
 
-        assert_results_eq(expected, result);
+        compare_results(expected, result).unwrap();
     }
 
     #[test]
@@ -440,13 +444,11 @@ mod tests {
         let expected = std::fs::read_to_string("../data/small-ref.txt").unwrap();
 
         for size in 1..128 {
-            let result = entrypoint(
-                "../data/small-measurements.txt".to_string(),
-                u32::MAX as usize / size,
-            );
-            // TODO: this would ideally return an error instead of panicking, so we can print a
-            // prettier error with the chunk_size that failed and more context.
-            assert_results_eq(expected.clone(), result);
+            let chunk_size = u32::MAX as usize / size;
+            let result = entrypoint("../data/small-measurements.txt".to_string(), chunk_size);
+            if let Err(error) = compare_results(expected.clone(), result) {
+                panic!("Failed with chunk_size {}: {}", chunk_size, error);
+            }
         }
     }
 }
