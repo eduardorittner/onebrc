@@ -27,6 +27,7 @@ pub struct ExecutionCtx {
 }
 
 impl ExecutionCtx {
+    #[inline]
     pub fn new(workers_count: usize) -> Self {
         debug_assert!(workers_count <= u8::MAX as usize);
         Self {
@@ -75,7 +76,7 @@ pub struct JoinerCtx {
 unsafe impl Send for JoinerCtx {}
 
 impl JoinerCtx {
-    // TODO: attribute inline here
+    #[inline(always)]
     pub fn context(&self) -> &ExecutionCtx {
         unsafe { &*self.exec_ctx }
     }
@@ -214,7 +215,7 @@ fn process_chunk(state: &ReaderCtx, buf: &[u8], offset: usize, records: &mut Chu
     }
 }
 
-// TODO: inline
+#[inline(always)]
 fn parse_temp(input: &[u8]) -> i16 {
     let to_number = |ascii: u8| (ascii - 48) as i16;
     match input {
@@ -230,6 +231,7 @@ fn parse_temp(input: &[u8]) -> i16 {
     }
 }
 
+#[inline(always)]
 /// Increments an atomic u8
 fn atomic_u8_increment(val: &AtomicU8) -> u8 {
     let mut old = val.load(Ordering::Relaxed);
@@ -242,6 +244,7 @@ fn atomic_u8_increment(val: &AtomicU8) -> u8 {
     old
 }
 
+#[inline(always)]
 /// Increments an atomic u32
 // NOTE: This ideally would be a generic function, but as of when this code was written there is no
 // generic Atomic trait, or generic Atomic<T> types so this will have to do for now.
@@ -256,12 +259,12 @@ fn atomic_u32_increment(val: &AtomicU32) -> u32 {
     old
 }
 
+#[inline(always)]
 /// Returns the actual offset to start reading from
 ///
 /// Since chunks are arbitrarily sized, they may not start at line boundaries. So for every chunk
 /// besides the first, the actual offset is the character after the first line break. For this to
 /// work, every chunk besides the last ends at the first line break after the chunk's end.
-// TODO: inline
 fn start_offset(buf: &[u8]) -> usize {
     buf.iter()
         .take(128)
@@ -270,11 +273,11 @@ fn start_offset(buf: &[u8]) -> usize {
         .unwrap_or_default()
 }
 
+#[inline(always)]
 /// Start of the next chunk to be read
 ///
 /// Calculated using work_counter and chunk_size, tries to increment WORK_COUNTER atomically. If
 /// that succeeds, returns work_counter * chunk_size. Loops until the cmp_exch is successful.
-// TODO: inline
 fn next_chunk_offset(state: &ReaderCtx) -> usize {
     atomic_u32_increment(&state.context().work_counter) as usize * state.chunk_size
 }
@@ -321,6 +324,7 @@ pub struct Record {
 }
 
 impl Record {
+    #[inline(always)]
     pub fn new() -> Self {
         Self {
             min: i16::MAX,
