@@ -11,6 +11,9 @@ use std::{
     thread::{self, available_parallelism},
 };
 
+// TODO: remove panics from the program and see if that makes a difference
+// TODO: use target-cpu=native
+
 /// The maximum length of a line. In practice it's a little bit lower than 128, but keeping it as a
 /// power of 2 probably won't hurt.
 static LINE_SIZE: usize = 128;
@@ -18,6 +21,7 @@ static LINE_SIZE: usize = 128;
 #[derive(Debug)]
 /// Execution context used by both joiner and readers
 pub struct ExecutionCtx {
+    // TODO can we use smaller elements (AtomicU8?, U16?)
     work_counter: AtomicUsize,
     readers_done: AtomicUsize,
     workers_count: usize,
@@ -41,6 +45,7 @@ pub struct ChunkResult(pub HashMap<String, Record>);
 /// Context specific to readers
 pub struct ReaderCtx {
     pub channel: mpsc::Sender<ChunkResult>,
+    // TODO: use a &str here? Shouldn't matter too much
     pub file: String,
     pub chunk_size: usize,
     pub exec_ctx: *const ExecutionCtx,
@@ -71,6 +76,7 @@ pub struct JoinerCtx {
 unsafe impl Send for JoinerCtx {}
 
 impl JoinerCtx {
+    // TODO: attribute inline here
     pub fn context(&self) -> &ExecutionCtx {
         unsafe { &*self.exec_ctx }
     }
@@ -103,6 +109,7 @@ pub fn entrypoint(file: String, chunk_size: usize) -> String {
         })
         .collect();
 
+    // TODO: do we need to wait for reader threads or can we just wait on joiner?
     let joiner_thread = thread::spawn(move || joiner(reader_count, joiner_state));
 
     for handle in threads {
@@ -155,6 +162,7 @@ fn reader(_id: usize, state: ReaderCtx) {
 ///
 /// Tries to read exactly `buf.len()` bytes. If that doesn't work due to encountering an EOF early,
 /// then calls `read_at()` repeatedly until EOF is reached.
+// TODO: inline
 fn read_bytes(mut buf: &mut [u8], offset: usize, file: &File, len: usize) -> usize {
     match file.read_exact_at(&mut buf, offset as u64) {
         Ok(()) => buf.len(),
@@ -207,6 +215,7 @@ fn process_chunk(state: &ReaderCtx, buf: &[u8], offset: usize, records: &mut Chu
     }
 }
 
+// TODO: inline
 fn parse_temp(input: &[u8]) -> i16 {
     let to_number = |ascii: u8| (ascii - 48) as i16;
     match input {
@@ -239,6 +248,7 @@ fn atomic_increment(val: &AtomicUsize) -> usize {
 /// Since chunks are arbitrarily sized, they may not start at line boundaries. So for every chunk
 /// besides the first, the actual offset is the character after the first line break. For this to
 /// work, every chunk besides the last ends at the first line break after the chunk's end.
+// TODO: inline
 fn start_offset(buf: &[u8]) -> usize {
     buf.iter()
         .take(128)
@@ -251,6 +261,7 @@ fn start_offset(buf: &[u8]) -> usize {
 ///
 /// Calculated using work_counter and chunk_size, tries to increment WORK_COUNTER atomically. If
 /// that succeeds, returns work_counter * chunk_size. Loops until the cmp_exch is successful.
+// TODO: inline
 fn next_chunk_offset(state: &ReaderCtx) -> usize {
     atomic_increment(&state.context().work_counter) * state.chunk_size
 }
