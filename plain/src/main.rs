@@ -99,7 +99,7 @@ mod tests {
     #[test]
     fn test_calculate_averages() {
         let result = calculate_averages("../data/small-measurements.txt".to_string());
-        let expected = std::fs::read_to_string("../data/small-result-ref.txt").unwrap();
+        let expected = std::fs::read_to_string("../data/small-ref.txt").unwrap();
         assert_eq!(expected, result);
     }
 }

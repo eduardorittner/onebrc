@@ -175,7 +175,7 @@ fn process_chunk(buf: &[u8], offset: usize, records: &mut ChunkResult) {
         if line.is_empty() || bytes > *CHUNK_SIZE.get().unwrap() {
             return;
         }
-        bytes += line.len();
+        bytes += line.len() + 1; // Newline is not counted in `line.len()`
         let mut fields = line.splitn(2, |c| *c == b';');
 
         if let (Some(name), Some(temp)) = (fields.next(), fields.next()) {
@@ -193,7 +193,6 @@ fn process_chunk(buf: &[u8], offset: usize, records: &mut ChunkResult) {
             entry.max = entry.max.max(temp);
             entry.acc += temp;
             entry.count += 1;
-
         } else {
         }
     }
