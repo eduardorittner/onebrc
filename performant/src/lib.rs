@@ -113,7 +113,7 @@ fn reader(_id: usize, state: ReaderCtx) {
 
     // NOTE: Since we may need to read more than CHUNK_SIZE bytes when the last line of the chunk
     // ends after the chunk itself, we read more data upfront.
-    let mut buf = vec![0; state.chunk_size * 2];
+    let mut buf = vec![0; state.chunk_size + 128];
 
     loop {
         let offset = next_chunk_offset(&state);
