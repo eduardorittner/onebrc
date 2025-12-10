@@ -33,6 +33,7 @@ impl ExecutionCtx {
     }
 }
 
+// TODO: anyway to remove this owned String?
 #[derive(Debug)]
 pub struct ChunkResult(pub HashMap<String, Record>);
 
@@ -184,6 +185,7 @@ fn process_chunk(state: &ReaderCtx, buf: &[u8], offset: usize, records: &mut Chu
             return;
         }
         bytes += line.len() + 1; // Newline is not counted in `line.len()`
+        // TODO: parse this manually with SIMD
         let mut fields = line.splitn(2, |c| *c == b';');
 
         if let (Some(name), Some(temp)) = (fields.next(), fields.next()) {
@@ -305,6 +307,7 @@ impl Record {
     }
 }
 
+// TODO: use BufWriter instead of manually pushing strs
 fn format_results(stations: BTreeMap<String, Record>) -> String {
     let mut string = String::with_capacity(stations.len() * 10);
 
