@@ -312,12 +312,74 @@ fn format_results(stations: BTreeMap<String, Record>) -> String {
 
 #[cfg(test)]
 mod tests {
+    use std::collections::HashMap;
+
     use crate::entrypoint;
+
+    #[derive(Debug, PartialEq)]
+    struct Record {
+        min: f64,
+        max: f64,
+        mean: f64,
+    }
+
+    fn parse(input: &str) -> HashMap<String, Record> {
+        fn parse_values(input: &str) -> Record {
+            let values: Vec<_> = input
+                .split("/")
+                .map(|input| input.parse().unwrap())
+                .collect();
+
+            assert_eq!(3, values.len());
+
+            Record {
+                min: values[0],
+                mean: values[1],
+                max: values[2],
+            }
+        }
+
+        let input = input
+            .strip_prefix("{")
+            .unwrap()
+            .strip_suffix("}\n")
+            .unwrap();
+
+        let map: HashMap<_, _> = input
+            .split(",")
+            .map(|station| station.split_once("=").unwrap())
+            .map(|(name, values)| (name.trim_start().to_string(), parse_values(values)))
+            .collect();
+
+        map
+    }
 
     #[test]
     fn diff_to_plain() {
         let result = entrypoint("../data/small-measurements.txt".to_string(), 0x100);
         let expected = std::fs::read_to_string("../data/small-ref.txt").unwrap();
-        assert_eq!(expected, result);
+
+        if expected != result {
+            let expected_map = parse(&expected);
+            let actual_map = parse(&result);
+
+            for (key, val) in &expected_map {
+                if let Some(actual_val) = actual_map.get(key) {
+                    if val != actual_val {
+                        panic!(
+                            "Station '{}' should have values {:?}, had {:?}",
+                            key, val, actual_val
+                        );
+                    }
+                } else {
+                    panic!(
+                        "Should contain station '{}' with values {:?}, but doesn't",
+                        key, val
+                    );
+                }
+            }
+
+            assert_eq!(expected, result);
+        }
     }
 }
