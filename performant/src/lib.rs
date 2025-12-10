@@ -11,6 +11,10 @@ use std::{
     thread::{self, available_parallelism},
 };
 
+/// The maximum length of a line. In practice it's a little bit lower than 128, but keeping it as a
+/// power of 2 probably won't hurt.
+static LINE_SIZE: usize = 128;
+
 #[derive(Debug)]
 /// Execution context used by both joiner and readers
 pub struct ExecutionCtx {
@@ -111,9 +115,9 @@ fn reader(_id: usize, state: ReaderCtx) {
     let file = File::open(&state.file).unwrap();
     let len = file.metadata().unwrap().len();
 
-    // NOTE: Since we may need to read more than CHUNK_SIZE bytes when the last line of the chunk
+    // NOTE: Since we may need to read more than chunk_size bytes when the last line of the chunk
     // ends after the chunk itself, we read more data upfront.
-    let mut buf = vec![0; state.chunk_size + 128];
+    let mut buf = vec![0; state.chunk_size + LINE_SIZE];
 
     loop {
         let offset = next_chunk_offset(&state);
@@ -235,6 +239,7 @@ fn atomic_increment(val: &AtomicUsize) -> usize {
 /// work, every chunk besides the last ends at the first line break after the chunk's end.
 fn start_offset(buf: &[u8]) -> usize {
     buf.iter()
+        .take(128)
         .position(|c| *c == b'\n')
         .map(|idx| idx + 1)
         .unwrap_or_default()
