@@ -186,7 +186,6 @@ fn process_chunk(state: &ReaderCtx, buf: &[u8], offset: usize, records: &mut Chu
             let temp = parse_temp(temp);
             let name = unsafe { from_utf8_unchecked(name) };
 
-            // TODO compare String with &[u8] without incurring an allocation
             let entry = if let Some(entry) = records.0.get_mut(name) {
                 entry
             } else {
