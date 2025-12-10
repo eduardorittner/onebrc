@@ -3,7 +3,7 @@ use std::{
     fs::File,
     io::ErrorKind,
     os::unix::fs::FileExt,
-    str::{from_utf8, from_utf8_unchecked},
+    str::from_utf8_unchecked,
     sync::{
         OnceLock,
         atomic::{AtomicUsize, Ordering},
@@ -12,12 +12,9 @@ use std::{
     thread::{self, available_parallelism},
 };
 
-// Config
-static CHUNK_SIZE: OnceLock<usize> = OnceLock::new();
-
 // Shared counters
 static WORK_COUNTER: OnceLock<AtomicUsize> = OnceLock::new();
-static WORKERS_DONE: OnceLock<AtomicUsize> = OnceLock::new();
+static READERS_DONE: OnceLock<AtomicUsize> = OnceLock::new();
 static WORKERS_COUNT: OnceLock<usize> = OnceLock::new();
 
 // Thread locals
@@ -29,13 +26,20 @@ thread_local! {
 struct ChunkResult(HashMap<String, Record>);
 
 #[derive(Clone)]
-struct ReaderState {
+struct ReaderCtx {
     channel: mpsc::Sender<ChunkResult>,
     file: String,
+    chunk_size: usize,
+    readers_done: &'static AtomicUsize,
+    work_counter: &'static AtomicUsize,
 }
 
-struct JoinerState {
+struct JoinerCtx {
     channel: mpsc::Receiver<ChunkResult>,
+    readers_done: &'static AtomicUsize,
+    work_counter: &'static AtomicUsize,
+    workers_count: usize,
+    reader_count: usize,
 }
 
 fn main() {
@@ -56,20 +60,29 @@ fn main() {
 }
 
 fn entrypoint(file: String, chunk_size: usize) -> String {
-    CHUNK_SIZE.get_or_init(|| chunk_size);
-    WORKERS_COUNT.get_or_init(|| available_parallelism().unwrap().into());
-    WORKERS_DONE.get_or_init(|| AtomicUsize::new(0));
+    let cores = available_parallelism().unwrap().into();
+
+    WORKERS_COUNT.get_or_init(|| cores);
+    READERS_DONE.get_or_init(|| AtomicUsize::new(0));
     WORK_COUNTER.get_or_init(|| AtomicUsize::new(0));
 
-    let cores = WORKERS_COUNT.get().unwrap();
     let reader_count = cores - 1;
 
     let (send, recv) = mpsc::channel();
-    let reader_state = ReaderState {
+    let reader_state = ReaderCtx {
         channel: send,
         file: file,
+        chunk_size,
+        work_counter: &WORK_COUNTER.get().unwrap(),
+        readers_done: &READERS_DONE.get().unwrap(),
     };
-    let joiner_state = JoinerState { channel: recv };
+    let joiner_state = JoinerCtx {
+        channel: recv,
+        work_counter: &WORK_COUNTER.get().unwrap(),
+        readers_done: &READERS_DONE.get().unwrap(),
+        workers_count: *WORKERS_COUNT.get().unwrap(),
+        reader_count,
+    };
 
     let mut threads = Vec::with_capacity(reader_count);
 
@@ -88,20 +101,20 @@ fn entrypoint(file: String, chunk_size: usize) -> String {
     joiner_thread.join().unwrap()
 }
 
-fn reader(id: usize, state: ReaderState) {
+fn reader(id: usize, state: ReaderCtx) {
     THREAD_ID.with(|once_lock| {
         once_lock.get_or_init(|| id);
     });
 
-    let file = File::open(state.file).unwrap();
+    let file = File::open(&state.file).unwrap();
     let len = file.metadata().unwrap().len();
 
     // NOTE: Since we may need to read more than CHUNK_SIZE bytes when the last line of the chunk
     // ends after the chunk itself, we read more data upfront.
-    let mut buf = vec![0; CHUNK_SIZE.get().unwrap() * 2];
+    let mut buf = vec![0; state.chunk_size * 2];
 
     loop {
-        let offset = next_chunk_offset();
+        let offset = next_chunk_offset(&state);
 
         // TODO how can we avoid creating a new hashmap everytime?
         // Maybe have two allocations per-thread so that one is with the joiner and one with the
@@ -114,65 +127,54 @@ fn reader(id: usize, state: ReaderState) {
             break;
         }
 
-        // TODO call read_bytes() instead of doing the logic here
-        let bytes_read = match file.read_exact_at(&mut buf, offset as u64) {
-            Ok(_) => buf.len(),
-            Err(e) => {
-                if e.kind() == ErrorKind::UnexpectedEof {
-                    let bytes = file.read_at(&mut buf, offset as u64).unwrap();
+        let bytes_read = read_bytes(&mut buf, offset, &file, len as usize);
 
-                    if offset + bytes != len as usize {
-                        panic!("read {} of total {len} bytes", offset + bytes);
-                    }
-                    bytes
-                } else {
-                    panic!();
-                }
-            }
-        };
         let offset = if offset != 0 {
-            start_offset(&mut buf)
+            start_offset(&buf)
         } else {
             // We do not look-ahead for the first chunk
             offset
         };
 
-        process_chunk(&buf[..bytes_read], offset, &mut records);
+        process_chunk(&state, &buf[..bytes_read], offset, &mut records);
 
         state.channel.send(records).unwrap();
     }
 
-    atomic_increment(WORKERS_DONE.get().unwrap());
+    atomic_increment(state.readers_done);
 }
 
-// TODO finish this fn impl
-fn read_bytes(mut buf: &mut [u8], offset: usize, file: File, len: usize) -> usize {
-    let bytes_read = match file.read_exact_at(&mut buf, offset as u64) {
-        Ok(_) => buf.len(),
-        Err(e) => {
-            if e.kind() == ErrorKind::UnexpectedEof {
-                // TODO it may be that this doesn't actually read all bytes up until the end of
-                // the file
-                let bytes = file.read_at(&mut buf, offset as u64).unwrap();
+/// Reads the correct number of bytes from the file to buf
+///
+/// Tries to read exactly `buf.len()` bytes. If that doesn't work due to encountering an EOF early,
+/// then calls `read_at()` repeatedly until EOF is reached.
+fn read_bytes(mut buf: &mut [u8], offset: usize, file: &File, len: usize) -> usize {
+    match file.read_exact_at(&mut buf, offset as u64) {
+        Ok(()) => buf.len(),
+        Err(e) if matches!(e.kind(), ErrorKind::UnexpectedEof) => {
+            let mut bytes = 0;
 
-                if offset + bytes != len as usize {
-                    panic!("read {} of total {len} bytes", offset + bytes);
-                }
-                bytes
-            } else {
-                panic!("error reading file: {e:?}");
+            // Call `read_at()` in a loop until EOF is reached
+            while bytes < buf.len() && offset + bytes < len {
+                bytes += file.read_at(&mut buf[bytes..], offset as u64).unwrap();
             }
+
+            debug_assert_eq!(offset + bytes, len);
+
+            bytes
         }
-    };
-    bytes_read
+        Err(e) => {
+            panic!("error reading file: {e:?}");
+        }
+    }
 }
 
-fn process_chunk(buf: &[u8], offset: usize, records: &mut ChunkResult) {
+fn process_chunk(state: &ReaderCtx, buf: &[u8], offset: usize, records: &mut ChunkResult) {
     let mut bytes = offset;
     let buf = &buf[offset..];
 
     for line in buf.split(|c| *c == b'\n') {
-        if line.is_empty() || bytes > *CHUNK_SIZE.get().unwrap() {
+        if line.is_empty() || bytes > state.chunk_size {
             return;
         }
         bytes += line.len() + 1; // Newline is not counted in `line.len()`
@@ -224,22 +226,20 @@ fn start_offset(buf: &[u8]) -> usize {
 
 /// Start of the next chunk to be read
 ///
-/// Calculated using WORK_COUNTER and CHUNK_SIZE, tries to increment WORK_COUNTER atomically. If
-/// that succeeds, returns WORK_COUNTER * CHUNK_SIZE. Loops until the cmp_exch is successful.
-fn next_chunk_offset() -> usize {
-    let work_counter = WORK_COUNTER.get().unwrap();
-    let chunk_size = CHUNK_SIZE.get().unwrap();
-    atomic_increment(work_counter) * chunk_size
+/// Calculated using work_counter and chunk_size, tries to increment WORK_COUNTER atomically. If
+/// that succeeds, returns work_counter * chunk_size. Loops until the cmp_exch is successful.
+fn next_chunk_offset(state: &ReaderCtx) -> usize {
+    atomic_increment(state.work_counter) * state.chunk_size
 }
 
-fn joiner(_id: usize, state: JoinerState) -> String {
-    let worker_count = WORKERS_COUNT.get().unwrap();
-    let workers_done = WORKERS_DONE.get().unwrap();
+fn joiner(_id: usize, state: JoinerCtx) -> String {
+    let worker_count = state.workers_count;
+    let readers_done = state.readers_done;
     let reader_count = worker_count - 1;
 
     let mut results: BTreeMap<String, Record> = BTreeMap::new();
 
-    while workers_done.load(Ordering::Relaxed) < reader_count {
+    while readers_done.load(Ordering::Relaxed) < reader_count {
         if let Ok(chunk_result) = state.channel.try_recv() {
             merge(&mut results, chunk_result.0);
         }
