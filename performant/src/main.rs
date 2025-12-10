@@ -378,11 +378,7 @@ mod tests {
         map
     }
 
-    #[test]
-    fn diff_to_plain() {
-        let result = entrypoint("../data/small-measurements.txt".to_string(), 0x100);
-        let expected = std::fs::read_to_string("../data/small-ref.txt").unwrap();
-
+    fn assert_results_eq(expected: String, result: String) {
         if expected != result {
             let expected_map = parse(&expected);
             let actual_map = parse(&result);
@@ -404,6 +400,29 @@ mod tests {
             }
 
             assert_eq!(expected, result);
+        }
+    }
+
+    #[test]
+    fn diff_to_plain() {
+        let result = entrypoint("../data/small-measurements.txt".to_string(), 0x100);
+        let expected = std::fs::read_to_string("../data/small-ref.txt").unwrap();
+
+        assert_results_eq(expected, result);
+    }
+
+    #[test]
+    fn proptest_chunk_sizes() {
+        let expected = std::fs::read_to_string("../data/small-ref.txt").unwrap();
+
+        for size in 1..1024 {
+            let result = entrypoint(
+                "../data/small-measurements.txt".to_string(),
+                u32::MAX as usize / size,
+            );
+            // TODO: this would ideally return an error instead of panicking, so we can print a
+            // prettier error with the chunk_size that failed and more context.
+            assert_results_eq(expected.clone(), result);
         }
     }
 }
