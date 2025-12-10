@@ -37,9 +37,7 @@ struct ReaderCtx {
 struct JoinerCtx {
     channel: mpsc::Receiver<ChunkResult>,
     readers_done: &'static AtomicUsize,
-    work_counter: &'static AtomicUsize,
     workers_count: usize,
-    reader_count: usize,
 }
 
 fn main() {
@@ -66,8 +64,6 @@ fn entrypoint(file: String, chunk_size: usize) -> String {
     READERS_DONE.get_or_init(|| AtomicUsize::new(0));
     WORK_COUNTER.get_or_init(|| AtomicUsize::new(0));
 
-    let reader_count = cores - 1;
-
     let (send, recv) = mpsc::channel();
     let reader_state = ReaderCtx {
         channel: send,
@@ -78,19 +74,18 @@ fn entrypoint(file: String, chunk_size: usize) -> String {
     };
     let joiner_state = JoinerCtx {
         channel: recv,
-        work_counter: &WORK_COUNTER.get().unwrap(),
         readers_done: &READERS_DONE.get().unwrap(),
-        workers_count: *WORKERS_COUNT.get().unwrap(),
-        reader_count,
+        workers_count: cores,
     };
 
-    let mut threads = Vec::with_capacity(reader_count);
+    let reader_count = cores - 1;
 
-    for id in 0..reader_count {
-        let state = reader_state.clone();
-
-        threads.push(thread::spawn(move || reader(id, state)));
-    }
+    let threads: Vec<_> = (0..reader_count)
+        .map(|id| {
+            let state = reader_state.clone();
+            thread::spawn(move || reader(id, state))
+        })
+        .collect();
 
     let joiner_thread = thread::spawn(move || joiner(reader_count, joiner_state));
 
