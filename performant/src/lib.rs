@@ -5,7 +5,7 @@ use std::{
     os::unix::fs::FileExt,
     str::from_utf8_unchecked,
     sync::{
-        atomic::{AtomicUsize, Ordering},
+        atomic::{AtomicU8, AtomicU32, Ordering},
         mpsc,
     },
     thread::{self, available_parallelism},
@@ -18,21 +18,20 @@ use std::{
 /// power of 2 probably won't hurt.
 static LINE_SIZE: usize = 128;
 
-#[derive(Debug)]
+#[derive(Debug, Default)]
 /// Execution context used by both joiner and readers
 pub struct ExecutionCtx {
-    // TODO can we use smaller elements (AtomicU8?, U16?)
-    work_counter: AtomicUsize,
-    readers_done: AtomicUsize,
+    work_counter: AtomicU32,
+    readers_done: AtomicU8,
     workers_count: usize,
 }
 
 impl ExecutionCtx {
     pub fn new(workers_count: usize) -> Self {
+        debug_assert!(workers_count <= u8::MAX as usize);
         Self {
-            work_counter: AtomicUsize::new(0),
-            readers_done: AtomicUsize::new(0),
             workers_count,
+            ..Default::default()
         }
     }
 }
@@ -155,7 +154,7 @@ fn reader(_id: usize, state: ReaderCtx) {
         state.channel.send(records).unwrap();
     }
 
-    atomic_increment(&state.context().readers_done);
+    atomic_u8_increment(&state.context().readers_done);
 }
 
 /// Reads the correct number of bytes from the file to buf
@@ -231,8 +230,22 @@ fn parse_temp(input: &[u8]) -> i16 {
     }
 }
 
-/// Increments an atomic integer
-fn atomic_increment(val: &AtomicUsize) -> usize {
+/// Increments an atomic u8
+fn atomic_u8_increment(val: &AtomicU8) -> u8 {
+    let mut old = val.load(Ordering::Relaxed);
+    loop {
+        match val.compare_exchange_weak(old, old + 1, Ordering::Relaxed, Ordering::Relaxed) {
+            Ok(_) => break,
+            Err(x) => old = x,
+        }
+    }
+    old
+}
+
+/// Increments an atomic u32
+// NOTE: This ideally would be a generic function, but as of when this code was written there is no
+// generic Atomic trait, or generic Atomic<T> types so this will have to do for now.
+fn atomic_u32_increment(val: &AtomicU32) -> u32 {
     let mut old = val.load(Ordering::Relaxed);
     loop {
         match val.compare_exchange_weak(old, old + 1, Ordering::Relaxed, Ordering::Relaxed) {
@@ -263,7 +276,7 @@ fn start_offset(buf: &[u8]) -> usize {
 /// that succeeds, returns work_counter * chunk_size. Loops until the cmp_exch is successful.
 // TODO: inline
 fn next_chunk_offset(state: &ReaderCtx) -> usize {
-    atomic_increment(&state.context().work_counter) * state.chunk_size
+    atomic_u32_increment(&state.context().work_counter) as usize * state.chunk_size
 }
 
 fn joiner(_id: usize, state: JoinerCtx) -> String {
@@ -273,7 +286,7 @@ fn joiner(_id: usize, state: JoinerCtx) -> String {
 
     let mut results: BTreeMap<String, Record> = BTreeMap::new();
 
-    while readers_done.load(Ordering::Relaxed) < reader_count {
+    while (readers_done.load(Ordering::Relaxed) as usize) < reader_count {
         if let Ok(chunk_result) = state.channel.try_recv() {
             merge(&mut results, chunk_result.0);
         }
