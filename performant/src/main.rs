@@ -176,7 +176,7 @@ fn process_chunk(state: &ReaderCtx, buf: &[u8], offset: usize, records: &mut Chu
         let mut fields = line.splitn(2, |c| *c == b';');
 
         if let (Some(name), Some(temp)) = (fields.next(), fields.next()) {
-            let temp: f64 = unsafe { from_utf8_unchecked(temp) }.parse().unwrap();
+            let temp = parse_temp(temp);
             let name = unsafe { from_utf8_unchecked(name) };
 
             // TODO compare String with &[u8] without incurring an allocation
@@ -188,11 +188,35 @@ fn process_chunk(state: &ReaderCtx, buf: &[u8], offset: usize, records: &mut Chu
             };
             entry.min = entry.min.min(temp);
             entry.max = entry.max.max(temp);
-            entry.acc += temp;
+            entry.acc += temp as isize;
             entry.count += 1;
         } else {
         }
     }
+}
+
+fn parse_temp(input: &[u8]) -> i16 {
+    let input = unsafe { from_utf8_unchecked(input) };
+    // TODO: optimize parsing, since numbers have a very simple, fixed format, we don't need to
+    // call the std `parse()` function and can just parse the values ourselves.
+    let (left, right) = input.split_once('.').unwrap();
+
+    let (left, negative) = if left.starts_with('-') {
+        (&left[1..], true)
+    } else {
+        (left, false)
+    };
+
+    let left = left.parse::<i16>().unwrap() * 10;
+    let right: i16 = right.parse().unwrap();
+
+    let val = if negative {
+        -left - right
+    } else {
+        left + right
+    };
+
+    val
 }
 
 /// Increments an atomic integer
@@ -262,18 +286,18 @@ fn merge(results: &mut BTreeMap<String, Record>, chunk: HashMap<String, Record>)
 
 #[derive(Debug)]
 struct Record {
-    min: f64,
-    max: f64,
-    acc: f64,
+    min: i16,
+    max: i16,
+    acc: isize,
     count: usize,
 }
 
 impl Record {
     fn new() -> Self {
         Self {
-            min: f64::MAX,
-            max: f64::MIN,
-            acc: 0.,
+            min: i16::MAX,
+            max: i16::MIN,
+            acc: 0,
             count: 0,
         }
     }
@@ -291,9 +315,9 @@ fn format_results(stations: BTreeMap<String, Record>) -> String {
                 format!(
                     "{}={:.1}/{:.1}/{:.1}, ",
                     name,
-                    record.min,
-                    record.acc / (record.count as f64),
-                    record.max
+                    (record.min as f64) / 10.,
+                    (record.acc as f64) / 10. / (record.count as f64),
+                    (record.max as f64) / 10.
                 )
             })
             .reduce(|mut acc, c| {
