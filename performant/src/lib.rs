@@ -123,16 +123,16 @@ fn reader(_id: usize, state: ReaderCtx) {
     loop {
         let offset = next_chunk_offset(&state);
 
+        // We know we're done when the next chunk starts after the end of the file
+        if offset >= len as usize {
+            break;
+        }
+
         // TODO how can we avoid creating a new hashmap everytime?
         // Maybe have two allocations per-thread so that one is with the joiner and one with the
         // reader? The problem then is how can the joiner send it back to the reader after it's
         // done with it?
         let mut records = ChunkResult(HashMap::with_capacity(100));
-
-        // We know we're done when the next chunk starts after the end of the file
-        if offset >= len as usize {
-            break;
-        }
 
         let bytes_read = read_bytes(&mut buf, offset, &file, len as usize);
 
