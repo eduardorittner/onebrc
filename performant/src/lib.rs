@@ -202,27 +202,18 @@ fn process_chunk(state: &ReaderCtx, buf: &[u8], offset: usize, records: &mut Chu
 }
 
 fn parse_temp(input: &[u8]) -> i16 {
-    let input = unsafe { from_utf8_unchecked(input) };
-    // TODO: optimize parsing, since numbers have a very simple, fixed format, we don't need to
-    // call the std `parse()` function and can just parse the values ourselves.
-    let (left, right) = input.split_once('.').unwrap();
-
-    let (left, negative) = if left.starts_with('-') {
-        (&left[1..], true)
-    } else {
-        (left, false)
-    };
-
-    let left = left.parse::<i16>().unwrap() * 10;
-    let right: i16 = right.parse().unwrap();
-
-    let val = if negative {
-        -left - right
-    } else {
-        left + right
-    };
-
-    val
+    let to_number = |ascii: u8| (ascii - 48) as i16;
+    match input {
+        [b'0'..=b'9', b'.', b'0'..=b'9'] => to_number(input[0]) * 10 + to_number(input[2]),
+        [b'0'..=b'9', b'0'..=b'9', b'.', b'0'..=b'9'] => {
+            to_number(input[0]) * 100 + to_number(input[1]) * 10 + to_number(input[3])
+        }
+        [b'-', b'0'..=b'9', b'.', b'0'..=b'9'] => -(to_number(input[1]) * 10 + to_number(input[3])),
+        [b'-', b'0'..=b'9', b'0'..=b'9', b'.', b'0'..=b'9'] => {
+            -(to_number(input[1]) * 100 + to_number(input[2]) * 10 + to_number(input[4]))
+        }
+        _ => unreachable!(),
+    }
 }
 
 /// Increments an atomic integer
