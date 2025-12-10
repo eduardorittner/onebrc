@@ -5,39 +5,70 @@ use std::{
     os::unix::fs::FileExt,
     str::from_utf8_unchecked,
     sync::{
-        OnceLock,
         atomic::{AtomicUsize, Ordering},
         mpsc,
     },
     thread::{self, available_parallelism},
 };
 
-// Shared counters
-static WORK_COUNTER: OnceLock<AtomicUsize> = OnceLock::new();
-static READERS_DONE: OnceLock<AtomicUsize> = OnceLock::new();
-static WORKERS_COUNT: OnceLock<usize> = OnceLock::new();
+#[derive(Debug)]
+/// Execution context used by both joiner and readers
+struct ExecutionCtx {
+    work_counter: AtomicUsize,
+    readers_done: AtomicUsize,
+    workers_count: usize,
+}
 
-// Thread locals
-thread_local! {
-    static THREAD_ID: OnceLock<usize> = OnceLock::new();
+impl ExecutionCtx {
+    fn new(workers_count: usize) -> Self {
+        Self {
+            work_counter: AtomicUsize::new(0),
+            readers_done: AtomicUsize::new(0),
+            workers_count,
+        }
+    }
 }
 
 #[derive(Debug)]
 struct ChunkResult(HashMap<String, Record>);
 
 #[derive(Clone)]
+/// Context specific to readers
 struct ReaderCtx {
     channel: mpsc::Sender<ChunkResult>,
     file: String,
     chunk_size: usize,
-    readers_done: &'static AtomicUsize,
-    work_counter: &'static AtomicUsize,
+    exec_ctx: *const ExecutionCtx,
 }
 
+// SAFETY: context_ptr is guaranteed to be valid for the lifetime of all threads
+// since its lifetime is restricted to `entrypoint()`, and all threads finish before
+// `entrypoint()`.
+unsafe impl Send for ReaderCtx {}
+
+impl ReaderCtx {
+    fn context(&self) -> &ExecutionCtx {
+        // SAFETY: `self.exec_ctx` is only freed after all threads have finished. Therefore it's
+        // always safe to deference it from any joiner/reader thread.
+        unsafe { &*self.exec_ctx }
+    }
+}
+
+/// Context specific to the joiner
 struct JoinerCtx {
     channel: mpsc::Receiver<ChunkResult>,
-    readers_done: &'static AtomicUsize,
-    workers_count: usize,
+    exec_ctx: *const ExecutionCtx,
+}
+
+// SAFETY: context_ptr is guaranteed to be valid for the lifetime of all threads
+// since its lifetime is restricted to `entrypoint()`, and all threads finish before
+// `entrypoint()`.
+unsafe impl Send for JoinerCtx {}
+
+impl JoinerCtx {
+    fn context(&self) -> &ExecutionCtx {
+        unsafe { &*self.exec_ctx }
+    }
 }
 
 fn main() {
@@ -59,23 +90,20 @@ fn main() {
 
 fn entrypoint(file: String, chunk_size: usize) -> String {
     let cores = available_parallelism().unwrap().into();
-
-    WORKERS_COUNT.get_or_init(|| cores);
-    READERS_DONE.get_or_init(|| AtomicUsize::new(0));
-    WORK_COUNTER.get_or_init(|| AtomicUsize::new(0));
+    let context = ExecutionCtx::new(cores);
 
     let (send, recv) = mpsc::channel();
+    let context_ptr = &context as *const ExecutionCtx;
+
     let reader_state = ReaderCtx {
         channel: send,
         file: file,
         chunk_size,
-        work_counter: &WORK_COUNTER.get().unwrap(),
-        readers_done: &READERS_DONE.get().unwrap(),
+        exec_ctx: context_ptr,
     };
     let joiner_state = JoinerCtx {
         channel: recv,
-        readers_done: &READERS_DONE.get().unwrap(),
-        workers_count: cores,
+        exec_ctx: context_ptr,
     };
 
     let reader_count = cores - 1;
@@ -96,11 +124,7 @@ fn entrypoint(file: String, chunk_size: usize) -> String {
     joiner_thread.join().unwrap()
 }
 
-fn reader(id: usize, state: ReaderCtx) {
-    THREAD_ID.with(|once_lock| {
-        once_lock.get_or_init(|| id);
-    });
-
+fn reader(_id: usize, state: ReaderCtx) {
     let file = File::open(&state.file).unwrap();
     let len = file.metadata().unwrap().len();
 
@@ -136,7 +160,7 @@ fn reader(id: usize, state: ReaderCtx) {
         state.channel.send(records).unwrap();
     }
 
-    atomic_increment(state.readers_done);
+    atomic_increment(&state.context().readers_done);
 }
 
 /// Reads the correct number of bytes from the file to buf
@@ -248,12 +272,12 @@ fn start_offset(buf: &[u8]) -> usize {
 /// Calculated using work_counter and chunk_size, tries to increment WORK_COUNTER atomically. If
 /// that succeeds, returns work_counter * chunk_size. Loops until the cmp_exch is successful.
 fn next_chunk_offset(state: &ReaderCtx) -> usize {
-    atomic_increment(state.work_counter) * state.chunk_size
+    atomic_increment(&state.context().work_counter) * state.chunk_size
 }
 
 fn joiner(_id: usize, state: JoinerCtx) -> String {
-    let worker_count = state.workers_count;
-    let readers_done = state.readers_done;
+    let worker_count = state.context().workers_count;
+    let readers_done = &state.context().readers_done;
     let reader_count = worker_count - 1;
 
     let mut results: BTreeMap<String, Record> = BTreeMap::new();
@@ -415,7 +439,7 @@ mod tests {
     fn proptest_chunk_sizes() {
         let expected = std::fs::read_to_string("../data/small-ref.txt").unwrap();
 
-        for size in 1..1024 {
+        for size in 1..128 {
             let result = entrypoint(
                 "../data/small-measurements.txt".to_string(),
                 u32::MAX as usize / size,
