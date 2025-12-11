@@ -13,6 +13,7 @@ fn main() {
     }
     .to_string();
 
-    let result = entrypoint(file, 0x4000000);
-    print!("{result}");
+    let stdout = std::io::stdout();
+
+    entrypoint(file, 0x4000000, stdout);
 }

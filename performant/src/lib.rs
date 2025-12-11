@@ -1,7 +1,7 @@
 use std::{
     collections::{BTreeMap, HashMap},
     fs::File,
-    io::ErrorKind,
+    io::{BufWriter, ErrorKind, Write},
     os::unix::fs::FileExt,
     str::from_utf8_unchecked,
     sync::{
@@ -65,24 +65,25 @@ impl ReaderCtx {
 }
 
 /// Context specific to the joiner
-pub struct JoinerCtx {
+pub struct JoinerCtx<W: Write> {
     pub channel: mpsc::Receiver<ChunkResult>,
     pub exec_ctx: *const ExecutionCtx,
+    pub writer: W,
 }
 
 // SAFETY: context_ptr is guaranteed to be valid for the lifetime of all threads
 // since its lifetime is restricted to `entrypoint()`, and all threads finish before
 // `entrypoint()`.
-unsafe impl Send for JoinerCtx {}
+unsafe impl<W: Write> Send for JoinerCtx<W> {}
 
-impl JoinerCtx {
+impl<W: Write> JoinerCtx<W> {
     #[inline(always)]
     pub fn context(&self) -> &ExecutionCtx {
         unsafe { &*self.exec_ctx }
     }
 }
 
-pub fn entrypoint(file: String, chunk_size: usize) -> String {
+pub fn entrypoint<W: Write>(file: String, chunk_size: usize, writer: W) {
     let cores = available_parallelism().unwrap().into();
     let context = ExecutionCtx::new(cores);
 
@@ -98,6 +99,7 @@ pub fn entrypoint(file: String, chunk_size: usize) -> String {
     let joiner_state = JoinerCtx {
         channel: recv,
         exec_ctx: context_ptr,
+        writer,
     };
 
     let reader_count = cores - 1;
@@ -109,14 +111,14 @@ pub fn entrypoint(file: String, chunk_size: usize) -> String {
         })
         .collect();
 
-    // TODO: do we need to wait for reader threads or can we just wait on joiner?
-    let joiner_thread = thread::spawn(move || joiner(reader_count, joiner_state));
+    // NOTE: By not calling joiner on another thread, this means that any hanging readers
+    // (panicking, buggy, etc.) will cause the whole program to never end, since the work will
+    // never be done and we will never be able to wait on the reader handles.
+    joiner(reader_count, joiner_state);
 
     for handle in threads {
         handle.join().unwrap();
     }
-
-    joiner_thread.join().unwrap()
 }
 
 fn reader(_id: usize, state: ReaderCtx) {
@@ -282,7 +284,7 @@ fn next_chunk_offset(state: &ReaderCtx) -> usize {
     atomic_u32_increment(&state.context().work_counter) as usize * state.chunk_size
 }
 
-fn joiner(_id: usize, state: JoinerCtx) -> String {
+fn joiner<W: Write>(_id: usize, state: JoinerCtx<W>) {
     let worker_count = state.context().workers_count;
     let readers_done = &state.context().readers_done;
     let reader_count = worker_count - 1;
@@ -299,7 +301,7 @@ fn joiner(_id: usize, state: JoinerCtx) -> String {
         merge(&mut results, chunk_result.0);
     }
 
-    format_results(results)
+    format_results(results, state.writer);
 }
 
 fn merge(results: &mut BTreeMap<String, Record>, chunk: HashMap<String, Record>) {
@@ -335,36 +337,29 @@ impl Record {
     }
 }
 
-// TODO: use BufWriter instead of manually pushing strs
-fn format_results(stations: BTreeMap<String, Record>) -> String {
-    let mut string = String::with_capacity(stations.len() * 10);
+fn format_results<W: Write>(stations: BTreeMap<String, Record>, writer: W) {
+    let mut writer = BufWriter::new(writer);
 
-    string.push('{');
+    let mut stations = stations.into_iter().peekable();
 
-    string.push_str(
-        &stations
-            .into_iter()
-            .map(|(name, record)| {
-                format!(
-                    "{}={:.1}/{:.1}/{:.1}, ",
-                    name,
-                    (record.min as f64) / 10.,
-                    (record.acc as f64) / 10. / (record.count as f64),
-                    (record.max as f64) / 10.
-                )
-            })
-            .reduce(|mut acc, c| {
-                acc.push_str(&c);
-                acc
-            })
-            .unwrap(),
-    );
-    string.pop(); // Remove ','
-    string.pop(); // Remove ' '
-    string.push('}');
-    string.push('\n');
+    write!(writer, "{{").unwrap();
 
-    string
+    while let Some((name, record)) = stations.next() {
+        write!(
+            writer,
+            "{}={:.1}/{:.1}/{:.1}",
+            name,
+            (record.min as f64) / 10.,
+            (record.acc as f64) / 10. / (record.count as f64),
+            (record.max as f64) / 10.
+        )
+        .unwrap();
+
+        if stations.peek().is_some() {
+            write!(writer, ", ").unwrap();
+        }
+    }
+    write!(writer, "}}\n").unwrap();
 }
 
 #[cfg(test)]
@@ -442,8 +437,14 @@ mod tests {
 
     #[test]
     fn diff_to_plain() {
-        let result = entrypoint("../data/small-measurements.txt".to_string(), 0x100);
+        let mut buf = Vec::with_capacity(10000);
+        entrypoint(
+            "../data/small-measurements.txt".to_string(),
+            0x100,
+            &mut buf,
+        );
         let expected = std::fs::read_to_string("../data/small-ref.txt").unwrap();
+        let result = String::from_utf8(buf).unwrap();
 
         compare_results(expected, result).unwrap();
     }
@@ -454,7 +455,14 @@ mod tests {
 
         for size in 1..128 {
             let chunk_size = u32::MAX as usize / size;
-            let result = entrypoint("../data/small-measurements.txt".to_string(), chunk_size);
+            // TODO: ideally we would reuse this allocation across chunk sizes
+            let mut buf = Vec::with_capacity(10000);
+            entrypoint(
+                "../data/small-measurements.txt".to_string(),
+                chunk_size,
+                &mut buf,
+            );
+            let result = String::from_utf8(buf).unwrap();
             if let Err(error) = compare_results(expected.clone(), result) {
                 panic!("Failed with chunk_size {}: {}", chunk_size, error);
             }

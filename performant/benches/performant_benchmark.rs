@@ -16,13 +16,19 @@ fn benchmark_performant_implementation(c: &mut Criterion) {
 
     if Path::new(get_dataset_path("tiny")).exists() {
         small_group.bench_function("tiny_dataset", |b| {
-            b.iter(|| entrypoint(get_dataset_path("tiny").to_string(), 0x4000000))
+            b.iter(|| {
+                let buf = Vec::with_capacity(1000);
+                entrypoint(get_dataset_path("tiny").to_string(), 0x4000000, buf)
+            })
         });
     }
 
     if Path::new(get_dataset_path("small")).exists() {
         small_group.bench_function("small_dataset", |b| {
-            b.iter(|| entrypoint(get_dataset_path("small").to_string(), 0x4000000))
+            b.iter(|| {
+                let buf = Vec::with_capacity(1000);
+                entrypoint(get_dataset_path("small").to_string(), 0x4000000, buf)
+            })
         });
     }
 
@@ -33,7 +39,10 @@ fn benchmark_performant_implementation(c: &mut Criterion) {
 
     if Path::new(get_dataset_path("full")).exists() {
         full_group.bench_function("full_dataset", |b| {
-            b.iter(|| entrypoint(get_dataset_path("full").to_string(), 0x4000000))
+            b.iter(|| {
+                let buf = Vec::with_capacity(100000);
+                entrypoint(get_dataset_path("full").to_string(), 0x4000000, buf)
+            })
         });
     }
 
