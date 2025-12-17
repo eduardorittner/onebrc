@@ -1,0 +1,8376 @@
+---
+source: performant/src/lib.rs
+expression: sorted_records
+---
+[
+    (
+        "Abadla",
+        Record {
+            min: 965,
+            max: 965,
+            acc: 965,
+            count: 1,
+        },
+    ),
+    (
+        "Abadou",
+        Record {
+            min: -733,
+            max: -733,
+            acc: -733,
+            count: 1,
+        },
+    ),
+    (
+        "Abcoude",
+        Record {
+            min: -644,
+            max: -423,
+            acc: -1067,
+            count: 2,
+        },
+    ),
+    (
+        "Abnūb",
+        Record {
+            min: 438,
+            max: 438,
+            acc: 438,
+            count: 1,
+        },
+    ),
+    (
+        "Adigoppula",
+        Record {
+            min: -949,
+            max: -949,
+            acc: -949,
+            count: 1,
+        },
+    ),
+    (
+        "Aigues-Mortes",
+        Record {
+            min: -692,
+            max: -692,
+            acc: -692,
+            count: 1,
+        },
+    ),
+    (
+        "Aiquile",
+        Record {
+            min: -69,
+            max: -68,
+            acc: -137,
+            count: 2,
+        },
+    ),
+    (
+        "Akhisar",
+        Record {
+            min: 13,
+            max: 13,
+            acc: 13,
+            count: 1,
+        },
+    ),
+    (
+        "Al Jīzah",
+        Record {
+            min: -401,
+            max: -401,
+            acc: -401,
+            count: 1,
+        },
+    ),
+    (
+        "Al Kiswah",
+        Record {
+            min: 334,
+            max: 334,
+            acc: 334,
+            count: 1,
+        },
+    ),
+    (
+        "Al ‘Ashārah",
+        Record {
+            min: -976,
+            max: -976,
+            acc: -976,
+            count: 1,
+        },
+    ),
+    (
+        "Alanya",
+        Record {
+            min: -532,
+            max: -532,
+            acc: -532,
+            count: 1,
+        },
+    ),
+    (
+        "Alaçatı",
+        Record {
+            min: 564,
+            max: 564,
+            acc: 564,
+            count: 1,
+        },
+    ),
+    (
+        "Aleshtar",
+        Record {
+            min: 251,
+            max: 251,
+            acc: 251,
+            count: 1,
+        },
+    ),
+    (
+        "Alhandra",
+        Record {
+            min: 600,
+            max: 600,
+            acc: 600,
+            count: 1,
+        },
+    ),
+    (
+        "Allen Park",
+        Record {
+            min: -944,
+            max: -944,
+            acc: -944,
+            count: 1,
+        },
+    ),
+    (
+        "Alsip",
+        Record {
+            min: -280,
+            max: -280,
+            acc: -280,
+            count: 1,
+        },
+    ),
+    (
+        "Altagracia de Orituco",
+        Record {
+            min: -757,
+            max: -757,
+            acc: -757,
+            count: 1,
+        },
+    ),
+    (
+        "Altavilla Vicentina",
+        Record {
+            min: -714,
+            max: -714,
+            acc: -714,
+            count: 1,
+        },
+    ),
+    (
+        "Altunhisar",
+        Record {
+            min: 799,
+            max: 799,
+            acc: 799,
+            count: 1,
+        },
+    ),
+    (
+        "Altötting",
+        Record {
+            min: -573,
+            max: -573,
+            acc: -573,
+            count: 1,
+        },
+    ),
+    (
+        "Amaraji",
+        Record {
+            min: -202,
+            max: -202,
+            acc: -202,
+            count: 1,
+        },
+    ),
+    (
+        "Ambatolahy",
+        Record {
+            min: 143,
+            max: 143,
+            acc: 143,
+            count: 1,
+        },
+    ),
+    (
+        "Ambodimadiro",
+        Record {
+            min: 718,
+            max: 718,
+            acc: 718,
+            count: 1,
+        },
+    ),
+    (
+        "Ambolotarakely",
+        Record {
+            min: -148,
+            max: -148,
+            acc: -148,
+            count: 1,
+        },
+    ),
+    (
+        "Ampanotokana",
+        Record {
+            min: -419,
+            max: -419,
+            acc: -419,
+            count: 1,
+        },
+    ),
+    (
+        "An Nu‘mānīyah",
+        Record {
+            min: 94,
+            max: 94,
+            acc: 94,
+            count: 1,
+        },
+    ),
+    (
+        "Anaheim",
+        Record {
+            min: -482,
+            max: -482,
+            acc: -482,
+            count: 1,
+        },
+    ),
+    (
+        "Andergrove",
+        Record {
+            min: 989,
+            max: 989,
+            acc: 989,
+            count: 1,
+        },
+    ),
+    (
+        "Andéranboukan",
+        Record {
+            min: -693,
+            max: -693,
+            acc: -693,
+            count: 1,
+        },
+    ),
+    (
+        "Angono",
+        Record {
+            min: 461,
+            max: 461,
+            acc: 461,
+            count: 1,
+        },
+    ),
+    (
+        "Angostura",
+        Record {
+            min: 528,
+            max: 528,
+            acc: 528,
+            count: 1,
+        },
+    ),
+    (
+        "Anjuna",
+        Record {
+            min: 427,
+            max: 427,
+            acc: 427,
+            count: 1,
+        },
+    ),
+    (
+        "Ankatafa",
+        Record {
+            min: 696,
+            max: 696,
+            acc: 696,
+            count: 1,
+        },
+    ),
+    (
+        "Antanimenabaka",
+        Record {
+            min: 424,
+            max: 424,
+            acc: 424,
+            count: 1,
+        },
+    ),
+    (
+        "Antsakanalabe",
+        Record {
+            min: 172,
+            max: 172,
+            acc: 172,
+            count: 1,
+        },
+    ),
+    (
+        "Antônio Gonçalves",
+        Record {
+            min: 28,
+            max: 28,
+            acc: 28,
+            count: 1,
+        },
+    ),
+    (
+        "Anzhero-Sudzhensk",
+        Record {
+            min: -793,
+            max: -793,
+            acc: -793,
+            count: 1,
+        },
+    ),
+    (
+        "Apače",
+        Record {
+            min: 651,
+            max: 651,
+            acc: 651,
+            count: 1,
+        },
+    ),
+    (
+        "Apollo Beach",
+        Record {
+            min: 309,
+            max: 309,
+            acc: 309,
+            count: 1,
+        },
+    ),
+    (
+        "Aquidauana",
+        Record {
+            min: 43,
+            max: 43,
+            acc: 43,
+            count: 1,
+        },
+    ),
+    (
+        "Arauca",
+        Record {
+            min: 791,
+            max: 791,
+            acc: 791,
+            count: 1,
+        },
+    ),
+    (
+        "Areal",
+        Record {
+            min: 124,
+            max: 124,
+            acc: 124,
+            count: 1,
+        },
+    ),
+    (
+        "Areguá",
+        Record {
+            min: 84,
+            max: 922,
+            acc: 1006,
+            count: 2,
+        },
+    ),
+    (
+        "Arma",
+        Record {
+            min: 187,
+            max: 187,
+            acc: 187,
+            count: 1,
+        },
+    ),
+    (
+        "Armūr",
+        Record {
+            min: -210,
+            max: -210,
+            acc: -210,
+            count: 1,
+        },
+    ),
+    (
+        "Artur Nogueira",
+        Record {
+            min: 456,
+            max: 456,
+            acc: 456,
+            count: 1,
+        },
+    ),
+    (
+        "Aruppukkottai",
+        Record {
+            min: -567,
+            max: -567,
+            acc: -567,
+            count: 1,
+        },
+    ),
+    (
+        "Arys",
+        Record {
+            min: 174,
+            max: 174,
+            acc: 174,
+            count: 1,
+        },
+    ),
+    (
+        "Ashaiman",
+        Record {
+            min: -77,
+            max: -77,
+            acc: -77,
+            count: 1,
+        },
+    ),
+    (
+        "Asola",
+        Record {
+            min: -849,
+            max: -451,
+            acc: -1300,
+            count: 2,
+        },
+    ),
+    (
+        "Assaí",
+        Record {
+            min: -91,
+            max: -91,
+            acc: -91,
+            count: 1,
+        },
+    ),
+    (
+        "Aston",
+        Record {
+            min: -700,
+            max: -700,
+            acc: -700,
+            count: 1,
+        },
+    ),
+    (
+        "Asālem",
+        Record {
+            min: 659,
+            max: 659,
+            acc: 659,
+            count: 1,
+        },
+    ),
+    (
+        "Atascadero",
+        Record {
+            min: 394,
+            max: 394,
+            acc: 394,
+            count: 1,
+        },
+    ),
+    (
+        "Atlit",
+        Record {
+            min: -233,
+            max: -233,
+            acc: -233,
+            count: 1,
+        },
+    ),
+    (
+        "Atok",
+        Record {
+            min: 78,
+            max: 382,
+            acc: 460,
+            count: 2,
+        },
+    ),
+    (
+        "Atoyac de Álvarez",
+        Record {
+            min: 143,
+            max: 143,
+            acc: 143,
+            count: 1,
+        },
+    ),
+    (
+        "Attendorn",
+        Record {
+            min: 627,
+            max: 627,
+            acc: 627,
+            count: 1,
+        },
+    ),
+    (
+        "Austin",
+        Record {
+            min: 467,
+            max: 467,
+            acc: 467,
+            count: 1,
+        },
+    ),
+    (
+        "Avigliano",
+        Record {
+            min: -131,
+            max: -131,
+            acc: -131,
+            count: 1,
+        },
+    ),
+    (
+        "Ayas",
+        Record {
+            min: -359,
+            max: -359,
+            acc: -359,
+            count: 1,
+        },
+    ),
+    (
+        "Aysha",
+        Record {
+            min: -798,
+            max: -798,
+            acc: -798,
+            count: 1,
+        },
+    ),
+    (
+        "Az Zaydīyah",
+        Record {
+            min: 51,
+            max: 51,
+            acc: 51,
+            count: 1,
+        },
+    ),
+    (
+        "Azcoitia",
+        Record {
+            min: 822,
+            max: 822,
+            acc: 822,
+            count: 1,
+        },
+    ),
+    (
+        "Bacolor",
+        Record {
+            min: -255,
+            max: -255,
+            acc: -255,
+            count: 1,
+        },
+    ),
+    (
+        "Bad Krozingen",
+        Record {
+            min: -137,
+            max: -137,
+            acc: -137,
+            count: 1,
+        },
+    ),
+    (
+        "Badagabettu",
+        Record {
+            min: -200,
+            max: -200,
+            acc: -200,
+            count: 1,
+        },
+    ),
+    (
+        "Bafia",
+        Record {
+            min: 17,
+            max: 17,
+            acc: 17,
+            count: 1,
+        },
+    ),
+    (
+        "Bahçe",
+        Record {
+            min: -568,
+            max: -568,
+            acc: -568,
+            count: 1,
+        },
+    ),
+    (
+        "Balatonfüred",
+        Record {
+            min: -81,
+            max: -81,
+            acc: -81,
+            count: 1,
+        },
+    ),
+    (
+        "Balboa",
+        Record {
+            min: 322,
+            max: 322,
+            acc: 322,
+            count: 1,
+        },
+    ),
+    (
+        "Bamberg",
+        Record {
+            min: 991,
+            max: 991,
+            acc: 991,
+            count: 1,
+        },
+    ),
+    (
+        "Ban Chang Phuak",
+        Record {
+            min: -89,
+            max: -89,
+            acc: -89,
+            count: 1,
+        },
+    ),
+    (
+        "Ban Kaeng",
+        Record {
+            min: -151,
+            max: -151,
+            acc: -151,
+            count: 1,
+        },
+    ),
+    (
+        "Ban Non Sombun",
+        Record {
+            min: 315,
+            max: 315,
+            acc: 315,
+            count: 1,
+        },
+    ),
+    (
+        "Ban Pong Yaeng Nai",
+        Record {
+            min: -661,
+            max: -661,
+            acc: -661,
+            count: 1,
+        },
+    ),
+    (
+        "Banagi",
+        Record {
+            min: -202,
+            max: -202,
+            acc: -202,
+            count: 1,
+        },
+    ),
+    (
+        "Bang Phongphang",
+        Record {
+            min: -701,
+            max: -701,
+            acc: -701,
+            count: 1,
+        },
+    ),
+    (
+        "Bangāwān",
+        Record {
+            min: -388,
+            max: -388,
+            acc: -388,
+            count: 1,
+        },
+    ),
+    (
+        "Barbastro",
+        Record {
+            min: 75,
+            max: 75,
+            acc: 75,
+            count: 1,
+        },
+    ),
+    (
+        "Bargaon",
+        Record {
+            min: 951,
+            max: 951,
+            acc: 951,
+            count: 1,
+        },
+    ),
+    (
+        "Bari",
+        Record {
+            min: 866,
+            max: 866,
+            acc: 866,
+            count: 1,
+        },
+    ),
+    (
+        "Barka Parbatta",
+        Record {
+            min: -330,
+            max: -330,
+            acc: -330,
+            count: 1,
+        },
+    ),
+    (
+        "Barra de São Francisco",
+        Record {
+            min: 154,
+            max: 154,
+            acc: 154,
+            count: 1,
+        },
+    ),
+    (
+        "Bartow",
+        Record {
+            min: 129,
+            max: 129,
+            acc: 129,
+            count: 1,
+        },
+    ),
+    (
+        "Basi",
+        Record {
+            min: -576,
+            max: -576,
+            acc: -576,
+            count: 1,
+        },
+    ),
+    (
+        "Baskil",
+        Record {
+            min: 247,
+            max: 247,
+            acc: 247,
+            count: 1,
+        },
+    ),
+    (
+        "Bassersdorf",
+        Record {
+            min: 639,
+            max: 639,
+            acc: 639,
+            count: 1,
+        },
+    ),
+    (
+        "Batangas",
+        Record {
+            min: 823,
+            max: 823,
+            acc: 823,
+            count: 1,
+        },
+    ),
+    (
+        "Batatais",
+        Record {
+            min: 802,
+            max: 802,
+            acc: 802,
+            count: 1,
+        },
+    ),
+    (
+        "Batgram",
+        Record {
+            min: 88,
+            max: 88,
+            acc: 88,
+            count: 1,
+        },
+    ),
+    (
+        "Baton Rouge",
+        Record {
+            min: -327,
+            max: -327,
+            acc: -327,
+            count: 1,
+        },
+    ),
+    (
+        "Bayang",
+        Record {
+            min: -145,
+            max: -145,
+            acc: -145,
+            count: 1,
+        },
+    ),
+    (
+        "Bazhou",
+        Record {
+            min: 384,
+            max: 384,
+            acc: 384,
+            count: 1,
+        },
+    ),
+    (
+        "Beecher",
+        Record {
+            min: 975,
+            max: 975,
+            acc: 975,
+            count: 1,
+        },
+    ),
+    (
+        "Beiya",
+        Record {
+            min: 128,
+            max: 128,
+            acc: 128,
+            count: 1,
+        },
+    ),
+    (
+        "Bekoratsaka",
+        Record {
+            min: 633,
+            max: 633,
+            acc: 633,
+            count: 1,
+        },
+    ),
+    (
+        "Bembèrèkè",
+        Record {
+            min: 122,
+            max: 122,
+            acc: 122,
+            count: 1,
+        },
+    ),
+    (
+        "Beni Zouli",
+        Record {
+            min: -875,
+            max: -594,
+            acc: -2091,
+            count: 3,
+        },
+    ),
+    (
+        "Beohāri",
+        Record {
+            min: -118,
+            max: -118,
+            acc: -118,
+            count: 1,
+        },
+    ),
+    (
+        "Berching",
+        Record {
+            min: 245,
+            max: 245,
+            acc: 245,
+            count: 1,
+        },
+    ),
+    (
+        "Berezhany",
+        Record {
+            min: 451,
+            max: 451,
+            acc: 451,
+            count: 1,
+        },
+    ),
+    (
+        "Beruri",
+        Record {
+            min: -273,
+            max: -273,
+            acc: -273,
+            count: 1,
+        },
+    ),
+    (
+        "Berwyn",
+        Record {
+            min: -828,
+            max: -828,
+            acc: -828,
+            count: 1,
+        },
+    ),
+    (
+        "Bhadās",
+        Record {
+            min: 806,
+            max: 806,
+            acc: 806,
+            count: 1,
+        },
+    ),
+    (
+        "Bibbiano",
+        Record {
+            min: -899,
+            max: -899,
+            acc: -899,
+            count: 1,
+        },
+    ),
+    (
+        "Bickley",
+        Record {
+            min: 200,
+            max: 200,
+            acc: 200,
+            count: 1,
+        },
+    ),
+    (
+        "Big Lake",
+        Record {
+            min: 503,
+            max: 503,
+            acc: 503,
+            count: 1,
+        },
+    ),
+    (
+        "Bikin",
+        Record {
+            min: 122,
+            max: 122,
+            acc: 122,
+            count: 1,
+        },
+    ),
+    (
+        "Biləsuvar",
+        Record {
+            min: 356,
+            max: 356,
+            acc: 356,
+            count: 1,
+        },
+    ),
+    (
+        "Birni Lafia",
+        Record {
+            min: 193,
+            max: 193,
+            acc: 193,
+            count: 1,
+        },
+    ),
+    (
+        "Birstall",
+        Record {
+            min: 573,
+            max: 573,
+            acc: 573,
+            count: 1,
+        },
+    ),
+    (
+        "Birāṭnagar",
+        Record {
+            min: -346,
+            max: -346,
+            acc: -346,
+            count: 1,
+        },
+    ),
+    (
+        "Bispham",
+        Record {
+            min: 38,
+            max: 38,
+            acc: 38,
+            count: 1,
+        },
+    ),
+    (
+        "Bixby",
+        Record {
+            min: -913,
+            max: -913,
+            acc: -913,
+            count: 1,
+        },
+    ),
+    (
+        "Blackpool",
+        Record {
+            min: 176,
+            max: 176,
+            acc: 176,
+            count: 1,
+        },
+    ),
+    (
+        "Bloomfield",
+        Record {
+            min: -177,
+            max: -177,
+            acc: -177,
+            count: 1,
+        },
+    ),
+    (
+        "Bohechío",
+        Record {
+            min: -751,
+            max: -751,
+            acc: -751,
+            count: 1,
+        },
+    ),
+    (
+        "Bom Jesus do Galho",
+        Record {
+            min: -19,
+            max: -19,
+            acc: -19,
+            count: 1,
+        },
+    ),
+    (
+        "Borgne",
+        Record {
+            min: 858,
+            max: 858,
+            acc: 858,
+            count: 1,
+        },
+    ),
+    (
+        "Borjomi",
+        Record {
+            min: -511,
+            max: -511,
+            acc: -511,
+            count: 1,
+        },
+    ),
+    (
+        "Borūjen",
+        Record {
+            min: 508,
+            max: 508,
+            acc: 508,
+            count: 1,
+        },
+    ),
+    (
+        "Bouanri",
+        Record {
+            min: 603,
+            max: 603,
+            acc: 603,
+            count: 1,
+        },
+    ),
+    (
+        "Bougival",
+        Record {
+            min: -304,
+            max: 399,
+            acc: -161,
+            count: 3,
+        },
+    ),
+    (
+        "Bovalino Marina",
+        Record {
+            min: -959,
+            max: -959,
+            acc: -959,
+            count: 1,
+        },
+    ),
+    (
+        "Bowral",
+        Record {
+            min: 61,
+            max: 61,
+            acc: 61,
+            count: 1,
+        },
+    ),
+    (
+        "Bo’ness",
+        Record {
+            min: 187,
+            max: 187,
+            acc: 187,
+            count: 1,
+        },
+    ),
+    (
+        "Brandis",
+        Record {
+            min: -851,
+            max: 627,
+            acc: -224,
+            count: 2,
+        },
+    ),
+    (
+        "Broni",
+        Record {
+            min: -942,
+            max: -942,
+            acc: -942,
+            count: 1,
+        },
+    ),
+    (
+        "Broome",
+        Record {
+            min: 162,
+            max: 162,
+            acc: 162,
+            count: 1,
+        },
+    ),
+    (
+        "Brown Deer",
+        Record {
+            min: 625,
+            max: 625,
+            acc: 625,
+            count: 1,
+        },
+    ),
+    (
+        "Bryansk",
+        Record {
+            min: -936,
+            max: -936,
+            acc: -936,
+            count: 1,
+        },
+    ),
+    (
+        "Bryn",
+        Record {
+            min: -935,
+            max: -935,
+            acc: -935,
+            count: 1,
+        },
+    ),
+    (
+        "Brājarājnagar",
+        Record {
+            min: -915,
+            max: -915,
+            acc: -915,
+            count: 1,
+        },
+    ),
+    (
+        "Brčko",
+        Record {
+            min: 860,
+            max: 860,
+            acc: 860,
+            count: 1,
+        },
+    ),
+    (
+        "Bucha",
+        Record {
+            min: 194,
+            max: 194,
+            acc: 194,
+            count: 1,
+        },
+    ),
+    (
+        "Buftea",
+        Record {
+            min: 851,
+            max: 851,
+            acc: 851,
+            count: 1,
+        },
+    ),
+    (
+        "Bugugoucun",
+        Record {
+            min: 380,
+            max: 380,
+            acc: 380,
+            count: 1,
+        },
+    ),
+    (
+        "Bulwell",
+        Record {
+            min: -574,
+            max: -551,
+            acc: -1125,
+            count: 2,
+        },
+    ),
+    (
+        "Bumpe",
+        Record {
+            min: 708,
+            max: 708,
+            acc: 708,
+            count: 1,
+        },
+    ),
+    (
+        "Bundehra",
+        Record {
+            min: 517,
+            max: 517,
+            acc: 517,
+            count: 1,
+        },
+    ),
+    (
+        "Bunkeflostrand",
+        Record {
+            min: 351,
+            max: 351,
+            acc: 351,
+            count: 1,
+        },
+    ),
+    (
+        "Buntok",
+        Record {
+            min: -169,
+            max: -169,
+            acc: -169,
+            count: 1,
+        },
+    ),
+    (
+        "Burnsville",
+        Record {
+            min: -326,
+            max: -326,
+            acc: -326,
+            count: 1,
+        },
+    ),
+    (
+        "Bytów",
+        Record {
+            min: -957,
+            max: -957,
+            acc: -957,
+            count: 1,
+        },
+    ),
+    (
+        "Bélabo",
+        Record {
+            min: -709,
+            max: -709,
+            acc: -709,
+            count: 1,
+        },
+    ),
+    (
+        "Bāţūfah",
+        Record {
+            min: 523,
+            max: 523,
+            acc: 523,
+            count: 1,
+        },
+    ),
+    (
+        "Břeclav",
+        Record {
+            min: -23,
+            max: -23,
+            acc: -23,
+            count: 1,
+        },
+    ),
+    (
+        "Cabriès",
+        Record {
+            min: 207,
+            max: 207,
+            acc: 207,
+            count: 1,
+        },
+    ),
+    (
+        "Cadolzburg",
+        Record {
+            min: -693,
+            max: -693,
+            acc: -693,
+            count: 1,
+        },
+    ),
+    (
+        "Calarcá",
+        Record {
+            min: -426,
+            max: -426,
+            acc: -426,
+            count: 1,
+        },
+    ),
+    (
+        "Caldono",
+        Record {
+            min: 882,
+            max: 882,
+            acc: 882,
+            count: 1,
+        },
+    ),
+    (
+        "Camaligan",
+        Record {
+            min: 99,
+            max: 99,
+            acc: 99,
+            count: 1,
+        },
+    ),
+    (
+        "Camp Perrin",
+        Record {
+            min: -86,
+            max: -86,
+            acc: -86,
+            count: 1,
+        },
+    ),
+    (
+        "Campagnano di Roma",
+        Record {
+            min: -673,
+            max: 707,
+            acc: 34,
+            count: 2,
+        },
+    ),
+    (
+        "Campobello di Licata",
+        Record {
+            min: 728,
+            max: 728,
+            acc: 728,
+            count: 1,
+        },
+    ),
+    (
+        "Canals",
+        Record {
+            min: 887,
+            max: 887,
+            acc: 887,
+            count: 1,
+        },
+    ),
+    (
+        "Cangandala",
+        Record {
+            min: 521,
+            max: 521,
+            acc: 521,
+            count: 1,
+        },
+    ),
+    (
+        "Capanema",
+        Record {
+            min: 506,
+            max: 506,
+            acc: 506,
+            count: 1,
+        },
+    ),
+    (
+        "Capitán Bado",
+        Record {
+            min: -292,
+            max: -292,
+            acc: -292,
+            count: 1,
+        },
+    ),
+    (
+        "Carlos Barbosa",
+        Record {
+            min: -580,
+            max: -580,
+            acc: -580,
+            count: 1,
+        },
+    ),
+    (
+        "Casalgrande",
+        Record {
+            min: -83,
+            max: -83,
+            acc: -83,
+            count: 1,
+        },
+    ),
+    (
+        "Castro Daire",
+        Record {
+            min: -702,
+            max: -702,
+            acc: -702,
+            count: 1,
+        },
+    ),
+    (
+        "Castrovillari",
+        Record {
+            min: 840,
+            max: 840,
+            acc: 840,
+            count: 1,
+        },
+    ),
+    (
+        "Cecina",
+        Record {
+            min: -398,
+            max: -128,
+            acc: -526,
+            count: 2,
+        },
+    ),
+    (
+        "Cehegín",
+        Record {
+            min: -50,
+            max: 972,
+            acc: 922,
+            count: 2,
+        },
+    ),
+    (
+        "Centurion",
+        Record {
+            min: -683,
+            max: 262,
+            acc: -421,
+            count: 2,
+        },
+    ),
+    (
+        "Cervantes",
+        Record {
+            min: 860,
+            max: 860,
+            acc: 860,
+            count: 1,
+        },
+    ),
+    (
+        "Cervelló",
+        Record {
+            min: -539,
+            max: -539,
+            acc: -539,
+            count: 1,
+        },
+    ),
+    (
+        "Cessnock",
+        Record {
+            min: 178,
+            max: 178,
+            acc: 178,
+            count: 1,
+        },
+    ),
+    (
+        "Ceyhan",
+        Record {
+            min: -120,
+            max: -120,
+            acc: -120,
+            count: 1,
+        },
+    ),
+    (
+        "Chaital",
+        Record {
+            min: 21,
+            max: 21,
+            acc: 21,
+            count: 1,
+        },
+    ),
+    (
+        "Chaiyaphum",
+        Record {
+            min: -464,
+            max: -464,
+            acc: -464,
+            count: 1,
+        },
+    ),
+    (
+        "Cham",
+        Record {
+            min: -728,
+            max: -728,
+            acc: -728,
+            count: 1,
+        },
+    ),
+    (
+        "Chamblee",
+        Record {
+            min: -813,
+            max: -813,
+            acc: -813,
+            count: 1,
+        },
+    ),
+    (
+        "Champāpur",
+        Record {
+            min: 513,
+            max: 513,
+            acc: 513,
+            count: 1,
+        },
+    ),
+    (
+        "Chandreru",
+        Record {
+            min: -197,
+            max: -197,
+            acc: -197,
+            count: 1,
+        },
+    ),
+    (
+        "Chapeltique",
+        Record {
+            min: 127,
+            max: 127,
+            acc: 127,
+            count: 1,
+        },
+    ),
+    (
+        "Charkhi Dādri",
+        Record {
+            min: 427,
+            max: 427,
+            acc: 427,
+            count: 1,
+        },
+    ),
+    (
+        "Chegūr",
+        Record {
+            min: -446,
+            max: -446,
+            acc: -446,
+            count: 1,
+        },
+    ),
+    (
+        "Chencha",
+        Record {
+            min: 603,
+            max: 603,
+            acc: 603,
+            count: 1,
+        },
+    ),
+    (
+        "Chilliwack",
+        Record {
+            min: -973,
+            max: -973,
+            acc: -973,
+            count: 1,
+        },
+    ),
+    (
+        "Chingford",
+        Record {
+            min: -790,
+            max: -790,
+            acc: -790,
+            count: 1,
+        },
+    ),
+    (
+        "Chintapalle",
+        Record {
+            min: -643,
+            max: -643,
+            acc: -643,
+            count: 1,
+        },
+    ),
+    (
+        "Chisinau",
+        Record {
+            min: -530,
+            max: -530,
+            acc: -530,
+            count: 1,
+        },
+    ),
+    (
+        "Chitvel",
+        Record {
+            min: -945,
+            max: -945,
+            acc: -945,
+            count: 1,
+        },
+    ),
+    (
+        "Chorfa",
+        Record {
+            min: -826,
+            max: -826,
+            acc: -826,
+            count: 1,
+        },
+    ),
+    (
+        "Chotěboř",
+        Record {
+            min: -910,
+            max: -910,
+            acc: -910,
+            count: 1,
+        },
+    ),
+    (
+        "Châteaubriant",
+        Record {
+            min: 198,
+            max: 198,
+            acc: 198,
+            count: 1,
+        },
+    ),
+    (
+        "Chūō-ku",
+        Record {
+            min: 85,
+            max: 85,
+            acc: 85,
+            count: 1,
+        },
+    ),
+    (
+        "Cinere",
+        Record {
+            min: 662,
+            max: 662,
+            acc: 662,
+            count: 1,
+        },
+    ),
+    (
+        "Ciudad Guayana",
+        Record {
+            min: 437,
+            max: 437,
+            acc: 437,
+            count: 1,
+        },
+    ),
+    (
+        "Cohoes",
+        Record {
+            min: -69,
+            max: -69,
+            acc: -69,
+            count: 1,
+        },
+    ),
+    (
+        "Cojedes",
+        Record {
+            min: 782,
+            max: 782,
+            acc: 782,
+            count: 1,
+        },
+    ),
+    (
+        "Colesville",
+        Record {
+            min: -963,
+            max: -963,
+            acc: -963,
+            count: 1,
+        },
+    ),
+    (
+        "Cologno Monzese",
+        Record {
+            min: -881,
+            max: -607,
+            acc: -1488,
+            count: 2,
+        },
+    ),
+    (
+        "Colombo",
+        Record {
+            min: -27,
+            max: -27,
+            acc: -27,
+            count: 1,
+        },
+    ),
+    (
+        "Concordia Sagittaria",
+        Record {
+            min: -436,
+            max: -436,
+            acc: -436,
+            count: 1,
+        },
+    ),
+    (
+        "Contagem",
+        Record {
+            min: -936,
+            max: -936,
+            acc: -936,
+            count: 1,
+        },
+    ),
+    (
+        "Corabia",
+        Record {
+            min: 191,
+            max: 191,
+            acc: 191,
+            count: 1,
+        },
+    ),
+    (
+        "Corinda",
+        Record {
+            min: -160,
+            max: -160,
+            acc: -160,
+            count: 1,
+        },
+    ),
+    (
+        "Cornillon",
+        Record {
+            min: 81,
+            max: 81,
+            acc: 81,
+            count: 1,
+        },
+    ),
+    (
+        "Coron",
+        Record {
+            min: 600,
+            max: 600,
+            acc: 600,
+            count: 1,
+        },
+    ),
+    (
+        "Cosquín",
+        Record {
+            min: 7,
+            max: 7,
+            acc: 7,
+            count: 1,
+        },
+    ),
+    (
+        "Costessey",
+        Record {
+            min: -11,
+            max: -11,
+            acc: -11,
+            count: 1,
+        },
+    ),
+    (
+        "Covasna",
+        Record {
+            min: -624,
+            max: -624,
+            acc: -624,
+            count: 1,
+        },
+    ),
+    (
+        "Croix-des-Bouquets",
+        Record {
+            min: -262,
+            max: -262,
+            acc: -262,
+            count: 1,
+        },
+    ),
+    (
+        "Cuango",
+        Record {
+            min: 511,
+            max: 511,
+            acc: 511,
+            count: 1,
+        },
+    ),
+    (
+        "Culemborg",
+        Record {
+            min: 162,
+            max: 162,
+            acc: 162,
+            count: 1,
+        },
+    ),
+    (
+        "Cumbum",
+        Record {
+            min: 743,
+            max: 743,
+            acc: 743,
+            count: 1,
+        },
+    ),
+    (
+        "Cunha Porã",
+        Record {
+            min: -47,
+            max: -47,
+            acc: -47,
+            count: 1,
+        },
+    ),
+    (
+        "Cupar",
+        Record {
+            min: 378,
+            max: 378,
+            acc: 378,
+            count: 1,
+        },
+    ),
+    (
+        "Currimao",
+        Record {
+            min: 208,
+            max: 208,
+            acc: 208,
+            count: 1,
+        },
+    ),
+    (
+        "Daga",
+        Record {
+            min: 799,
+            max: 799,
+            acc: 799,
+            count: 1,
+        },
+    ),
+    (
+        "Damaishan",
+        Record {
+            min: 467,
+            max: 467,
+            acc: 467,
+            count: 1,
+        },
+    ),
+    (
+        "Danville",
+        Record {
+            min: 741,
+            max: 741,
+            acc: 741,
+            count: 1,
+        },
+    ),
+    (
+        "Dapitan",
+        Record {
+            min: 418,
+            max: 418,
+            acc: 418,
+            count: 1,
+        },
+    ),
+    (
+        "Dar Bel Hamri",
+        Record {
+            min: 104,
+            max: 104,
+            acc: 104,
+            count: 1,
+        },
+    ),
+    (
+        "Dargahān",
+        Record {
+            min: 246,
+            max: 246,
+            acc: 246,
+            count: 1,
+        },
+    ),
+    (
+        "Datteln",
+        Record {
+            min: 856,
+            max: 856,
+            acc: 856,
+            count: 1,
+        },
+    ),
+    (
+        "Dazaifu",
+        Record {
+            min: -150,
+            max: -150,
+            acc: -150,
+            count: 1,
+        },
+    ),
+    (
+        "De Meern",
+        Record {
+            min: 376,
+            max: 376,
+            acc: 376,
+            count: 1,
+        },
+    ),
+    (
+        "Del City",
+        Record {
+            min: 450,
+            max: 450,
+            acc: 450,
+            count: 1,
+        },
+    ),
+    (
+        "Delgado",
+        Record {
+            min: -400,
+            max: -400,
+            acc: -400,
+            count: 1,
+        },
+    ),
+    (
+        "Derby",
+        Record {
+            min: 951,
+            max: 951,
+            acc: 951,
+            count: 1,
+        },
+    ),
+    (
+        "Derventa",
+        Record {
+            min: 849,
+            max: 849,
+            acc: 849,
+            count: 1,
+        },
+    ),
+    (
+        "Det Udom",
+        Record {
+            min: -924,
+            max: -924,
+            acc: -924,
+            count: 1,
+        },
+    ),
+    (
+        "Detva",
+        Record {
+            min: -831,
+            max: 255,
+            acc: -576,
+            count: 2,
+        },
+    ),
+    (
+        "Dhamār",
+        Record {
+            min: -361,
+            max: -361,
+            acc: -361,
+            count: 1,
+        },
+    ),
+    (
+        "Dharān",
+        Record {
+            min: -555,
+            max: -555,
+            acc: -555,
+            count: 1,
+        },
+    ),
+    (
+        "Diekirch",
+        Record {
+            min: 61,
+            max: 61,
+            acc: 61,
+            count: 1,
+        },
+    ),
+    (
+        "Dikirnis",
+        Record {
+            min: -290,
+            max: -290,
+            acc: -290,
+            count: 1,
+        },
+    ),
+    (
+        "Dimataling",
+        Record {
+            min: 265,
+            max: 265,
+            acc: 265,
+            count: 1,
+        },
+    ),
+    (
+        "Diriomo",
+        Record {
+            min: 201,
+            max: 201,
+            acc: 201,
+            count: 1,
+        },
+    ),
+    (
+        "Djibloho",
+        Record {
+            min: -963,
+            max: -963,
+            acc: -963,
+            count: 1,
+        },
+    ),
+    (
+        "Dobryanka",
+        Record {
+            min: -180,
+            max: -180,
+            acc: -180,
+            count: 1,
+        },
+    ),
+    (
+        "Dobříš",
+        Record {
+            min: -396,
+            max: 537,
+            acc: 141,
+            count: 2,
+        },
+    ),
+    (
+        "Dodola",
+        Record {
+            min: 971,
+            max: 971,
+            acc: 971,
+            count: 1,
+        },
+    ),
+    (
+        "Dongxing",
+        Record {
+            min: 357,
+            max: 357,
+            acc: 357,
+            count: 1,
+        },
+    ),
+    (
+        "Dorandā",
+        Record {
+            min: -99,
+            max: -99,
+            acc: -99,
+            count: 1,
+        },
+    ),
+    (
+        "Dornstadt",
+        Record {
+            min: 287,
+            max: 287,
+            acc: 287,
+            count: 1,
+        },
+    ),
+    (
+        "Doruma",
+        Record {
+            min: -423,
+            max: -423,
+            acc: -423,
+            count: 1,
+        },
+    ),
+    (
+        "Douar Olad. Salem",
+        Record {
+            min: 13,
+            max: 13,
+            acc: 13,
+            count: 1,
+        },
+    ),
+    (
+        "Dounan",
+        Record {
+            min: 535,
+            max: 535,
+            acc: 535,
+            count: 1,
+        },
+    ),
+    (
+        "Dovzhansk",
+        Record {
+            min: -802,
+            max: -802,
+            acc: -802,
+            count: 1,
+        },
+    ),
+    (
+        "Drăgăneşti-Olt",
+        Record {
+            min: -395,
+            max: -395,
+            acc: -395,
+            count: 1,
+        },
+    ),
+    (
+        "Dunhuang",
+        Record {
+            min: 950,
+            max: 950,
+            acc: 950,
+            count: 1,
+        },
+    ),
+    (
+        "Dunn",
+        Record {
+            min: 865,
+            max: 865,
+            acc: 865,
+            count: 1,
+        },
+    ),
+    (
+        "Dēra",
+        Record {
+            min: 62,
+            max: 62,
+            acc: 62,
+            count: 1,
+        },
+    ),
+    (
+        "East Hartford",
+        Record {
+            min: -298,
+            max: -298,
+            acc: -298,
+            count: 1,
+        },
+    ),
+    (
+        "Edinburgh",
+        Record {
+            min: -390,
+            max: -390,
+            acc: -390,
+            count: 1,
+        },
+    ),
+    (
+        "Ehden",
+        Record {
+            min: -91,
+            max: -91,
+            acc: -91,
+            count: 1,
+        },
+    ),
+    (
+        "El Fanar",
+        Record {
+            min: -163,
+            max: -163,
+            acc: -163,
+            count: 1,
+        },
+    ),
+    (
+        "El Trébol",
+        Record {
+            min: -86,
+            max: -86,
+            acc: -86,
+            count: 1,
+        },
+    ),
+    (
+        "Elhovo",
+        Record {
+            min: -930,
+            max: 900,
+            acc: -30,
+            count: 2,
+        },
+    ),
+    (
+        "Enkhuizen",
+        Record {
+            min: -218,
+            max: -218,
+            acc: -218,
+            count: 1,
+        },
+    ),
+    (
+        "Entre Rios de Minas",
+        Record {
+            min: 6,
+            max: 6,
+            acc: 6,
+            count: 1,
+        },
+    ),
+    (
+        "Eskilstuna",
+        Record {
+            min: -919,
+            max: -919,
+            acc: -919,
+            count: 1,
+        },
+    ),
+    (
+        "Espera Feliz",
+        Record {
+            min: 410,
+            max: 410,
+            acc: 410,
+            count: 1,
+        },
+    ),
+    (
+        "Esteban Echeverría",
+        Record {
+            min: 790,
+            max: 790,
+            acc: 790,
+            count: 1,
+        },
+    ),
+    (
+        "Evergreen",
+        Record {
+            min: 688,
+            max: 688,
+            acc: 688,
+            count: 1,
+        },
+    ),
+    (
+        "Eyvānekey",
+        Record {
+            min: -398,
+            max: -398,
+            acc: -398,
+            count: 1,
+        },
+    ),
+    (
+        "Falla",
+        Record {
+            min: -867,
+            max: -867,
+            acc: -867,
+            count: 1,
+        },
+    ),
+    (
+        "Farmington",
+        Record {
+            min: -863,
+            max: -863,
+            acc: -863,
+            count: 1,
+        },
+    ),
+    (
+        "Federal Heights",
+        Record {
+            min: -371,
+            max: -371,
+            acc: -371,
+            count: 1,
+        },
+    ),
+    (
+        "Federal Way",
+        Record {
+            min: -245,
+            max: -245,
+            acc: -245,
+            count: 1,
+        },
+    ),
+    (
+        "Feilding",
+        Record {
+            min: 704,
+            max: 704,
+            acc: 704,
+            count: 1,
+        },
+    ),
+    (
+        "Florianópolis",
+        Record {
+            min: -935,
+            max: -935,
+            acc: -935,
+            count: 1,
+        },
+    ),
+    (
+        "Fojnica",
+        Record {
+            min: 464,
+            max: 464,
+            acc: 464,
+            count: 1,
+        },
+    ),
+    (
+        "Fords",
+        Record {
+            min: 1,
+            max: 1,
+            acc: 1,
+            count: 1,
+        },
+    ),
+    (
+        "Forney",
+        Record {
+            min: -282,
+            max: -282,
+            acc: -282,
+            count: 1,
+        },
+    ),
+    (
+        "Fujita",
+        Record {
+            min: -734,
+            max: -734,
+            acc: -734,
+            count: 1,
+        },
+    ),
+    (
+        "Fuveau",
+        Record {
+            min: -381,
+            max: -381,
+            acc: -381,
+            count: 1,
+        },
+    ),
+    (
+        "Galaţi",
+        Record {
+            min: 63,
+            max: 63,
+            acc: 63,
+            count: 1,
+        },
+    ),
+    (
+        "Gangārāmpur",
+        Record {
+            min: -880,
+            max: -880,
+            acc: -880,
+            count: 1,
+        },
+    ),
+    (
+        "Gap",
+        Record {
+            min: -105,
+            max: -105,
+            acc: -105,
+            count: 1,
+        },
+    ),
+    (
+        "Gar",
+        Record {
+            min: -780,
+            max: -780,
+            acc: -780,
+            count: 1,
+        },
+    ),
+    (
+        "Garut",
+        Record {
+            min: 266,
+            max: 266,
+            acc: 266,
+            count: 1,
+        },
+    ),
+    (
+        "Gasa",
+        Record {
+            min: 6,
+            max: 6,
+            acc: 6,
+            count: 1,
+        },
+    ),
+    (
+        "Gatumba",
+        Record {
+            min: -732,
+            max: -732,
+            acc: -732,
+            count: 1,
+        },
+    ),
+    (
+        "Gemerek",
+        Record {
+            min: 648,
+            max: 648,
+            acc: 648,
+            count: 1,
+        },
+    ),
+    (
+        "General Acha",
+        Record {
+            min: 483,
+            max: 483,
+            acc: 483,
+            count: 1,
+        },
+    ),
+    (
+        "General Enrique Mosconi",
+        Record {
+            min: -702,
+            max: -702,
+            acc: -702,
+            count: 1,
+        },
+    ),
+    (
+        "Geraardsbergen",
+        Record {
+            min: 463,
+            max: 885,
+            acc: 2027,
+            count: 3,
+        },
+    ),
+    (
+        "Gerstetten",
+        Record {
+            min: 833,
+            max: 833,
+            acc: 833,
+            count: 1,
+        },
+    ),
+    (
+        "Gevelsberg",
+        Record {
+            min: 513,
+            max: 513,
+            acc: 513,
+            count: 1,
+        },
+    ),
+    (
+        "Ghattu",
+        Record {
+            min: 182,
+            max: 182,
+            acc: 182,
+            count: 1,
+        },
+    ),
+    (
+        "Giaveno",
+        Record {
+            min: 855,
+            max: 855,
+            acc: 855,
+            count: 1,
+        },
+    ),
+    (
+        "Gif-sur-Yvette",
+        Record {
+            min: 658,
+            max: 658,
+            acc: 658,
+            count: 1,
+        },
+    ),
+    (
+        "Ginosa",
+        Record {
+            min: -755,
+            max: -456,
+            acc: -1211,
+            count: 2,
+        },
+    ),
+    (
+        "Giulianova",
+        Record {
+            min: -685,
+            max: -685,
+            acc: -685,
+            count: 1,
+        },
+    ),
+    (
+        "Golborne",
+        Record {
+            min: -695,
+            max: 185,
+            acc: -510,
+            count: 2,
+        },
+    ),
+    (
+        "Gomaringen",
+        Record {
+            min: 522,
+            max: 522,
+            acc: 522,
+            count: 1,
+        },
+    ),
+    (
+        "Gorakhpur",
+        Record {
+            min: -982,
+            max: -982,
+            acc: -982,
+            count: 1,
+        },
+    ),
+    (
+        "Gorlice",
+        Record {
+            min: 351,
+            max: 351,
+            acc: 351,
+            count: 1,
+        },
+    ),
+    (
+        "Gouvieux",
+        Record {
+            min: -793,
+            max: 718,
+            acc: -75,
+            count: 2,
+        },
+    ),
+    (
+        "Gradignan",
+        Record {
+            min: 273,
+            max: 273,
+            acc: 273,
+            count: 1,
+        },
+    ),
+    (
+        "Gramsh",
+        Record {
+            min: 31,
+            max: 31,
+            acc: 31,
+            count: 1,
+        },
+    ),
+    (
+        "Green Valley",
+        Record {
+            min: -992,
+            max: -992,
+            acc: -992,
+            count: 1,
+        },
+    ),
+    (
+        "Greenwich",
+        Record {
+            min: 835,
+            max: 835,
+            acc: 835,
+            count: 1,
+        },
+    ),
+    (
+        "Grimmen",
+        Record {
+            min: 123,
+            max: 123,
+            acc: 123,
+            count: 1,
+        },
+    ),
+    (
+        "Grão Mogol",
+        Record {
+            min: -693,
+            max: -693,
+            acc: -693,
+            count: 1,
+        },
+    ),
+    (
+        "Guapiaçu",
+        Record {
+            min: -217,
+            max: -217,
+            acc: -217,
+            count: 1,
+        },
+    ),
+    (
+        "Guayaquil",
+        Record {
+            min: -208,
+            max: -208,
+            acc: -208,
+            count: 1,
+        },
+    ),
+    (
+        "Gubakha",
+        Record {
+            min: 357,
+            max: 357,
+            acc: 357,
+            count: 1,
+        },
+    ),
+    (
+        "Gubin",
+        Record {
+            min: 785,
+            max: 785,
+            acc: 785,
+            count: 1,
+        },
+    ),
+    (
+        "Guelph/Eramosa",
+        Record {
+            min: 103,
+            max: 103,
+            acc: 103,
+            count: 1,
+        },
+    ),
+    (
+        "Gundlupēt",
+        Record {
+            min: -951,
+            max: -951,
+            acc: -951,
+            count: 1,
+        },
+    ),
+    (
+        "Gundugolanu",
+        Record {
+            min: -52,
+            max: -52,
+            acc: -52,
+            count: 1,
+        },
+    ),
+    (
+        "Görlitz",
+        Record {
+            min: 50,
+            max: 50,
+            acc: 50,
+            count: 1,
+        },
+    ),
+    (
+        "Hagenow",
+        Record {
+            min: 545,
+            max: 545,
+            acc: 545,
+            count: 1,
+        },
+    ),
+    (
+        "Hailsham",
+        Record {
+            min: -543,
+            max: -543,
+            acc: -543,
+            count: 1,
+        },
+    ),
+    (
+        "Halgeri",
+        Record {
+            min: -35,
+            max: -35,
+            acc: -35,
+            count: 1,
+        },
+    ),
+    (
+        "Halver",
+        Record {
+            min: 169,
+            max: 169,
+            acc: 169,
+            count: 1,
+        },
+    ),
+    (
+        "Hannō",
+        Record {
+            min: 283,
+            max: 283,
+            acc: 283,
+            count: 1,
+        },
+    ),
+    (
+        "Hardinxveld-Giessendam",
+        Record {
+            min: 89,
+            max: 89,
+            acc: 89,
+            count: 1,
+        },
+    ),
+    (
+        "Haysville",
+        Record {
+            min: 847,
+            max: 847,
+            acc: 847,
+            count: 1,
+        },
+    ),
+    (
+        "Hazebrouck",
+        Record {
+            min: -815,
+            max: 81,
+            acc: -734,
+            count: 2,
+        },
+    ),
+    (
+        "Hejiaji",
+        Record {
+            min: -938,
+            max: -938,
+            acc: -938,
+            count: 1,
+        },
+    ),
+    (
+        "Hejin",
+        Record {
+            min: -954,
+            max: -954,
+            acc: -954,
+            count: 1,
+        },
+    ),
+    (
+        "Hemei",
+        Record {
+            min: 192,
+            max: 192,
+            acc: 192,
+            count: 1,
+        },
+    ),
+    (
+        "Hemer",
+        Record {
+            min: 170,
+            max: 170,
+            acc: 170,
+            count: 1,
+        },
+    ),
+    (
+        "Hezuo",
+        Record {
+            min: -817,
+            max: -817,
+            acc: -817,
+            count: 1,
+        },
+    ),
+    (
+        "Hibbing",
+        Record {
+            min: -950,
+            max: 905,
+            acc: -45,
+            count: 2,
+        },
+    ),
+    (
+        "Hilsa",
+        Record {
+            min: -206,
+            max: -206,
+            acc: -206,
+            count: 1,
+        },
+    ),
+    (
+        "Hinwil",
+        Record {
+            min: 821,
+            max: 821,
+            acc: 821,
+            count: 1,
+        },
+    ),
+    (
+        "Hirakata",
+        Record {
+            min: 805,
+            max: 805,
+            acc: 805,
+            count: 1,
+        },
+    ),
+    (
+        "Hjørring",
+        Record {
+            min: -525,
+            max: -525,
+            acc: -525,
+            count: 1,
+        },
+    ),
+    (
+        "Hochheim am Main",
+        Record {
+            min: 567,
+            max: 567,
+            acc: 567,
+            count: 1,
+        },
+    ),
+    (
+        "Hohhot",
+        Record {
+            min: -781,
+            max: -781,
+            acc: -781,
+            count: 1,
+        },
+    ),
+    (
+        "Hollinwood",
+        Record {
+            min: 558,
+            max: 558,
+            acc: 558,
+            count: 1,
+        },
+    ),
+    (
+        "Holt",
+        Record {
+            min: -90,
+            max: -90,
+            acc: -90,
+            count: 1,
+        },
+    ),
+    (
+        "Homer Glen",
+        Record {
+            min: 201,
+            max: 201,
+            acc: 201,
+            count: 1,
+        },
+    ),
+    (
+        "Hoover",
+        Record {
+            min: 418,
+            max: 418,
+            acc: 418,
+            count: 1,
+        },
+    ),
+    (
+        "Houma",
+        Record {
+            min: 75,
+            max: 75,
+            acc: 75,
+            count: 1,
+        },
+    ),
+    (
+        "Huaraz",
+        Record {
+            min: 735,
+            max: 735,
+            acc: 735,
+            count: 1,
+        },
+    ),
+    (
+        "Huntsville",
+        Record {
+            min: -580,
+            max: -580,
+            acc: -580,
+            count: 1,
+        },
+    ),
+    (
+        "Huzūrābād",
+        Record {
+            min: 731,
+            max: 731,
+            acc: 731,
+            count: 1,
+        },
+    ),
+    (
+        "Iakora",
+        Record {
+            min: 783,
+            max: 783,
+            acc: 783,
+            count: 1,
+        },
+    ),
+    (
+        "Ibiraci",
+        Record {
+            min: 33,
+            max: 33,
+            acc: 33,
+            count: 1,
+        },
+    ),
+    (
+        "Ibotirama",
+        Record {
+            min: 844,
+            max: 844,
+            acc: 844,
+            count: 1,
+        },
+    ),
+    (
+        "Icatu",
+        Record {
+            min: -555,
+            max: -555,
+            acc: -555,
+            count: 1,
+        },
+    ),
+    (
+        "Ieper",
+        Record {
+            min: -29,
+            max: -29,
+            acc: -29,
+            count: 1,
+        },
+    ),
+    (
+        "Ighrem n’Ougdal",
+        Record {
+            min: 915,
+            max: 915,
+            acc: 915,
+            count: 1,
+        },
+    ),
+    (
+        "Ilagan",
+        Record {
+            min: -998,
+            max: -998,
+            acc: -998,
+            count: 1,
+        },
+    ),
+    (
+        "Ilarionove",
+        Record {
+            min: 829,
+            max: 829,
+            acc: 829,
+            count: 1,
+        },
+    ),
+    (
+        "Ile-Ife",
+        Record {
+            min: 661,
+            max: 661,
+            acc: 661,
+            count: 1,
+        },
+    ),
+    (
+        "Imatra",
+        Record {
+            min: -80,
+            max: -80,
+            acc: -80,
+            count: 1,
+        },
+    ),
+    (
+        "Imerintsiatosika",
+        Record {
+            min: 744,
+            max: 744,
+            acc: 744,
+            count: 1,
+        },
+    ),
+    (
+        "Independência",
+        Record {
+            min: 338,
+            max: 338,
+            acc: 338,
+            count: 1,
+        },
+    ),
+    (
+        "Iperó",
+        Record {
+            min: -782,
+            max: -782,
+            acc: -782,
+            count: 1,
+        },
+    ),
+    (
+        "Ipixuna",
+        Record {
+            min: 779,
+            max: 779,
+            acc: 779,
+            count: 1,
+        },
+    ),
+    (
+        "Irituia",
+        Record {
+            min: 68,
+            max: 68,
+            acc: 68,
+            count: 1,
+        },
+    ),
+    (
+        "Irkutsk",
+        Record {
+            min: -575,
+            max: -575,
+            acc: -575,
+            count: 1,
+        },
+    ),
+    (
+        "Isahara",
+        Record {
+            min: 835,
+            max: 835,
+            acc: 835,
+            count: 1,
+        },
+    ),
+    (
+        "Itamaracá",
+        Record {
+            min: -77,
+            max: -77,
+            acc: -77,
+            count: 1,
+        },
+    ),
+    (
+        "Itaocara",
+        Record {
+            min: -838,
+            max: -838,
+            acc: -838,
+            count: 1,
+        },
+    ),
+    (
+        "Ivatsevichy",
+        Record {
+            min: 457,
+            max: 457,
+            acc: 457,
+            count: 1,
+        },
+    ),
+    (
+        "Jacobabad",
+        Record {
+            min: -40,
+            max: -40,
+            acc: -40,
+            count: 1,
+        },
+    ),
+    (
+        "Jaggisettigūdem",
+        Record {
+            min: 565,
+            max: 565,
+            acc: 565,
+            count: 1,
+        },
+    ),
+    (
+        "Jalalaqsi",
+        Record {
+            min: -694,
+            max: -694,
+            acc: -694,
+            count: 1,
+        },
+    ),
+    (
+        "Jandaia do Sul",
+        Record {
+            min: 479,
+            max: 479,
+            acc: 479,
+            count: 1,
+        },
+    ),
+    (
+        "Jethuli",
+        Record {
+            min: -471,
+            max: -471,
+            acc: -471,
+            count: 1,
+        },
+    ),
+    (
+        "Jiangdi",
+        Record {
+            min: -356,
+            max: -356,
+            acc: -356,
+            count: 1,
+        },
+    ),
+    (
+        "Jitaúna",
+        Record {
+            min: -403,
+            max: -403,
+            acc: -403,
+            count: 1,
+        },
+    ),
+    (
+        "Jiuzhou",
+        Record {
+            min: -764,
+            max: -43,
+            acc: -807,
+            count: 2,
+        },
+    ),
+    (
+        "Jocotenango",
+        Record {
+            min: -300,
+            max: -300,
+            acc: -300,
+            count: 1,
+        },
+    ),
+    (
+        "Joplin",
+        Record {
+            min: -318,
+            max: -318,
+            acc: -318,
+            count: 1,
+        },
+    ),
+    (
+        "João Lisboa",
+        Record {
+            min: -975,
+            max: -975,
+            acc: -975,
+            count: 1,
+        },
+    ),
+    (
+        "Juba",
+        Record {
+            min: -138,
+            max: -138,
+            acc: -138,
+            count: 1,
+        },
+    ),
+    (
+        "Juru",
+        Record {
+            min: 745,
+            max: 745,
+            acc: 745,
+            count: 1,
+        },
+    ),
+    (
+        "Juruá",
+        Record {
+            min: -564,
+            max: 910,
+            acc: 346,
+            count: 2,
+        },
+    ),
+    (
+        "Juršinci",
+        Record {
+            min: 289,
+            max: 289,
+            acc: 289,
+            count: 1,
+        },
+    ),
+    (
+        "Jādopur Shukul",
+        Record {
+            min: -482,
+            max: -482,
+            acc: -482,
+            count: 1,
+        },
+    ),
+    (
+        "Kadaň",
+        Record {
+            min: 319,
+            max: 319,
+            acc: 319,
+            count: 1,
+        },
+    ),
+    (
+        "Kalanivāsal",
+        Record {
+            min: 671,
+            max: 671,
+            acc: 671,
+            count: 1,
+        },
+    ),
+    (
+        "Kaliningrad",
+        Record {
+            min: -332,
+            max: -332,
+            acc: -332,
+            count: 1,
+        },
+    ),
+    (
+        "Kalispell",
+        Record {
+            min: 650,
+            max: 650,
+            acc: 650,
+            count: 1,
+        },
+    ),
+    (
+        "Kalush",
+        Record {
+            min: -408,
+            max: -408,
+            acc: -408,
+            count: 1,
+        },
+    ),
+    (
+        "Kamianske",
+        Record {
+            min: -77,
+            max: -77,
+            acc: -77,
+            count: 1,
+        },
+    ),
+    (
+        "Kampot",
+        Record {
+            min: -658,
+            max: -658,
+            acc: -658,
+            count: 1,
+        },
+    ),
+    (
+        "Kanchanpalli",
+        Record {
+            min: -542,
+            max: -542,
+            acc: -542,
+            count: 1,
+        },
+    ),
+    (
+        "Kandry",
+        Record {
+            min: -612,
+            max: -612,
+            acc: -612,
+            count: 1,
+        },
+    ),
+    (
+        "Kanigiri",
+        Record {
+            min: -800,
+            max: -800,
+            acc: -800,
+            count: 1,
+        },
+    ),
+    (
+        "Kanniyākumāri",
+        Record {
+            min: -683,
+            max: -683,
+            acc: -683,
+            count: 1,
+        },
+    ),
+    (
+        "Kapchagay",
+        Record {
+            min: 406,
+            max: 406,
+            acc: 406,
+            count: 1,
+        },
+    ),
+    (
+        "Kargilik",
+        Record {
+            min: -314,
+            max: -314,
+            acc: -314,
+            count: 1,
+        },
+    ),
+    (
+        "Kaspi",
+        Record {
+            min: 611,
+            max: 611,
+            acc: 611,
+            count: 1,
+        },
+    ),
+    (
+        "Katrīdih",
+        Record {
+            min: 62,
+            max: 62,
+            acc: 62,
+            count: 1,
+        },
+    ),
+    (
+        "Katwijk",
+        Record {
+            min: 959,
+            max: 959,
+            acc: 959,
+            count: 1,
+        },
+    ),
+    (
+        "Kawartha Lakes",
+        Record {
+            min: -519,
+            max: -519,
+            acc: -519,
+            count: 1,
+        },
+    ),
+    (
+        "Kegalle",
+        Record {
+            min: -274,
+            max: -274,
+            acc: -274,
+            count: 1,
+        },
+    ),
+    (
+        "Kenzingen",
+        Record {
+            min: -869,
+            max: -869,
+            acc: -869,
+            count: 1,
+        },
+    ),
+    (
+        "Khashuri",
+        Record {
+            min: 929,
+            max: 929,
+            acc: 929,
+            count: 1,
+        },
+    ),
+    (
+        "Khirpai",
+        Record {
+            min: -220,
+            max: -220,
+            acc: -220,
+            count: 1,
+        },
+    ),
+    (
+        "Khurān Milik",
+        Record {
+            min: -792,
+            max: -792,
+            acc: -792,
+            count: 1,
+        },
+    ),
+    (
+        "Khāchrod",
+        Record {
+            min: -940,
+            max: -940,
+            acc: -940,
+            count: 1,
+        },
+    ),
+    (
+        "Khān Shaykhūn",
+        Record {
+            min: -500,
+            max: -500,
+            acc: -500,
+            count: 1,
+        },
+    ),
+    (
+        "Kidlington",
+        Record {
+            min: -216,
+            max: -216,
+            acc: -216,
+            count: 1,
+        },
+    ),
+    (
+        "Kimhae",
+        Record {
+            min: -359,
+            max: -359,
+            acc: -359,
+            count: 1,
+        },
+    ),
+    (
+        "Kinhālu",
+        Record {
+            min: -963,
+            max: -963,
+            acc: -963,
+            count: 1,
+        },
+    ),
+    (
+        "Kirkcaldy",
+        Record {
+            min: 666,
+            max: 666,
+            acc: 666,
+            count: 1,
+        },
+    ),
+    (
+        "Kitee",
+        Record {
+            min: -991,
+            max: -991,
+            acc: -991,
+            count: 1,
+        },
+    ),
+    (
+        "Kitwe",
+        Record {
+            min: 931,
+            max: 931,
+            acc: 931,
+            count: 1,
+        },
+    ),
+    (
+        "Klyuchi",
+        Record {
+            min: -996,
+            max: -996,
+            acc: -996,
+            count: 1,
+        },
+    ),
+    (
+        "Kohīr",
+        Record {
+            min: -809,
+            max: -809,
+            acc: -809,
+            count: 1,
+        },
+    ),
+    (
+        "Kolagallu",
+        Record {
+            min: -638,
+            max: -638,
+            acc: -638,
+            count: 1,
+        },
+    ),
+    (
+        "Kolnād",
+        Record {
+            min: 115,
+            max: 115,
+            acc: 115,
+            count: 1,
+        },
+    ),
+    (
+        "Konakovo",
+        Record {
+            min: -284,
+            max: -284,
+            acc: -284,
+            count: 1,
+        },
+    ),
+    (
+        "Koprivnica",
+        Record {
+            min: 608,
+            max: 608,
+            acc: 608,
+            count: 1,
+        },
+    ),
+    (
+        "Koratla",
+        Record {
+            min: 104,
+            max: 104,
+            acc: 104,
+            count: 1,
+        },
+    ),
+    (
+        "Korolevo",
+        Record {
+            min: -735,
+            max: -735,
+            acc: -735,
+            count: 1,
+        },
+    ),
+    (
+        "Koudougou",
+        Record {
+            min: 983,
+            max: 983,
+            acc: 983,
+            count: 1,
+        },
+    ),
+    (
+        "Kountouri",
+        Record {
+            min: 500,
+            max: 500,
+            acc: 500,
+            count: 1,
+        },
+    ),
+    (
+        "Kovilpatti",
+        Record {
+            min: -837,
+            max: -837,
+            acc: -837,
+            count: 1,
+        },
+    ),
+    (
+        "Kovilūr",
+        Record {
+            min: -978,
+            max: -978,
+            acc: -978,
+            count: 1,
+        },
+    ),
+    (
+        "Kovvali",
+        Record {
+            min: -435,
+            max: -435,
+            acc: -435,
+            count: 1,
+        },
+    ),
+    (
+        "Kowdalli",
+        Record {
+            min: 243,
+            max: 243,
+            acc: 243,
+            count: 1,
+        },
+    ),
+    (
+        "Kozlu",
+        Record {
+            min: 532,
+            max: 532,
+            acc: 532,
+            count: 1,
+        },
+    ),
+    (
+        "Końskie",
+        Record {
+            min: -964,
+            max: -964,
+            acc: -964,
+            count: 1,
+        },
+    ),
+    (
+        "Krasnohrad",
+        Record {
+            min: 588,
+            max: 588,
+            acc: 588,
+            count: 1,
+        },
+    ),
+    (
+        "Kratovo",
+        Record {
+            min: 933,
+            max: 933,
+            acc: 933,
+            count: 1,
+        },
+    ),
+    (
+        "Kristinehamn",
+        Record {
+            min: 539,
+            max: 539,
+            acc: 539,
+            count: 1,
+        },
+    ),
+    (
+        "Kullorsuaq",
+        Record {
+            min: -937,
+            max: -937,
+            acc: -937,
+            count: 1,
+        },
+    ),
+    (
+        "Kumi",
+        Record {
+            min: 554,
+            max: 554,
+            acc: 554,
+            count: 1,
+        },
+    ),
+    (
+        "Kunigal",
+        Record {
+            min: 389,
+            max: 389,
+            acc: 389,
+            count: 1,
+        },
+    ),
+    (
+        "Kurobeshin",
+        Record {
+            min: -916,
+            max: -916,
+            acc: -916,
+            count: 1,
+        },
+    ),
+    (
+        "Kuwait City",
+        Record {
+            min: 285,
+            max: 285,
+            acc: 285,
+            count: 1,
+        },
+    ),
+    (
+        "Kuřim",
+        Record {
+            min: 196,
+            max: 196,
+            acc: 196,
+            count: 1,
+        },
+    ),
+    (
+        "Kāranchedu",
+        Record {
+            min: 298,
+            max: 298,
+            acc: 298,
+            count: 1,
+        },
+    ),
+    (
+        "La Banda",
+        Record {
+            min: 36,
+            max: 36,
+            acc: 36,
+            count: 1,
+        },
+    ),
+    (
+        "La Garde",
+        Record {
+            min: -145,
+            max: 427,
+            acc: 282,
+            count: 2,
+        },
+    ),
+    (
+        "La Grange",
+        Record {
+            min: 24,
+            max: 24,
+            acc: 24,
+            count: 1,
+        },
+    ),
+    (
+        "La Queue-en-Brie",
+        Record {
+            min: 396,
+            max: 396,
+            acc: 396,
+            count: 1,
+        },
+    ),
+    (
+        "La Resolana",
+        Record {
+            min: 747,
+            max: 747,
+            acc: 747,
+            count: 1,
+        },
+    ),
+    (
+        "Ladan Kara",
+        Record {
+            min: -33,
+            max: -33,
+            acc: -33,
+            count: 1,
+        },
+    ),
+    (
+        "Lago Vista",
+        Record {
+            min: 776,
+            max: 776,
+            acc: 776,
+            count: 1,
+        },
+    ),
+    (
+        "Laheji",
+        Record {
+            min: -927,
+            max: -927,
+            acc: -927,
+            count: 1,
+        },
+    ),
+    (
+        "Lajinha",
+        Record {
+            min: -503,
+            max: -503,
+            acc: -503,
+            count: 1,
+        },
+    ),
+    (
+        "Lamphun",
+        Record {
+            min: -438,
+            max: -438,
+            acc: -438,
+            count: 1,
+        },
+    ),
+    (
+        "Lamu",
+        Record {
+            min: -748,
+            max: -748,
+            acc: -748,
+            count: 1,
+        },
+    ),
+    (
+        "Landau an der Isar",
+        Record {
+            min: -64,
+            max: -64,
+            acc: -64,
+            count: 1,
+        },
+    ),
+    (
+        "Lannion",
+        Record {
+            min: -138,
+            max: -138,
+            acc: -138,
+            count: 1,
+        },
+    ),
+    (
+        "Larkana",
+        Record {
+            min: 939,
+            max: 939,
+            acc: 939,
+            count: 1,
+        },
+    ),
+    (
+        "Lashio",
+        Record {
+            min: -506,
+            max: -506,
+            acc: -506,
+            count: 1,
+        },
+    ),
+    (
+        "Laurinburg",
+        Record {
+            min: 588,
+            max: 588,
+            acc: 588,
+            count: 1,
+        },
+    ),
+    (
+        "Le Mars",
+        Record {
+            min: 196,
+            max: 196,
+            acc: 196,
+            count: 1,
+        },
+    ),
+    (
+        "Leawood",
+        Record {
+            min: -595,
+            max: -595,
+            acc: -595,
+            count: 1,
+        },
+    ),
+    (
+        "Leeton",
+        Record {
+            min: 829,
+            max: 829,
+            acc: 829,
+            count: 1,
+        },
+    ),
+    (
+        "Lehre",
+        Record {
+            min: -244,
+            max: -244,
+            acc: -244,
+            count: 1,
+        },
+    ),
+    (
+        "Levin",
+        Record {
+            min: -62,
+            max: -62,
+            acc: -62,
+            count: 1,
+        },
+    ),
+    (
+        "Liangwancun",
+        Record {
+            min: 115,
+            max: 115,
+            acc: 115,
+            count: 1,
+        },
+    ),
+    (
+        "Lienen",
+        Record {
+            min: -691,
+            max: -691,
+            acc: -691,
+            count: 1,
+        },
+    ),
+    (
+        "Lihuzhuang",
+        Record {
+            min: 536,
+            max: 536,
+            acc: 536,
+            count: 1,
+        },
+    ),
+    (
+        "Lindsay",
+        Record {
+            min: 200,
+            max: 200,
+            acc: 200,
+            count: 1,
+        },
+    ),
+    (
+        "Lingyuan",
+        Record {
+            min: 648,
+            max: 792,
+            acc: 1440,
+            count: 2,
+        },
+    ),
+    (
+        "Livno",
+        Record {
+            min: 640,
+            max: 640,
+            acc: 640,
+            count: 1,
+        },
+    ),
+    (
+        "Llanquihue",
+        Record {
+            min: -511,
+            max: 188,
+            acc: -323,
+            count: 2,
+        },
+    ),
+    (
+        "Lodja",
+        Record {
+            min: 446,
+            max: 446,
+            acc: 446,
+            count: 1,
+        },
+    ),
+    (
+        "Lognes",
+        Record {
+            min: -221,
+            max: -221,
+            acc: -221,
+            count: 1,
+        },
+    ),
+    (
+        "Lohur",
+        Record {
+            min: 139,
+            max: 139,
+            acc: 139,
+            count: 1,
+        },
+    ),
+    (
+        "Lomas de Sargentillo",
+        Record {
+            min: 175,
+            max: 175,
+            acc: 175,
+            count: 1,
+        },
+    ),
+    (
+        "Lommedalen",
+        Record {
+            min: 90,
+            max: 90,
+            acc: 90,
+            count: 1,
+        },
+    ),
+    (
+        "Longbridge",
+        Record {
+            min: 955,
+            max: 955,
+            acc: 955,
+            count: 1,
+        },
+    ),
+    (
+        "Longton",
+        Record {
+            min: 14,
+            max: 14,
+            acc: 14,
+            count: 1,
+        },
+    ),
+    (
+        "Loran",
+        Record {
+            min: 996,
+            max: 996,
+            acc: 996,
+            count: 1,
+        },
+    ),
+    (
+        "Los Lagos",
+        Record {
+            min: -265,
+            max: -265,
+            acc: -265,
+            count: 1,
+        },
+    ),
+    (
+        "Losino-Petrovskiy",
+        Record {
+            min: 3,
+            max: 3,
+            acc: 3,
+            count: 1,
+        },
+    ),
+    (
+        "Lower Gwynedd",
+        Record {
+            min: 450,
+            max: 450,
+            acc: 450,
+            count: 1,
+        },
+    ),
+    (
+        "Lower Tungawan",
+        Record {
+            min: 798,
+            max: 798,
+            acc: 798,
+            count: 1,
+        },
+    ),
+    (
+        "Luanzhou",
+        Record {
+            min: -36,
+            max: -36,
+            acc: -36,
+            count: 1,
+        },
+    ),
+    (
+        "Luau",
+        Record {
+            min: -570,
+            max: -570,
+            acc: -570,
+            count: 1,
+        },
+    ),
+    (
+        "Luna",
+        Record {
+            min: -166,
+            max: -166,
+            acc: -166,
+            count: 1,
+        },
+    ),
+    (
+        "Lunner",
+        Record {
+            min: 591,
+            max: 591,
+            acc: 591,
+            count: 1,
+        },
+    ),
+    (
+        "Lunsar",
+        Record {
+            min: 339,
+            max: 339,
+            acc: 339,
+            count: 1,
+        },
+    ),
+    (
+        "Luoyang",
+        Record {
+            min: 692,
+            max: 692,
+            acc: 692,
+            count: 1,
+        },
+    ),
+    (
+        "Luz",
+        Record {
+            min: -501,
+            max: -501,
+            acc: -501,
+            count: 1,
+        },
+    ),
+    (
+        "Lwakhakha",
+        Record {
+            min: -225,
+            max: -225,
+            acc: -225,
+            count: 1,
+        },
+    ),
+    (
+        "Líšeň",
+        Record {
+            min: -488,
+            max: 740,
+            acc: 252,
+            count: 2,
+        },
+    ),
+    (
+        "Løgten",
+        Record {
+            min: 980,
+            max: 980,
+            acc: 980,
+            count: 1,
+        },
+    ),
+    (
+        "Lānjī",
+        Record {
+            min: -314,
+            max: -314,
+            acc: -314,
+            count: 1,
+        },
+    ),
+    (
+        "Maassluis",
+        Record {
+            min: -183,
+            max: -183,
+            acc: -183,
+            count: 1,
+        },
+    ),
+    (
+        "Mabini",
+        Record {
+            min: -597,
+            max: -597,
+            acc: -597,
+            count: 1,
+        },
+    ),
+    (
+        "Macas",
+        Record {
+            min: 518,
+            max: 518,
+            acc: 518,
+            count: 1,
+        },
+    ),
+    (
+        "Macrohon",
+        Record {
+            min: -455,
+            max: -455,
+            acc: -455,
+            count: 1,
+        },
+    ),
+    (
+        "Madakalavāripalli",
+        Record {
+            min: 448,
+            max: 448,
+            acc: 448,
+            count: 1,
+        },
+    ),
+    (
+        "Madan",
+        Record {
+            min: -347,
+            max: -347,
+            acc: -347,
+            count: 1,
+        },
+    ),
+    (
+        "Maduraivayal",
+        Record {
+            min: 708,
+            max: 708,
+            acc: 708,
+            count: 1,
+        },
+    ),
+    (
+        "Madīnat ash Shamāl",
+        Record {
+            min: 565,
+            max: 565,
+            acc: 565,
+            count: 1,
+        },
+    ),
+    (
+        "Maga",
+        Record {
+            min: 367,
+            max: 367,
+            acc: 367,
+            count: 1,
+        },
+    ),
+    (
+        "Mahasolo",
+        Record {
+            min: 121,
+            max: 121,
+            acc: 121,
+            count: 1,
+        },
+    ),
+    (
+        "Mahela",
+        Record {
+            min: 262,
+            max: 262,
+            acc: 262,
+            count: 1,
+        },
+    ),
+    (
+        "Mahtha",
+        Record {
+            min: 866,
+            max: 866,
+            acc: 866,
+            count: 1,
+        },
+    ),
+    (
+        "Maida Babhangāwān",
+        Record {
+            min: -859,
+            max: -859,
+            acc: -859,
+            count: 1,
+        },
+    ),
+    (
+        "Maidstone",
+        Record {
+            min: -336,
+            max: -336,
+            acc: -336,
+            count: 1,
+        },
+    ),
+    (
+        "Maisaram",
+        Record {
+            min: 505,
+            max: 505,
+            acc: 505,
+            count: 1,
+        },
+    ),
+    (
+        "Makeni",
+        Record {
+            min: -160,
+            max: -160,
+            acc: -160,
+            count: 1,
+        },
+    ),
+    (
+        "Maków Mazowiecki",
+        Record {
+            min: 802,
+            max: 802,
+            acc: 802,
+            count: 1,
+        },
+    ),
+    (
+        "Malapatan",
+        Record {
+            min: 777,
+            max: 777,
+            acc: 777,
+            count: 1,
+        },
+    ),
+    (
+        "Malvinas Argentinas",
+        Record {
+            min: -294,
+            max: -294,
+            acc: -294,
+            count: 1,
+        },
+    ),
+    (
+        "Manamelkudi",
+        Record {
+            min: 166,
+            max: 304,
+            acc: 470,
+            count: 2,
+        },
+    ),
+    (
+        "Manhiça",
+        Record {
+            min: -312,
+            max: -312,
+            acc: -312,
+            count: 1,
+        },
+    ),
+    (
+        "Manuel Ribas",
+        Record {
+            min: 249,
+            max: 249,
+            acc: 249,
+            count: 1,
+        },
+    ),
+    (
+        "Maputsoe",
+        Record {
+            min: -184,
+            max: -184,
+            acc: -184,
+            count: 1,
+        },
+    ),
+    (
+        "Marib",
+        Record {
+            min: 837,
+            max: 837,
+            acc: 837,
+            count: 1,
+        },
+    ),
+    (
+        "Marilândia do Sul",
+        Record {
+            min: 230,
+            max: 230,
+            acc: 230,
+            count: 1,
+        },
+    ),
+    (
+        "Marka",
+        Record {
+            min: -551,
+            max: -551,
+            acc: -551,
+            count: 1,
+        },
+    ),
+    (
+        "Marokarima",
+        Record {
+            min: -212,
+            max: -212,
+            acc: -212,
+            count: 1,
+        },
+    ),
+    (
+        "Masatepe",
+        Record {
+            min: 415,
+            max: 415,
+            acc: 415,
+            count: 1,
+        },
+    ),
+    (
+        "Matagalpa",
+        Record {
+            min: -159,
+            max: -159,
+            acc: -159,
+            count: 1,
+        },
+    ),
+    (
+        "Matino",
+        Record {
+            min: 375,
+            max: 423,
+            acc: 798,
+            count: 2,
+        },
+    ),
+    (
+        "Matsuda-sōryō",
+        Record {
+            min: 82,
+            max: 82,
+            acc: 82,
+            count: 1,
+        },
+    ),
+    (
+        "Mauganj",
+        Record {
+            min: -99,
+            max: 205,
+            acc: 106,
+            count: 2,
+        },
+    ),
+    (
+        "Maurepas",
+        Record {
+            min: -468,
+            max: -468,
+            acc: -468,
+            count: 1,
+        },
+    ),
+    (
+        "Maynard",
+        Record {
+            min: 511,
+            max: 511,
+            acc: 511,
+            count: 1,
+        },
+    ),
+    (
+        "Mazyr",
+        Record {
+            min: 318,
+            max: 318,
+            acc: 318,
+            count: 1,
+        },
+    ),
+    (
+        "Maşīf Sarsink",
+        Record {
+            min: -295,
+            max: -295,
+            acc: -295,
+            count: 1,
+        },
+    ),
+    (
+        "Mažeikiai",
+        Record {
+            min: -563,
+            max: -563,
+            acc: -563,
+            count: 1,
+        },
+    ),
+    (
+        "Ma’ai",
+        Record {
+            min: -268,
+            max: -268,
+            acc: -268,
+            count: 1,
+        },
+    ),
+    (
+        "Mbini",
+        Record {
+            min: 508,
+            max: 508,
+            acc: 508,
+            count: 1,
+        },
+    ),
+    (
+        "Mbulu",
+        Record {
+            min: 385,
+            max: 385,
+            acc: 385,
+            count: 1,
+        },
+    ),
+    (
+        "Meckenheim",
+        Record {
+            min: -254,
+            max: -254,
+            acc: -254,
+            count: 1,
+        },
+    ),
+    (
+        "Medgidia",
+        Record {
+            min: -72,
+            max: -72,
+            acc: -72,
+            count: 1,
+        },
+    ),
+    (
+        "Melilli",
+        Record {
+            min: -242,
+            max: -242,
+            acc: -242,
+            count: 1,
+        },
+    ),
+    (
+        "Melsele",
+        Record {
+            min: 738,
+            max: 738,
+            acc: 738,
+            count: 1,
+        },
+    ),
+    (
+        "Memmingen",
+        Record {
+            min: -136,
+            max: -136,
+            acc: -136,
+            count: 1,
+        },
+    ),
+    (
+        "Mereeg",
+        Record {
+            min: 746,
+            max: 746,
+            acc: 746,
+            count: 1,
+        },
+    ),
+    (
+        "Mersch",
+        Record {
+            min: 809,
+            max: 809,
+            acc: 809,
+            count: 1,
+        },
+    ),
+    (
+        "Messias",
+        Record {
+            min: -721,
+            max: -721,
+            acc: -721,
+            count: 1,
+        },
+    ),
+    (
+        "Miarinarivo",
+        Record {
+            min: -799,
+            max: -799,
+            acc: -799,
+            count: 1,
+        },
+    ),
+    (
+        "Minami-Bōsō",
+        Record {
+            min: -179,
+            max: -179,
+            acc: -179,
+            count: 1,
+        },
+    ),
+    (
+        "Mineral de Angangueo",
+        Record {
+            min: 503,
+            max: 503,
+            acc: 503,
+            count: 1,
+        },
+    ),
+    (
+        "Mithi",
+        Record {
+            min: -691,
+            max: -691,
+            acc: -691,
+            count: 1,
+        },
+    ),
+    (
+        "Mogtédo",
+        Record {
+            min: -694,
+            max: -694,
+            acc: -694,
+            count: 1,
+        },
+    ),
+    (
+        "Moguer",
+        Record {
+            min: 871,
+            max: 871,
+            acc: 871,
+            count: 1,
+        },
+    ),
+    (
+        "Monclova",
+        Record {
+            min: 420,
+            max: 420,
+            acc: 420,
+            count: 1,
+        },
+    ),
+    (
+        "Mongaguá",
+        Record {
+            min: 821,
+            max: 821,
+            acc: 821,
+            count: 1,
+        },
+    ),
+    (
+        "Monistrol-sur-Loire",
+        Record {
+            min: -147,
+            max: -147,
+            acc: -147,
+            count: 1,
+        },
+    ),
+    (
+        "Mont-Laurier",
+        Record {
+            min: 656,
+            max: 656,
+            acc: 656,
+            count: 1,
+        },
+    ),
+    (
+        "Montemurlo",
+        Record {
+            min: -112,
+            max: -112,
+            acc: -112,
+            count: 1,
+        },
+    ),
+    (
+        "Monóvar",
+        Record {
+            min: 762,
+            max: 762,
+            acc: 762,
+            count: 1,
+        },
+    ),
+    (
+        "Moravská Třebová",
+        Record {
+            min: -988,
+            max: -988,
+            acc: -988,
+            count: 1,
+        },
+    ),
+    (
+        "Morbi",
+        Record {
+            min: -918,
+            max: -918,
+            acc: -918,
+            count: 1,
+        },
+    ),
+    (
+        "Morondava",
+        Record {
+            min: 212,
+            max: 212,
+            acc: 212,
+            count: 1,
+        },
+    ),
+    (
+        "Moroni",
+        Record {
+            min: 875,
+            max: 875,
+            acc: 875,
+            count: 1,
+        },
+    ),
+    (
+        "Motema",
+        Record {
+            min: -737,
+            max: 954,
+            acc: 217,
+            count: 2,
+        },
+    ),
+    (
+        "Mouans-Sartoux",
+        Record {
+            min: -435,
+            max: -435,
+            acc: -435,
+            count: 1,
+        },
+    ),
+    (
+        "Mount Vista",
+        Record {
+            min: 221,
+            max: 221,
+            acc: 221,
+            count: 1,
+        },
+    ),
+    (
+        "Mugumu",
+        Record {
+            min: 653,
+            max: 653,
+            acc: 653,
+            count: 1,
+        },
+    ),
+    (
+        "Muktāgācha",
+        Record {
+            min: 387,
+            max: 387,
+            acc: 387,
+            count: 1,
+        },
+    ),
+    (
+        "Mulifanua",
+        Record {
+            min: 91,
+            max: 91,
+            acc: 91,
+            count: 1,
+        },
+    ),
+    (
+        "Mustang",
+        Record {
+            min: -625,
+            max: -601,
+            acc: -1226,
+            count: 2,
+        },
+    ),
+    (
+        "Muzambinho",
+        Record {
+            min: -5,
+            max: -5,
+            acc: -5,
+            count: 1,
+        },
+    ),
+    (
+        "Mūndka",
+        Record {
+            min: 333,
+            max: 333,
+            acc: 333,
+            count: 1,
+        },
+    ),
+    (
+        "Nachikatsuura",
+        Record {
+            min: 239,
+            max: 239,
+            acc: 239,
+            count: 1,
+        },
+    ),
+    (
+        "Nakatsu",
+        Record {
+            min: 774,
+            max: 774,
+            acc: 774,
+            count: 1,
+        },
+    ),
+    (
+        "Nandiyālam",
+        Record {
+            min: -783,
+            max: -783,
+            acc: -783,
+            count: 1,
+        },
+    ),
+    (
+        "Narathiwat",
+        Record {
+            min: 128,
+            max: 128,
+            acc: 128,
+            count: 1,
+        },
+    ),
+    (
+        "Natshal",
+        Record {
+            min: -13,
+            max: -13,
+            acc: -13,
+            count: 1,
+        },
+    ),
+    (
+        "Nautanwa",
+        Record {
+            min: 233,
+            max: 233,
+            acc: 233,
+            count: 1,
+        },
+    ),
+    (
+        "Nehrəm",
+        Record {
+            min: -547,
+            max: -547,
+            acc: -547,
+            count: 1,
+        },
+    ),
+    (
+        "New London",
+        Record {
+            min: 919,
+            max: 919,
+            acc: 919,
+            count: 1,
+        },
+    ),
+    (
+        "New Ulm",
+        Record {
+            min: 93,
+            max: 93,
+            acc: 93,
+            count: 1,
+        },
+    ),
+    (
+        "Nichelino",
+        Record {
+            min: -446,
+            max: -446,
+            acc: -446,
+            count: 1,
+        },
+    ),
+    (
+        "Nidgundi",
+        Record {
+            min: 372,
+            max: 372,
+            acc: 372,
+            count: 1,
+        },
+    ),
+    (
+        "Niedernhausen",
+        Record {
+            min: -706,
+            max: -706,
+            acc: -706,
+            count: 1,
+        },
+    ),
+    (
+        "Nieuw Amsterdam",
+        Record {
+            min: 171,
+            max: 171,
+            acc: 171,
+            count: 1,
+        },
+    ),
+    (
+        "Ninga",
+        Record {
+            min: 476,
+            max: 476,
+            acc: 476,
+            count: 1,
+        },
+    ),
+    (
+        "Ninomiya",
+        Record {
+            min: 243,
+            max: 243,
+            acc: 243,
+            count: 1,
+        },
+    ),
+    (
+        "Nirmal",
+        Record {
+            min: 941,
+            max: 941,
+            acc: 941,
+            count: 1,
+        },
+    ),
+    (
+        "Niterói",
+        Record {
+            min: -883,
+            max: -883,
+            acc: -883,
+            count: 1,
+        },
+    ),
+    (
+        "Niš",
+        Record {
+            min: 11,
+            max: 11,
+            acc: 11,
+            count: 1,
+        },
+    ),
+    (
+        "Nopala de Villagran",
+        Record {
+            min: -526,
+            max: 476,
+            acc: -50,
+            count: 2,
+        },
+    ),
+    (
+        "North Merrick",
+        Record {
+            min: 382,
+            max: 382,
+            acc: 382,
+            count: 1,
+        },
+    ),
+    (
+        "North Reading",
+        Record {
+            min: -409,
+            max: -409,
+            acc: -409,
+            count: 1,
+        },
+    ),
+    (
+        "Novo Hamburgo",
+        Record {
+            min: -895,
+            max: -895,
+            acc: -895,
+            count: 1,
+        },
+    ),
+    (
+        "Nueva Esparta",
+        Record {
+            min: 404,
+            max: 404,
+            acc: 404,
+            count: 1,
+        },
+    ),
+    (
+        "Nyamira",
+        Record {
+            min: 403,
+            max: 403,
+            acc: 403,
+            count: 1,
+        },
+    ),
+    (
+        "Nykøbing Falster",
+        Record {
+            min: -905,
+            max: -905,
+            acc: -905,
+            count: 1,
+        },
+    ),
+    (
+        "Nísia Floresta",
+        Record {
+            min: -524,
+            max: -524,
+            acc: -524,
+            count: 1,
+        },
+    ),
+    (
+        "Oberasbach",
+        Record {
+            min: -394,
+            max: -394,
+            acc: -394,
+            count: 1,
+        },
+    ),
+    (
+        "Obleševo",
+        Record {
+            min: 815,
+            max: 815,
+            acc: 815,
+            count: 1,
+        },
+    ),
+    (
+        "Obninsk",
+        Record {
+            min: -835,
+            max: -835,
+            acc: -835,
+            count: 1,
+        },
+    ),
+    (
+        "Ochsenhausen",
+        Record {
+            min: 914,
+            max: 914,
+            acc: 914,
+            count: 1,
+        },
+    ),
+    (
+        "Okagaki",
+        Record {
+            min: -384,
+            max: -384,
+            acc: -384,
+            count: 1,
+        },
+    ),
+    (
+        "Oleśnica",
+        Record {
+            min: 866,
+            max: 866,
+            acc: 866,
+            count: 1,
+        },
+    ),
+    (
+        "Omdurman",
+        Record {
+            min: -154,
+            max: 565,
+            acc: 411,
+            count: 2,
+        },
+    ),
+    (
+        "Opmeer",
+        Record {
+            min: 317,
+            max: 317,
+            acc: 317,
+            count: 1,
+        },
+    ),
+    (
+        "Opole",
+        Record {
+            min: -926,
+            max: -60,
+            acc: -986,
+            count: 2,
+        },
+    ),
+    (
+        "Osterburg",
+        Record {
+            min: -705,
+            max: -705,
+            acc: -705,
+            count: 1,
+        },
+    ),
+    (
+        "Ostrov",
+        Record {
+            min: 158,
+            max: 158,
+            acc: 158,
+            count: 1,
+        },
+    ),
+    (
+        "Oulad Amrane el Mekki",
+        Record {
+            min: 615,
+            max: 615,
+            acc: 615,
+            count: 1,
+        },
+    ),
+    (
+        "Oulad Yaïch",
+        Record {
+            min: 628,
+            max: 628,
+            acc: 628,
+            count: 1,
+        },
+    ),
+    (
+        "Ouled Moussa",
+        Record {
+            min: -534,
+            max: -534,
+            acc: -534,
+            count: 1,
+        },
+    ),
+    (
+        "Ouro Verde",
+        Record {
+            min: -464,
+            max: -464,
+            acc: -464,
+            count: 1,
+        },
+    ),
+    (
+        "Overath",
+        Record {
+            min: -557,
+            max: -557,
+            acc: -557,
+            count: 1,
+        },
+    ),
+    (
+        "Overland Park",
+        Record {
+            min: 289,
+            max: 557,
+            acc: 846,
+            count: 2,
+        },
+    ),
+    (
+        "Owensboro",
+        Record {
+            min: -403,
+            max: -403,
+            acc: -403,
+            count: 1,
+        },
+    ),
+    (
+        "Oxapampa",
+        Record {
+            min: -163,
+            max: -163,
+            acc: -163,
+            count: 1,
+        },
+    ),
+    (
+        "Pabianice",
+        Record {
+            min: -768,
+            max: -768,
+            acc: -768,
+            count: 1,
+        },
+    ),
+    (
+        "Pailón",
+        Record {
+            min: -609,
+            max: -609,
+            acc: -609,
+            count: 1,
+        },
+    ),
+    (
+        "Pajapan",
+        Record {
+            min: -918,
+            max: -918,
+            acc: -918,
+            count: 1,
+        },
+    ),
+    (
+        "Palembang",
+        Record {
+            min: 805,
+            max: 805,
+            acc: 805,
+            count: 1,
+        },
+    ),
+    (
+        "Palmira",
+        Record {
+            min: 418,
+            max: 418,
+            acc: 418,
+            count: 1,
+        },
+    ),
+    (
+        "Palé",
+        Record {
+            min: -41,
+            max: -41,
+            acc: -41,
+            count: 1,
+        },
+    ),
+    (
+        "Pandi",
+        Record {
+            min: -886,
+            max: -886,
+            acc: -886,
+            count: 1,
+        },
+    ),
+    (
+        "Pančevo",
+        Record {
+            min: 496,
+            max: 496,
+            acc: 496,
+            count: 1,
+        },
+    ),
+    (
+        "Para",
+        Record {
+            min: 286,
+            max: 286,
+            acc: 286,
+            count: 1,
+        },
+    ),
+    (
+        "Parsa",
+        Record {
+            min: 490,
+            max: 490,
+            acc: 490,
+            count: 1,
+        },
+    ),
+    (
+        "Pasewalk",
+        Record {
+            min: 815,
+            max: 815,
+            acc: 815,
+            count: 1,
+        },
+    ),
+    (
+        "Pasig City",
+        Record {
+            min: 670,
+            max: 670,
+            acc: 670,
+            count: 1,
+        },
+    ),
+    (
+        "Pavittiram",
+        Record {
+            min: 666,
+            max: 666,
+            acc: 666,
+            count: 1,
+        },
+    ),
+    (
+        "Pedda Vegi",
+        Record {
+            min: -705,
+            max: -466,
+            acc: -1171,
+            count: 2,
+        },
+    ),
+    (
+        "Periyakulam",
+        Record {
+            min: -646,
+            max: -646,
+            acc: -646,
+            count: 1,
+        },
+    ),
+    (
+        "Perrysburg",
+        Record {
+            min: -390,
+            max: -390,
+            acc: -390,
+            count: 1,
+        },
+    ),
+    (
+        "Perumbalam",
+        Record {
+            min: -170,
+            max: -170,
+            acc: -170,
+            count: 1,
+        },
+    ),
+    (
+        "Perāvūrani",
+        Record {
+            min: -154,
+            max: -154,
+            acc: -154,
+            count: 1,
+        },
+    ),
+    (
+        "Petite Rivière de Nippes",
+        Record {
+            min: -936,
+            max: -936,
+            acc: -936,
+            count: 1,
+        },
+    ),
+    (
+        "Peñamiller",
+        Record {
+            min: 446,
+            max: 446,
+            acc: 446,
+            count: 1,
+        },
+    ),
+    (
+        "Phagwāra",
+        Record {
+            min: -719,
+            max: -719,
+            acc: -719,
+            count: 1,
+        },
+    ),
+    (
+        "Pianoro",
+        Record {
+            min: -957,
+            max: -957,
+            acc: -957,
+            count: 1,
+        },
+    ),
+    (
+        "Picture Rocks",
+        Record {
+            min: -708,
+            max: 452,
+            acc: -256,
+            count: 2,
+        },
+    ),
+    (
+        "Piketberg",
+        Record {
+            min: 675,
+            max: 675,
+            acc: 675,
+            count: 1,
+        },
+    ),
+    (
+        "Pilate",
+        Record {
+            min: -344,
+            max: -344,
+            acc: -344,
+            count: 1,
+        },
+    ),
+    (
+        "Pilkhua",
+        Record {
+            min: 748,
+            max: 748,
+            acc: 748,
+            count: 1,
+        },
+    ),
+    (
+        "Pine",
+        Record {
+            min: -116,
+            max: -116,
+            acc: -116,
+            count: 1,
+        },
+    ),
+    (
+        "Pingdingshan",
+        Record {
+            min: 107,
+            max: 107,
+            acc: 107,
+            count: 1,
+        },
+    ),
+    (
+        "Pira",
+        Record {
+            min: -142,
+            max: -142,
+            acc: -142,
+            count: 1,
+        },
+    ),
+    (
+        "Plan-les-Ouates",
+        Record {
+            min: 421,
+            max: 421,
+            acc: 421,
+            count: 1,
+        },
+    ),
+    (
+        "Pleasant Prairie",
+        Record {
+            min: 119,
+            max: 119,
+            acc: 119,
+            count: 1,
+        },
+    ),
+    (
+        "Plymstock",
+        Record {
+            min: -37,
+            max: -37,
+            acc: -37,
+            count: 1,
+        },
+    ),
+    (
+        "Podujevë",
+        Record {
+            min: -714,
+            max: -714,
+            acc: -714,
+            count: 1,
+        },
+    ),
+    (
+        "Pointe-à-Pitre",
+        Record {
+            min: 465,
+            max: 465,
+            acc: 465,
+            count: 1,
+        },
+    ),
+    (
+        "Polignano a Mare",
+        Record {
+            min: 816,
+            max: 816,
+            acc: 816,
+            count: 1,
+        },
+    ),
+    (
+        "Ponnāda",
+        Record {
+            min: -679,
+            max: -679,
+            acc: -679,
+            count: 1,
+        },
+    ),
+    (
+        "Ponteland",
+        Record {
+            min: -494,
+            max: -494,
+            acc: -494,
+            count: 1,
+        },
+    ),
+    (
+        "Port Alfred",
+        Record {
+            min: -303,
+            max: 752,
+            acc: 449,
+            count: 2,
+        },
+    ),
+    (
+        "Port Glasgow",
+        Record {
+            min: 878,
+            max: 878,
+            acc: 878,
+            count: 1,
+        },
+    ),
+    (
+        "Port Moody",
+        Record {
+            min: -774,
+            max: -774,
+            acc: -774,
+            count: 1,
+        },
+    ),
+    (
+        "Porteiras",
+        Record {
+            min: -989,
+            max: -989,
+            acc: -989,
+            count: 1,
+        },
+    ),
+    (
+        "Porto Nacional",
+        Record {
+            min: 318,
+            max: 318,
+            acc: 318,
+            count: 1,
+        },
+    ),
+    (
+        "Porto-Novo",
+        Record {
+            min: 785,
+            max: 785,
+            acc: 785,
+            count: 1,
+        },
+    ),
+    (
+        "Poshkent",
+        Record {
+            min: 866,
+            max: 866,
+            acc: 866,
+            count: 1,
+        },
+    ),
+    (
+        "Premiá de Mar",
+        Record {
+            min: -355,
+            max: -355,
+            acc: -355,
+            count: 1,
+        },
+    ),
+    (
+        "Presidente Kennedy",
+        Record {
+            min: 512,
+            max: 512,
+            acc: 512,
+            count: 1,
+        },
+    ),
+    (
+        "Puduppattanam",
+        Record {
+            min: 913,
+            max: 913,
+            acc: 913,
+            count: 1,
+        },
+    ),
+    (
+        "Pueblo Rico",
+        Record {
+            min: 200,
+            max: 200,
+            acc: 200,
+            count: 1,
+        },
+    ),
+    (
+        "Puliyara",
+        Record {
+            min: -464,
+            max: -464,
+            acc: -464,
+            count: 1,
+        },
+    ),
+    (
+        "Pweto",
+        Record {
+            min: -584,
+            max: -584,
+            acc: -584,
+            count: 1,
+        },
+    ),
+    (
+        "Pylaía",
+        Record {
+            min: 438,
+            max: 438,
+            acc: 438,
+            count: 1,
+        },
+    ),
+    (
+        "Pābna",
+        Record {
+            min: -130,
+            max: -130,
+            acc: -130,
+            count: 1,
+        },
+    ),
+    (
+        "Pūliguntā",
+        Record {
+            min: -953,
+            max: -953,
+            acc: -953,
+            count: 1,
+        },
+    ),
+    (
+        "Pūlla",
+        Record {
+            min: 918,
+            max: 918,
+            acc: 918,
+            count: 1,
+        },
+    ),
+    (
+        "Pūngulam",
+        Record {
+            min: -98,
+            max: -98,
+            acc: -98,
+            count: 1,
+        },
+    ),
+    (
+        "Pūrna",
+        Record {
+            min: 767,
+            max: 767,
+            acc: 767,
+            count: 1,
+        },
+    ),
+    (
+        "Qahramon",
+        Record {
+            min: 85,
+            max: 85,
+            acc: 85,
+            count: 1,
+        },
+    ),
+    (
+        "Qala",
+        Record {
+            min: 499,
+            max: 499,
+            acc: 499,
+            count: 1,
+        },
+    ),
+    (
+        "Qal‘at Sukkar",
+        Record {
+            min: 97,
+            max: 97,
+            acc: 97,
+            count: 1,
+        },
+    ),
+    (
+        "Qaşr-e Shīrīn",
+        Record {
+            min: -131,
+            max: 897,
+            acc: 1585,
+            count: 3,
+        },
+    ),
+    (
+        "Qualicum Beach",
+        Record {
+            min: 727,
+            max: 727,
+            acc: 727,
+            count: 1,
+        },
+    ),
+    (
+        "Quilon",
+        Record {
+            min: -199,
+            max: -199,
+            acc: -199,
+            count: 1,
+        },
+    ),
+    (
+        "Quíbor",
+        Record {
+            min: -804,
+            max: -804,
+            acc: -804,
+            count: 1,
+        },
+    ),
+    (
+        "Racconigi",
+        Record {
+            min: -944,
+            max: -882,
+            acc: -1826,
+            count: 2,
+        },
+    ),
+    (
+        "Rakitovo",
+        Record {
+            min: -946,
+            max: -946,
+            acc: -946,
+            count: 1,
+        },
+    ),
+    (
+        "Rastede",
+        Record {
+            min: 702,
+            max: 702,
+            acc: 702,
+            count: 1,
+        },
+    ),
+    (
+        "Ratanpur",
+        Record {
+            min: 531,
+            max: 531,
+            acc: 531,
+            count: 1,
+        },
+    ),
+    (
+        "Regente Feijó",
+        Record {
+            min: 379,
+            max: 379,
+            acc: 379,
+            count: 1,
+        },
+    ),
+    (
+        "Reguengos de Monsaraz",
+        Record {
+            min: 266,
+            max: 266,
+            acc: 266,
+            count: 1,
+        },
+    ),
+    (
+        "Repelón",
+        Record {
+            min: 292,
+            max: 292,
+            acc: 292,
+            count: 1,
+        },
+    ),
+    (
+        "Rheinfelden (Baden)",
+        Record {
+            min: -675,
+            max: -675,
+            acc: -675,
+            count: 1,
+        },
+    ),
+    (
+        "Rideau Lakes",
+        Record {
+            min: -743,
+            max: -743,
+            acc: -743,
+            count: 1,
+        },
+    ),
+    (
+        "Rimouski",
+        Record {
+            min: -995,
+            max: -99,
+            acc: -1094,
+            count: 2,
+        },
+    ),
+    (
+        "Rionegro",
+        Record {
+            min: -647,
+            max: -647,
+            acc: -647,
+            count: 1,
+        },
+    ),
+    (
+        "Rive-de-Gier",
+        Record {
+            min: 452,
+            max: 452,
+            acc: 452,
+            count: 1,
+        },
+    ),
+    (
+        "Rodolfo Sánchez Taboada",
+        Record {
+            min: -349,
+            max: -349,
+            acc: -349,
+            count: 1,
+        },
+    ),
+    (
+        "Roermond",
+        Record {
+            min: -296,
+            max: -296,
+            acc: -296,
+            count: 1,
+        },
+    ),
+    (
+        "Rose Belle",
+        Record {
+            min: 205,
+            max: 205,
+            acc: 205,
+            count: 1,
+        },
+    ),
+    (
+        "Roseaux",
+        Record {
+            min: -256,
+            max: -256,
+            acc: -256,
+            count: 1,
+        },
+    ),
+    (
+        "Rukungiri",
+        Record {
+            min: -61,
+            max: -61,
+            acc: -61,
+            count: 1,
+        },
+    ),
+    (
+        "Rāmkali",
+        Record {
+            min: -693,
+            max: -693,
+            acc: -693,
+            count: 1,
+        },
+    ),
+    (
+        "Rānia",
+        Record {
+            min: -322,
+            max: -322,
+            acc: -322,
+            count: 1,
+        },
+    ),
+    (
+        "Sabana Yegua",
+        Record {
+            min: 347,
+            max: 347,
+            acc: 347,
+            count: 1,
+        },
+    ),
+    (
+        "Sabang",
+        Record {
+            min: -292,
+            max: 815,
+            acc: 523,
+            count: 2,
+        },
+    ),
+    (
+        "Sailāna",
+        Record {
+            min: 936,
+            max: 936,
+            acc: 936,
+            count: 1,
+        },
+    ),
+    (
+        "Saint Budeaux",
+        Record {
+            min: -608,
+            max: -608,
+            acc: -608,
+            count: 1,
+        },
+    ),
+    (
+        "Saint-Hilaire-de-Riez",
+        Record {
+            min: -527,
+            max: -527,
+            acc: -527,
+            count: 1,
+        },
+    ),
+    (
+        "Saint-Jean-de-Braye",
+        Record {
+            min: 745,
+            max: 745,
+            acc: 745,
+            count: 1,
+        },
+    ),
+    (
+        "Saint-Lô",
+        Record {
+            min: 447,
+            max: 447,
+            acc: 447,
+            count: 1,
+        },
+    ),
+    (
+        "Saint-Égrève",
+        Record {
+            min: -480,
+            max: -480,
+            acc: -480,
+            count: 1,
+        },
+    ),
+    (
+        "Saltillo",
+        Record {
+            min: -184,
+            max: -184,
+            acc: -184,
+            count: 1,
+        },
+    ),
+    (
+        "Samalpur",
+        Record {
+            min: -251,
+            max: -251,
+            acc: -251,
+            count: 1,
+        },
+    ),
+    (
+        "Samayanallūr",
+        Record {
+            min: 868,
+            max: 868,
+            acc: 868,
+            count: 1,
+        },
+    ),
+    (
+        "San Agustín de las Juntas",
+        Record {
+            min: -594,
+            max: -594,
+            acc: -594,
+            count: 1,
+        },
+    ),
+    (
+        "San Antonio del Tequendama",
+        Record {
+            min: 171,
+            max: 171,
+            acc: 171,
+            count: 1,
+        },
+    ),
+    (
+        "San Borja",
+        Record {
+            min: -536,
+            max: -536,
+            acc: -536,
+            count: 1,
+        },
+    ),
+    (
+        "San Francisco del Rincón",
+        Record {
+            min: -301,
+            max: -301,
+            acc: -301,
+            count: 1,
+        },
+    ),
+    (
+        "San Germán",
+        Record {
+            min: -698,
+            max: 286,
+            acc: -240,
+            count: 3,
+        },
+    ),
+    (
+        "San Giuseppe Iato",
+        Record {
+            min: -123,
+            max: -123,
+            acc: -123,
+            count: 1,
+        },
+    ),
+    (
+        "San Giuseppe Vesuviano",
+        Record {
+            min: -916,
+            max: -916,
+            acc: -916,
+            count: 1,
+        },
+    ),
+    (
+        "San José Pinula",
+        Record {
+            min: -247,
+            max: -247,
+            acc: -247,
+            count: 1,
+        },
+    ),
+    (
+        "San Juan Atitán",
+        Record {
+            min: -305,
+            max: -305,
+            acc: -305,
+            count: 1,
+        },
+    ),
+    (
+        "San Pablo Villa de Mitla",
+        Record {
+            min: -683,
+            max: -683,
+            acc: -683,
+            count: 1,
+        },
+    ),
+    (
+        "San Pedro Jicayán",
+        Record {
+            min: 286,
+            max: 286,
+            acc: 286,
+            count: 1,
+        },
+    ),
+    (
+        "San Sebastián Huehuetenango",
+        Record {
+            min: 37,
+            max: 37,
+            acc: 37,
+            count: 1,
+        },
+    ),
+    (
+        "Sanchez-Mira",
+        Record {
+            min: 982,
+            max: 982,
+            acc: 982,
+            count: 1,
+        },
+    ),
+    (
+        "Sandbach",
+        Record {
+            min: -617,
+            max: -617,
+            acc: -617,
+            count: 1,
+        },
+    ),
+    (
+        "Sangalbahīta",
+        Record {
+            min: 869,
+            max: 869,
+            acc: 869,
+            count: 1,
+        },
+    ),
+    (
+        "Sangrāmpur",
+        Record {
+            min: -730,
+            max: -730,
+            acc: -730,
+            count: 1,
+        },
+    ),
+    (
+        "Sanjiang Nongchang",
+        Record {
+            min: -644,
+            max: -644,
+            acc: -644,
+            count: 1,
+        },
+    ),
+    (
+        "Santa Barbara",
+        Record {
+            min: -877,
+            max: -877,
+            acc: -877,
+            count: 1,
+        },
+    ),
+    (
+        "Santa Catarina Otzolotepec",
+        Record {
+            min: -868,
+            max: -868,
+            acc: -868,
+            count: 1,
+        },
+    ),
+    (
+        "Santa Croce Camerina",
+        Record {
+            min: -826,
+            max: -826,
+            acc: -826,
+            count: 1,
+        },
+    ),
+    (
+        "Santa Genoveva de Docordó",
+        Record {
+            min: -598,
+            max: -598,
+            acc: -598,
+            count: 1,
+        },
+    ),
+    (
+        "Santa Isabel",
+        Record {
+            min: 51,
+            max: 51,
+            acc: 51,
+            count: 1,
+        },
+    ),
+    (
+        "Santa Luzia do Itanhy",
+        Record {
+            min: 505,
+            max: 505,
+            acc: 505,
+            count: 1,
+        },
+    ),
+    (
+        "Santa Margherita Ligure",
+        Record {
+            min: 250,
+            max: 250,
+            acc: 250,
+            count: 1,
+        },
+    ),
+    (
+        "Santa Rosa de Osos",
+        Record {
+            min: -233,
+            max: -209,
+            acc: -442,
+            count: 2,
+        },
+    ),
+    (
+        "Santiago Papasquiaro",
+        Record {
+            min: -432,
+            max: -432,
+            acc: -432,
+            count: 1,
+        },
+    ),
+    (
+        "Santo António",
+        Record {
+            min: -507,
+            max: -507,
+            acc: -507,
+            count: 1,
+        },
+    ),
+    (
+        "Santos Reyes Nopala",
+        Record {
+            min: -689,
+            max: -689,
+            acc: -689,
+            count: 1,
+        },
+    ),
+    (
+        "Saoner",
+        Record {
+            min: 549,
+            max: 549,
+            acc: 549,
+            count: 1,
+        },
+    ),
+    (
+        "Sarakhs",
+        Record {
+            min: 217,
+            max: 217,
+            acc: 217,
+            count: 1,
+        },
+    ),
+    (
+        "Sarandi",
+        Record {
+            min: -34,
+            max: -34,
+            acc: -34,
+            count: 1,
+        },
+    ),
+    (
+        "Sarangani",
+        Record {
+            min: 54,
+            max: 54,
+            acc: 54,
+            count: 1,
+        },
+    ),
+    (
+        "Sariosiyo",
+        Record {
+            min: 945,
+            max: 945,
+            acc: 945,
+            count: 1,
+        },
+    ),
+    (
+        "Saronno",
+        Record {
+            min: 143,
+            max: 143,
+            acc: 143,
+            count: 1,
+        },
+    ),
+    (
+        "Satupa‘itea",
+        Record {
+            min: -140,
+            max: -140,
+            acc: -140,
+            count: 1,
+        },
+    ),
+    (
+        "Sawahlunto",
+        Record {
+            min: 246,
+            max: 246,
+            acc: 246,
+            count: 1,
+        },
+    ),
+    (
+        "Schrobenhausen",
+        Record {
+            min: -205,
+            max: -205,
+            acc: -205,
+            count: 1,
+        },
+    ),
+    (
+        "Schroeder",
+        Record {
+            min: -455,
+            max: -455,
+            acc: -455,
+            count: 1,
+        },
+    ),
+    (
+        "Schwarzenberg",
+        Record {
+            min: -826,
+            max: -826,
+            acc: -826,
+            count: 1,
+        },
+    ),
+    (
+        "Sebt Gzoula",
+        Record {
+            min: 485,
+            max: 485,
+            acc: 485,
+            count: 1,
+        },
+    ),
+    (
+        "Sedeh Lanjān",
+        Record {
+            min: 672,
+            max: 672,
+            acc: 672,
+            count: 1,
+        },
+    ),
+    (
+        "Semmarikulan",
+        Record {
+            min: -58,
+            max: -58,
+            acc: -58,
+            count: 1,
+        },
+    ),
+    (
+        "Senanga",
+        Record {
+            min: 391,
+            max: 391,
+            acc: 391,
+            count: 1,
+        },
+    ),
+    (
+        "Sendai",
+        Record {
+            min: 684,
+            max: 684,
+            acc: 684,
+            count: 1,
+        },
+    ),
+    (
+        "Seoul",
+        Record {
+            min: 127,
+            max: 127,
+            acc: 127,
+            count: 1,
+        },
+    ),
+    (
+        "Seridó",
+        Record {
+            min: -835,
+            max: -835,
+            acc: -835,
+            count: 1,
+        },
+    ),
+    (
+        "Serpukhov",
+        Record {
+            min: -803,
+            max: -803,
+            acc: -803,
+            count: 1,
+        },
+    ),
+    (
+        "Seyah Cheshmeh",
+        Record {
+            min: 163,
+            max: 163,
+            acc: 163,
+            count: 1,
+        },
+    ),
+    (
+        "Seydi",
+        Record {
+            min: -475,
+            max: -475,
+            acc: -475,
+            count: 1,
+        },
+    ),
+    (
+        "Seydişehir",
+        Record {
+            min: -60,
+            max: -60,
+            acc: -60,
+            count: 1,
+        },
+    ),
+    (
+        "Shahrinav",
+        Record {
+            min: 753,
+            max: 753,
+            acc: 753,
+            count: 1,
+        },
+    ),
+    (
+        "Shanghai",
+        Record {
+            min: 571,
+            max: 571,
+            acc: 571,
+            count: 1,
+        },
+    ),
+    (
+        "Shangpa",
+        Record {
+            min: 712,
+            max: 712,
+            acc: 712,
+            count: 1,
+        },
+    ),
+    (
+        "Sharg‘un",
+        Record {
+            min: -727,
+            max: -727,
+            acc: -727,
+            count: 1,
+        },
+    ),
+    (
+        "Shawangunk",
+        Record {
+            min: 271,
+            max: 271,
+            acc: 271,
+            count: 1,
+        },
+    ),
+    (
+        "Sherbrooke",
+        Record {
+            min: -280,
+            max: -280,
+            acc: -280,
+            count: 1,
+        },
+    ),
+    (
+        "Shādegān",
+        Record {
+            min: -45,
+            max: -32,
+            acc: -77,
+            count: 2,
+        },
+    ),
+    (
+        "Shāhīn Dezh",
+        Record {
+            min: 633,
+            max: 633,
+            acc: 633,
+            count: 1,
+        },
+    ),
+    (
+        "Sibi",
+        Record {
+            min: -884,
+            max: -884,
+            acc: -884,
+            count: 1,
+        },
+    ),
+    (
+        "Siddarāmpuram",
+        Record {
+            min: 486,
+            max: 486,
+            acc: 486,
+            count: 1,
+        },
+    ),
+    (
+        "Sikandra Rao",
+        Record {
+            min: 272,
+            max: 272,
+            acc: 272,
+            count: 1,
+        },
+    ),
+    (
+        "Silivri",
+        Record {
+            min: -309,
+            max: -309,
+            acc: -309,
+            count: 1,
+        },
+    ),
+    (
+        "Sindgi",
+        Record {
+            min: 73,
+            max: 73,
+            acc: 73,
+            count: 1,
+        },
+    ),
+    (
+        "Sindhnūr",
+        Record {
+            min: 705,
+            max: 705,
+            acc: 705,
+            count: 1,
+        },
+    ),
+    (
+        "Siraha",
+        Record {
+            min: -252,
+            max: -252,
+            acc: -252,
+            count: 1,
+        },
+    ),
+    (
+        "Sirvār",
+        Record {
+            min: 77,
+            max: 77,
+            acc: 77,
+            count: 1,
+        },
+    ),
+    (
+        "Sisak",
+        Record {
+            min: -118,
+            max: -118,
+            acc: -118,
+            count: 1,
+        },
+    ),
+    (
+        "Skalica",
+        Record {
+            min: 173,
+            max: 173,
+            acc: 173,
+            count: 1,
+        },
+    ),
+    (
+        "Skikda",
+        Record {
+            min: -405,
+            max: -405,
+            acc: -405,
+            count: 1,
+        },
+    ),
+    (
+        "Skúvoy",
+        Record {
+            min: 698,
+            max: 698,
+            acc: 698,
+            count: 1,
+        },
+    ),
+    (
+        "Somanya",
+        Record {
+            min: -33,
+            max: -33,
+            acc: -33,
+            count: 1,
+        },
+    ),
+    (
+        "Sondho Dullāh",
+        Record {
+            min: -483,
+            max: -483,
+            acc: -483,
+            count: 1,
+        },
+    ),
+    (
+        "South Fayette",
+        Record {
+            min: -227,
+            max: -227,
+            acc: -227,
+            count: 1,
+        },
+    ),
+    (
+        "South Lake Tahoe",
+        Record {
+            min: 599,
+            max: 599,
+            acc: 599,
+            count: 1,
+        },
+    ),
+    (
+        "South Ockendon",
+        Record {
+            min: 282,
+            max: 282,
+            acc: 282,
+            count: 1,
+        },
+    ),
+    (
+        "Sprimont",
+        Record {
+            min: 285,
+            max: 285,
+            acc: 285,
+            count: 1,
+        },
+    ),
+    (
+        "Springville",
+        Record {
+            min: -306,
+            max: -306,
+            acc: -306,
+            count: 1,
+        },
+    ),
+    (
+        "St. Anthony",
+        Record {
+            min: -567,
+            max: -567,
+            acc: -567,
+            count: 1,
+        },
+    ),
+    (
+        "St. John's",
+        Record {
+            min: 791,
+            max: 791,
+            acc: 791,
+            count: 1,
+        },
+    ),
+    (
+        "Stabroek",
+        Record {
+            min: -766,
+            max: 23,
+            acc: -743,
+            count: 2,
+        },
+    ),
+    (
+        "Stará Turá",
+        Record {
+            min: 271,
+            max: 420,
+            acc: 691,
+            count: 2,
+        },
+    ),
+    (
+        "Stepnogorsk",
+        Record {
+            min: -515,
+            max: -515,
+            acc: -515,
+            count: 1,
+        },
+    ),
+    (
+        "Stoughton",
+        Record {
+            min: -802,
+            max: -802,
+            acc: -802,
+            count: 1,
+        },
+    ),
+    (
+        "Stratton Saint Margaret",
+        Record {
+            min: 52,
+            max: 52,
+            acc: 52,
+            count: 1,
+        },
+    ),
+    (
+        "Strelka",
+        Record {
+            min: 661,
+            max: 661,
+            acc: 661,
+            count: 1,
+        },
+    ),
+    (
+        "Struer",
+        Record {
+            min: -407,
+            max: -407,
+            acc: -407,
+            count: 1,
+        },
+    ),
+    (
+        "Sucupira do Norte",
+        Record {
+            min: 95,
+            max: 95,
+            acc: 95,
+            count: 1,
+        },
+    ),
+    (
+        "Sun City Center",
+        Record {
+            min: 933,
+            max: 933,
+            acc: 933,
+            count: 1,
+        },
+    ),
+    (
+        "Sunyani",
+        Record {
+            min: 327,
+            max: 327,
+            acc: 327,
+            count: 1,
+        },
+    ),
+    (
+        "Susanville",
+        Record {
+            min: -721,
+            max: -721,
+            acc: -721,
+            count: 1,
+        },
+    ),
+    (
+        "Swansea",
+        Record {
+            min: -639,
+            max: -639,
+            acc: -639,
+            count: 1,
+        },
+    ),
+    (
+        "São Brás de Alportel",
+        Record {
+            min: 152,
+            max: 152,
+            acc: 152,
+            count: 1,
+        },
+    ),
+    (
+        "São Gabriel da Cachoeira",
+        Record {
+            min: 584,
+            max: 584,
+            acc: 584,
+            count: 1,
+        },
+    ),
+    (
+        "São José dos Campos",
+        Record {
+            min: 554,
+            max: 554,
+            acc: 554,
+            count: 1,
+        },
+    ),
+    (
+        "Sätbayev",
+        Record {
+            min: 939,
+            max: 939,
+            acc: 939,
+            count: 1,
+        },
+    ),
+    (
+        "Sérékali",
+        Record {
+            min: -362,
+            max: -362,
+            acc: -362,
+            count: 1,
+        },
+    ),
+    (
+        "Süßen",
+        Record {
+            min: 681,
+            max: 681,
+            acc: 681,
+            count: 1,
+        },
+    ),
+    (
+        "Sānchor",
+        Record {
+            min: -156,
+            max: 37,
+            acc: -119,
+            count: 2,
+        },
+    ),
+    (
+        "Sāndi",
+        Record {
+            min: 699,
+            max: 699,
+            acc: 699,
+            count: 1,
+        },
+    ),
+    (
+        "Sūrandai",
+        Record {
+            min: -565,
+            max: -565,
+            acc: -565,
+            count: 1,
+        },
+    ),
+    (
+        "Taastrup",
+        Record {
+            min: -501,
+            max: -251,
+            acc: -752,
+            count: 2,
+        },
+    ),
+    (
+        "Taebaek",
+        Record {
+            min: -37,
+            max: 107,
+            acc: 70,
+            count: 2,
+        },
+    ),
+    (
+        "Tafrant",
+        Record {
+            min: -324,
+            max: -324,
+            acc: -324,
+            count: 1,
+        },
+    ),
+    (
+        "Tafí Viejo",
+        Record {
+            min: 335,
+            max: 335,
+            acc: 335,
+            count: 1,
+        },
+    ),
+    (
+        "Taldyqorghan",
+        Record {
+            min: 873,
+            max: 873,
+            acc: 873,
+            count: 1,
+        },
+    ),
+    (
+        "Talghar",
+        Record {
+            min: -951,
+            max: -951,
+            acc: -951,
+            count: 1,
+        },
+    ),
+    (
+        "Tall Rif‘at",
+        Record {
+            min: -286,
+            max: -286,
+            acc: -286,
+            count: 1,
+        },
+    ),
+    (
+        "Tallaght",
+        Record {
+            min: 194,
+            max: 194,
+            acc: 194,
+            count: 1,
+        },
+    ),
+    (
+        "Tamiami",
+        Record {
+            min: -829,
+            max: -829,
+            acc: -829,
+            count: 1,
+        },
+    ),
+    (
+        "Tamilisan",
+        Record {
+            min: -821,
+            max: -821,
+            acc: -821,
+            count: 1,
+        },
+    ),
+    (
+        "Tanamarina-Sakay",
+        Record {
+            min: 547,
+            max: 547,
+            acc: 547,
+            count: 1,
+        },
+    ),
+    (
+        "Tanghin-Dassouri",
+        Record {
+            min: -286,
+            max: 718,
+            acc: 432,
+            count: 2,
+        },
+    ),
+    (
+        "Tangub",
+        Record {
+            min: -158,
+            max: -158,
+            acc: -158,
+            count: 1,
+        },
+    ),
+    (
+        "Taragi",
+        Record {
+            min: -365,
+            max: -365,
+            acc: -365,
+            count: 1,
+        },
+    ),
+    (
+        "Tarawa",
+        Record {
+            min: 671,
+            max: 671,
+            acc: 671,
+            count: 1,
+        },
+    ),
+    (
+        "Tarboro",
+        Record {
+            min: -402,
+            max: -115,
+            acc: -517,
+            count: 2,
+        },
+    ),
+    (
+        "Tarumirim",
+        Record {
+            min: -944,
+            max: -944,
+            acc: -944,
+            count: 1,
+        },
+    ),
+    (
+        "Tarxien",
+        Record {
+            min: 262,
+            max: 262,
+            acc: 262,
+            count: 1,
+        },
+    ),
+    (
+        "Taunggyi",
+        Record {
+            min: -220,
+            max: -220,
+            acc: -220,
+            count: 1,
+        },
+    ),
+    (
+        "Tauranga",
+        Record {
+            min: -122,
+            max: -122,
+            acc: -122,
+            count: 1,
+        },
+    ),
+    (
+        "Tehachapi",
+        Record {
+            min: -617,
+            max: -617,
+            acc: -617,
+            count: 1,
+        },
+    ),
+    (
+        "Telkapalli",
+        Record {
+            min: 907,
+            max: 907,
+            acc: 907,
+            count: 1,
+        },
+    ),
+    (
+        "Telpaneca",
+        Record {
+            min: 403,
+            max: 403,
+            acc: 403,
+            count: 1,
+        },
+    ),
+    (
+        "Teltow",
+        Record {
+            min: 225,
+            max: 225,
+            acc: 225,
+            count: 1,
+        },
+    ),
+    (
+        "Tenjo",
+        Record {
+            min: 313,
+            max: 313,
+            acc: 313,
+            count: 1,
+        },
+    ),
+    (
+        "Terrebonne",
+        Record {
+            min: -271,
+            max: -271,
+            acc: -271,
+            count: 1,
+        },
+    ),
+    (
+        "Tevāram",
+        Record {
+            min: -627,
+            max: -627,
+            acc: -627,
+            count: 1,
+        },
+    ),
+    (
+        "Thandla",
+        Record {
+            min: -976,
+            max: -976,
+            acc: -976,
+            count: 1,
+        },
+    ),
+    (
+        "The Bottom",
+        Record {
+            min: 212,
+            max: 212,
+            acc: 212,
+            count: 1,
+        },
+    ),
+    (
+        "Thorigny-sur-Marne",
+        Record {
+            min: 973,
+            max: 973,
+            acc: 973,
+            count: 1,
+        },
+    ),
+    (
+        "Thāndewāla",
+        Record {
+            min: -804,
+            max: -804,
+            acc: -804,
+            count: 1,
+        },
+    ),
+    (
+        "Tilothu",
+        Record {
+            min: -798,
+            max: -798,
+            acc: -798,
+            count: 1,
+        },
+    ),
+    (
+        "Timoktene",
+        Record {
+            min: -487,
+            max: -487,
+            acc: -487,
+            count: 1,
+        },
+    ),
+    (
+        "Tinqueux",
+        Record {
+            min: 115,
+            max: 115,
+            acc: 115,
+            count: 1,
+        },
+    ),
+    (
+        "Tiruvadamarudūr",
+        Record {
+            min: -545,
+            max: -545,
+            acc: -545,
+            count: 1,
+        },
+    ),
+    (
+        "Tocuyito",
+        Record {
+            min: -572,
+            max: -572,
+            acc: -572,
+            count: 1,
+        },
+    ),
+    (
+        "Tofol",
+        Record {
+            min: -966,
+            max: -966,
+            acc: -966,
+            count: 1,
+        },
+    ),
+    (
+        "Tohoué",
+        Record {
+            min: 885,
+            max: 885,
+            acc: 885,
+            count: 1,
+        },
+    ),
+    (
+        "Toluca",
+        Record {
+            min: 169,
+            max: 169,
+            acc: 169,
+            count: 1,
+        },
+    ),
+    (
+        "Tonami",
+        Record {
+            min: 251,
+            max: 251,
+            acc: 251,
+            count: 1,
+        },
+    ),
+    (
+        "Tonekābon",
+        Record {
+            min: 784,
+            max: 784,
+            acc: 784,
+            count: 1,
+        },
+    ),
+    (
+        "Tornio",
+        Record {
+            min: -41,
+            max: -41,
+            acc: -41,
+            count: 1,
+        },
+    ),
+    (
+        "Torredembarra",
+        Record {
+            min: 665,
+            max: 665,
+            acc: 665,
+            count: 1,
+        },
+    ),
+    (
+        "Toualet",
+        Record {
+            min: 966,
+            max: 966,
+            acc: 966,
+            count: 1,
+        },
+    ),
+    (
+        "Tracunhaém",
+        Record {
+            min: 297,
+            max: 297,
+            acc: 297,
+            count: 1,
+        },
+    ),
+    (
+        "Trairi",
+        Record {
+            min: -200,
+            max: -200,
+            acc: -200,
+            count: 1,
+        },
+    ),
+    (
+        "Traralgon",
+        Record {
+            min: 528,
+            max: 528,
+            acc: 528,
+            count: 1,
+        },
+    ),
+    (
+        "Triesen",
+        Record {
+            min: -711,
+            max: -711,
+            acc: -711,
+            count: 1,
+        },
+    ),
+    (
+        "Trogir",
+        Record {
+            min: 806,
+            max: 806,
+            acc: 806,
+            count: 1,
+        },
+    ),
+    (
+        "Tsurugashima",
+        Record {
+            min: 383,
+            max: 383,
+            acc: 383,
+            count: 1,
+        },
+    ),
+    (
+        "Tucurú",
+        Record {
+            min: -918,
+            max: -918,
+            acc: -918,
+            count: 1,
+        },
+    ),
+    (
+        "Tugaya",
+        Record {
+            min: -406,
+            max: -406,
+            acc: -406,
+            count: 1,
+        },
+    ),
+    (
+        "Tulsīpur",
+        Record {
+            min: 433,
+            max: 433,
+            acc: 433,
+            count: 1,
+        },
+    ),
+    (
+        "Târgu Lăpuş",
+        Record {
+            min: -428,
+            max: 74,
+            acc: -354,
+            count: 2,
+        },
+    ),
+    (
+        "Törökszentmiklós",
+        Record {
+            min: -495,
+            max: -495,
+            acc: -495,
+            count: 1,
+        },
+    ),
+    (
+        "Tālcher",
+        Record {
+            min: -309,
+            max: -309,
+            acc: -309,
+            count: 1,
+        },
+    ),
+    (
+        "Tāran",
+        Record {
+            min: 682,
+            max: 682,
+            acc: 682,
+            count: 1,
+        },
+    ),
+    (
+        "Tōon",
+        Record {
+            min: -238,
+            max: -238,
+            acc: -238,
+            count: 1,
+        },
+    ),
+    (
+        "Uglegorsk",
+        Record {
+            min: -374,
+            max: -374,
+            acc: -374,
+            count: 1,
+        },
+    ),
+    (
+        "Uitgeest",
+        Record {
+            min: 149,
+            max: 149,
+            acc: 149,
+            count: 1,
+        },
+    ),
+    (
+        "Ullūr",
+        Record {
+            min: 341,
+            max: 341,
+            acc: 341,
+            count: 1,
+        },
+    ),
+    (
+        "Umurlu",
+        Record {
+            min: -631,
+            max: -631,
+            acc: -631,
+            count: 1,
+        },
+    ),
+    (
+        "University of Virginia",
+        Record {
+            min: 188,
+            max: 188,
+            acc: 188,
+            count: 1,
+        },
+    ),
+    (
+        "Unquillo",
+        Record {
+            min: 29,
+            max: 29,
+            acc: 29,
+            count: 1,
+        },
+    ),
+    (
+        "Ust’-Kamchatsk",
+        Record {
+            min: -904,
+            max: -904,
+            acc: -904,
+            count: 1,
+        },
+    ),
+    (
+        "Uthai Thani",
+        Record {
+            min: 885,
+            max: 885,
+            acc: 885,
+            count: 1,
+        },
+    ),
+    (
+        "Uwajima",
+        Record {
+            min: 211,
+            max: 211,
+            acc: 211,
+            count: 1,
+        },
+    ),
+    (
+        "Uzwil",
+        Record {
+            min: -180,
+            max: -180,
+            acc: -180,
+            count: 1,
+        },
+    ),
+    (
+        "Valentigney",
+        Record {
+            min: 293,
+            max: 293,
+            acc: 293,
+            count: 1,
+        },
+    ),
+    (
+        "Vasiana",
+        Record {
+            min: 566,
+            max: 566,
+            acc: 566,
+            count: 1,
+        },
+    ),
+    (
+        "Vawkavysk",
+        Record {
+            min: 193,
+            max: 193,
+            acc: 193,
+            count: 1,
+        },
+    ),
+    (
+        "Veenendaal",
+        Record {
+            min: -73,
+            max: -73,
+            acc: -73,
+            count: 1,
+        },
+    ),
+    (
+        "Vellār",
+        Record {
+            min: -133,
+            max: -133,
+            acc: -133,
+            count: 1,
+        },
+    ),
+    (
+        "Versoix",
+        Record {
+            min: 365,
+            max: 365,
+            acc: 365,
+            count: 1,
+        },
+    ),
+    (
+        "Vertientes",
+        Record {
+            min: 29,
+            max: 29,
+            acc: 29,
+            count: 1,
+        },
+    ),
+    (
+        "Vertou",
+        Record {
+            min: -596,
+            max: -596,
+            acc: -596,
+            count: 1,
+        },
+    ),
+    (
+        "Vesele",
+        Record {
+            min: -49,
+            max: -49,
+            acc: -49,
+            count: 1,
+        },
+    ),
+    (
+        "Viacha",
+        Record {
+            min: 468,
+            max: 468,
+            acc: 468,
+            count: 1,
+        },
+    ),
+    (
+        "Vieiro",
+        Record {
+            min: -577,
+            max: -577,
+            acc: -577,
+            count: 1,
+        },
+    ),
+    (
+        "Vigneux-sur-Seine",
+        Record {
+            min: -55,
+            max: -55,
+            acc: -55,
+            count: 1,
+        },
+    ),
+    (
+        "Villa Cañás",
+        Record {
+            min: 407,
+            max: 407,
+            acc: 407,
+            count: 1,
+        },
+    ),
+    (
+        "Villacarrillo",
+        Record {
+            min: -363,
+            max: 928,
+            acc: 704,
+            count: 3,
+        },
+    ),
+    (
+        "Villasis",
+        Record {
+            min: 581,
+            max: 581,
+            acc: 581,
+            count: 1,
+        },
+    ),
+    (
+        "Villefranche-de-Rouergue",
+        Record {
+            min: 402,
+            max: 402,
+            acc: 402,
+            count: 1,
+        },
+    ),
+    (
+        "Vilāchcheri",
+        Record {
+            min: 901,
+            max: 901,
+            acc: 901,
+            count: 1,
+        },
+    ),
+    (
+        "Vilāttikulam",
+        Record {
+            min: -140,
+            max: -140,
+            acc: -140,
+            count: 1,
+        },
+    ),
+    (
+        "Vinings",
+        Record {
+            min: -547,
+            max: -547,
+            acc: -547,
+            count: 1,
+        },
+    ),
+    (
+        "Viswanāthaperi",
+        Record {
+            min: 851,
+            max: 851,
+            acc: 851,
+            count: 1,
+        },
+    ),
+    (
+        "Vodice",
+        Record {
+            min: -988,
+            max: -988,
+            acc: -988,
+            count: 1,
+        },
+    ),
+    (
+        "Vohitrandriana",
+        Record {
+            min: 329,
+            max: 329,
+            acc: 329,
+            count: 1,
+        },
+    ),
+    (
+        "Vsevolozhsk",
+        Record {
+            min: 765,
+            max: 765,
+            acc: 765,
+            count: 1,
+        },
+    ),
+    (
+        "Vyshhorod",
+        Record {
+            min: 454,
+            max: 454,
+            acc: 454,
+            count: 1,
+        },
+    ),
+    (
+        "Wahlstedt",
+        Record {
+            min: -256,
+            max: -256,
+            acc: -256,
+            count: 1,
+        },
+    ),
+    (
+        "Wajir",
+        Record {
+            min: -292,
+            max: -292,
+            acc: -292,
+            count: 1,
+        },
+    ),
+    (
+        "Warburg",
+        Record {
+            min: 449,
+            max: 449,
+            acc: 449,
+            count: 1,
+        },
+    ),
+    (
+        "Watari",
+        Record {
+            min: -825,
+            max: -825,
+            acc: -825,
+            count: 1,
+        },
+    ),
+    (
+        "West Haven",
+        Record {
+            min: -975,
+            max: -975,
+            acc: -975,
+            count: 1,
+        },
+    ),
+    (
+        "West Linn",
+        Record {
+            min: 908,
+            max: 908,
+            acc: 908,
+            count: 1,
+        },
+    ),
+    (
+        "Westbury",
+        Record {
+            min: 455,
+            max: 455,
+            acc: 455,
+            count: 1,
+        },
+    ),
+    (
+        "Wewak",
+        Record {
+            min: 842,
+            max: 842,
+            acc: 842,
+            count: 1,
+        },
+    ),
+    (
+        "Weyhe",
+        Record {
+            min: 157,
+            max: 157,
+            acc: 157,
+            count: 1,
+        },
+    ),
+    (
+        "Willimantic",
+        Record {
+            min: 989,
+            max: 989,
+            acc: 989,
+            count: 1,
+        },
+    ),
+    (
+        "Wismar",
+        Record {
+            min: -144,
+            max: -144,
+            acc: -144,
+            count: 1,
+        },
+    ),
+    (
+        "Woodley",
+        Record {
+            min: -821,
+            max: -821,
+            acc: -821,
+            count: 1,
+        },
+    ),
+    (
+        "Wuling",
+        Record {
+            min: -804,
+            max: -804,
+            acc: -804,
+            count: 1,
+        },
+    ),
+    (
+        "Wānkāner",
+        Record {
+            min: -112,
+            max: -112,
+            acc: -112,
+            count: 1,
+        },
+    ),
+    (
+        "Xintian",
+        Record {
+            min: 258,
+            max: 258,
+            acc: 258,
+            count: 1,
+        },
+    ),
+    (
+        "Yabēlo",
+        Record {
+            min: 537,
+            max: 537,
+            acc: 537,
+            count: 1,
+        },
+    ),
+    (
+        "Yakoma",
+        Record {
+            min: -985,
+            max: -985,
+            acc: -985,
+            count: 1,
+        },
+    ),
+    (
+        "Yamasá",
+        Record {
+            min: -252,
+            max: -252,
+            acc: -252,
+            count: 1,
+        },
+    ),
+    (
+        "Yaypan",
+        Record {
+            min: 412,
+            max: 412,
+            acc: 412,
+            count: 1,
+        },
+    ),
+    (
+        "Yeppoon",
+        Record {
+            min: -809,
+            max: -809,
+            acc: -809,
+            count: 1,
+        },
+    ),
+    (
+        "Yinhua",
+        Record {
+            min: 719,
+            max: 719,
+            acc: 719,
+            count: 1,
+        },
+    ),
+    (
+        "Yásica Arriba",
+        Record {
+            min: -72,
+            max: -72,
+            acc: -72,
+            count: 1,
+        },
+    ),
+    (
+        "Zaandam",
+        Record {
+            min: 698,
+            max: 698,
+            acc: 698,
+            count: 1,
+        },
+    ),
+    (
+        "Zakopane",
+        Record {
+            min: -163,
+            max: -163,
+            acc: -163,
+            count: 1,
+        },
+    ),
+    (
+        "Zaladanki",
+        Record {
+            min: -137,
+            max: -137,
+            acc: -137,
+            count: 1,
+        },
+    ),
+    (
+        "Zaoqiao",
+        Record {
+            min: 364,
+            max: 364,
+            acc: 364,
+            count: 1,
+        },
+    ),
+    (
+        "Zaventem",
+        Record {
+            min: 178,
+            max: 744,
+            acc: 922,
+            count: 2,
+        },
+    ),
+    (
+        "Zemlya Bunge",
+        Record {
+            min: -172,
+            max: -172,
+            acc: -172,
+            count: 1,
+        },
+    ),
+    (
+        "Zhabinka",
+        Record {
+            min: -436,
+            max: -436,
+            acc: -436,
+            count: 1,
+        },
+    ),
+    (
+        "Zhucaoying",
+        Record {
+            min: -361,
+            max: 292,
+            acc: -69,
+            count: 2,
+        },
+    ),
+    (
+        "Zuera",
+        Record {
+            min: -299,
+            max: -299,
+            acc: -299,
+            count: 1,
+        },
+    ),
+    (
+        "Zumárraga",
+        Record {
+            min: -64,
+            max: -64,
+            acc: -64,
+            count: 1,
+        },
+    ),
+    (
+        "Zunyi",
+        Record {
+            min: -271,
+            max: -271,
+            acc: -271,
+            count: 1,
+        },
+    ),
+    (
+        "Ödemiş",
+        Record {
+            min: 341,
+            max: 341,
+            acc: 341,
+            count: 1,
+        },
+    ),
+    (
+        "Úmbita",
+        Record {
+            min: -739,
+            max: -739,
+            acc: -739,
+            count: 1,
+        },
+    ),
+    (
+        "Ünye",
+        Record {
+            min: -672,
+            max: -672,
+            acc: -672,
+            count: 1,
+        },
+    ),
+    (
+        "Ārba Minch’",
+        Record {
+            min: 779,
+            max: 779,
+            acc: 779,
+            count: 1,
+        },
+    ),
+    (
+        "Ōbu",
+        Record {
+            min: 771,
+            max: 771,
+            acc: 771,
+            count: 1,
+        },
+    ),
+    (
+        "Ōdachō-ōda",
+        Record {
+            min: 345,
+            max: 345,
+            acc: 345,
+            count: 1,
+        },
+    ),
+    (
+        "Ōme",
+        Record {
+            min: 45,
+            max: 45,
+            acc: 45,
+            count: 1,
+        },
+    ),
+    (
+        "Šakiai",
+        Record {
+            min: 656,
+            max: 656,
+            acc: 656,
+            count: 1,
+        },
+    ),
+    (
+        "Širvintos",
+        Record {
+            min: -139,
+            max: -139,
+            acc: -139,
+            count: 1,
+        },
+    ),
+    (
+        "Ţālkhvoncheh",
+        Record {
+            min: -984,
+            max: -984,
+            acc: -984,
+            count: 1,
+        },
+    ),
+    (
+        "Ḩās",
+        Record {
+            min: 568,
+            max: 568,
+            acc: 568,
+            count: 1,
+        },
+    ),
+    (
+        "Ấp Phú Hải",
+        Record {
+            min: 476,
+            max: 476,
+            acc: 476,
+            count: 1,
+        },
+    ),
+]

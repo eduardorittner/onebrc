@@ -317,6 +317,7 @@ fn merge(results: &mut BTreeMap<String, Record>, chunk: HashMap<String, Record>)
     });
 }
 
+#[cfg_attr(test, derive(serde::Serialize))]
 #[derive(Debug)]
 pub struct Record {
     min: i16,
@@ -466,6 +467,90 @@ mod tests {
             if let Err(error) = compare_results(expected.clone(), result) {
                 panic!("Failed with chunk_size {}: {}", chunk_size, error);
             }
+        }
+    }
+
+    mod process_chunk_tests {
+        use crate::{process_chunk, ChunkResult, ExecutionCtx, ReaderCtx, Record};
+        use once_cell::sync::Lazy;
+        use std::collections::HashMap;
+        use std::sync::mpsc;
+
+        static FILE_CONTENTS: Lazy<Vec<u8>> =
+            Lazy::new(|| std::fs::read("../data/small-small-measurements.txt").unwrap());
+
+        fn setup_reader_ctx() -> (ReaderCtx, ExecutionCtx) {
+            let (send, _) = mpsc::channel();
+            let exec_ctx = ExecutionCtx::new(1);
+            let reader_ctx = ReaderCtx {
+                channel: send,
+                file: String::new(),
+                chunk_size: FILE_CONTENTS.len(), // Process a large "chunk"
+                exec_ctx: &exec_ctx as *const ExecutionCtx,
+            };
+            (reader_ctx, exec_ctx)
+        }
+
+        fn sort_records(records: ChunkResult) -> Vec<(String, Record)> {
+            let mut sorted_records: Vec<_> = records.0.into_iter().collect();
+            sorted_records.sort_by(|a, b| a.0.cmp(&b.0));
+            sorted_records
+        }
+
+        #[test]
+        fn process_chunk_at_start() {
+            let (reader_ctx, _exec_ctx) = setup_reader_ctx();
+            let mut records = ChunkResult(HashMap::new());
+
+            process_chunk(&reader_ctx, &FILE_CONTENTS, 0, &mut records);
+
+            let sorted_records = sort_records(records);
+
+            insta::assert_debug_snapshot!(sorted_records);
+        }
+
+        #[test]
+        fn process_chunk_with_offset_5() {
+            let (reader_ctx, _exec_ctx) = setup_reader_ctx();
+
+            // Find the 5th newline to get a non-trivial offset
+            let offset = FILE_CONTENTS
+                .iter()
+                .enumerate()
+                .filter(|&(_, &c)| c == b'\n')
+                .nth(4)
+                .unwrap()
+                .0
+                + 1;
+
+            let mut records = ChunkResult(HashMap::new());
+            process_chunk(&reader_ctx, &FILE_CONTENTS, offset, &mut records);
+
+            let sorted_records = sort_records(records);
+
+            insta::assert_debug_snapshot!(sorted_records);
+        }
+
+        #[test]
+        fn process_chunk_with_offset_10() {
+            let (reader_ctx, _exec_ctx) = setup_reader_ctx();
+
+            // Find the 10th newline to get a non-trivial offset
+            let offset = FILE_CONTENTS
+                .iter()
+                .enumerate()
+                .filter(|&(_, &c)| c == b'\n')
+                .nth(9)
+                .unwrap()
+                .0
+                + 1;
+
+            let mut records = ChunkResult(HashMap::new());
+            process_chunk(&reader_ctx, &FILE_CONTENTS, offset, &mut records);
+
+            let sorted_records = sort_records(records);
+
+            insta::assert_debug_snapshot!(sorted_records);
         }
     }
 }
