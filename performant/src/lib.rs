@@ -1,3 +1,7 @@
+#[cfg(target_arch = "aarch64")]
+use std::arch::aarch64::*;
+#[cfg(target_arch = "x86_64")]
+use std::arch::x86_64::*;
 use std::{
     collections::{BTreeMap, HashMap},
     fs::File,
@@ -186,7 +190,7 @@ fn read_bytes(mut buf: &mut [u8], offset: usize, file: &File, len: usize) -> usi
     }
 }
 
-fn process_chunk(state: &ReaderCtx, buf: &[u8], offset: usize, records: &mut ChunkResult) {
+fn process_chunk_scalar(state: &ReaderCtx, buf: &[u8], offset: usize, records: &mut ChunkResult) {
     let mut bytes = offset;
     let buf = &buf[offset..];
 
@@ -214,6 +218,166 @@ fn process_chunk(state: &ReaderCtx, buf: &[u8], offset: usize, records: &mut Chu
             entry.count += 1;
         } else {
         }
+    }
+}
+
+pub fn process_chunk(state: &ReaderCtx, buf: &[u8], offset: usize, records: &mut ChunkResult) {
+    #[cfg(target_arch = "x86_64")]
+    {
+        if std::is_x86_feature_detected!("avx2") {
+            // Unsafe block to call the AVX2 version
+            return unsafe { process_chunk_avx2(state, buf, offset, records) };
+        }
+    }
+    #[cfg(target_arch = "aarch64")]
+    {
+        if std::arch::is_aarch64_feature_detected!("neon") {
+            // Unsafe block to call the NEON version
+            return unsafe { process_chunk_neon(state, buf, offset, records) };
+        }
+    }
+
+    // Fallback to the scalar implementation
+    process_chunk_scalar(state, buf, offset, records)
+}
+
+#[cfg(target_arch = "x86_64")]
+#[target_feature(enable = "avx2")]
+unsafe fn process_chunk_avx2(
+    state: &ReaderCtx,
+    buf: &[u8],
+    offset: usize,
+    records: &mut ChunkResult,
+) {
+    let mut bytes = offset;
+    let mut line_start = offset;
+
+    let sep_mask = _mm256_set1_epi8(b';' as i8);
+    let line_feed_mask = _mm256_set1_epi8(b'\n' as i8);
+
+    while bytes < state.chunk_size {
+        let chunk = unsafe { _mm256_loadu_si256(buf.as_ptr().add(bytes) as *const _) };
+
+        let eq_sep = _mm256_cmpeq_epi8(chunk, sep_mask);
+        let sep_match_mask = _mm256_movemask_epi8(eq_sep);
+
+        let eq_lf = _mm256_cmpeq_epi8(chunk, line_feed_mask);
+        let lf_match_mask = _mm256_movemask_epi8(eq_lf);
+
+        if (sep_match_mask | lf_match_mask) != 0 {
+            let line_feed_idx = lf_match_mask.trailing_zeros() as usize;
+            let sep_idx = sep_match_mask.trailing_zeros() as usize;
+
+            if line_feed_idx < 32 {
+                let line_end = bytes + line_feed_idx;
+                let sep_pos = line_start + sep_idx;
+                let name = unsafe { from_utf8_unchecked(&buf[line_start..sep_pos]) };
+                let temp = parse_temp(&buf[sep_pos + 1..line_end]);
+                let entry = if let Some(entry) = records.0.get_mut(name) {
+                    entry
+                } else {
+                    let name = name.to_string();
+                    records.0.entry(name).or_insert(Record::new())
+                };
+                entry.min = entry.min.min(temp);
+                entry.max = entry.max.max(temp);
+                entry.acc += temp as isize;
+                entry.count += 1;
+
+                line_start = line_end + 1;
+            }
+
+            bytes = line_start;
+        } else {
+            bytes += 32;
+        }
+    }
+}
+
+#[cfg(target_arch = "aarch64")]
+#[target_feature(enable = "neon")]
+unsafe fn process_chunk_neon(
+    state: &ReaderCtx,
+    buf: &[u8],
+    offset: usize,
+    records: &mut ChunkResult,
+) {
+    let mut bytes = offset;
+    let mut line_start = offset;
+
+    // 16-byte vector with all lanes ';'
+    let sep_mask = vdupq_n_u8(b';');
+    // 16-byte vector with all lanes '\n'
+    let line_feed_mask = vdupq_n_u8(b'\n');
+
+    while bytes < state.chunk_size {
+        // Load 16 bytes from the buffer into a NEON vector
+        let chunk = unsafe { vld1q_u8(buf.as_ptr().add(bytes)) };
+
+        // Compare the chunk with the separator mask to find occurrences of ';'
+        let eq_sep = vceqq_u8(chunk, sep_mask);
+        // Compare the chunk with the newline mask to find occurrences of '\n'
+        let eq_lf = vceqq_u8(chunk, line_feed_mask);
+
+        // Combine the separator and newline masks to find occurrences of either character
+        let combined_mask = vorrq_u8(eq_sep, eq_lf);
+        // Extract the high 64 bits of the combined mask
+        let mask_high = vgetq_lane_u64(vreinterpretq_u64_u8(combined_mask), 1);
+        // Extract the low 64 bits of the combined mask
+        let mask_low = vgetq_lane_u64(vreinterpretq_u64_u8(combined_mask), 0);
+
+        // If either the high or low 64 bits of the mask are not zero, then we have a match
+        if (mask_low | mask_high) != 0 {
+            // Extract the high 64 bits of the newline mask
+            let lf_mask_high = vgetq_lane_u64(vreinterpretq_u64_u8(eq_lf), 1);
+            // Extract the low 64 bits of the newline mask
+            let lf_mask_low = vgetq_lane_u64(vreinterpretq_u64_u8(eq_lf), 0);
+            // Find the index of the first newline character in the 16-byte chunk
+            let line_feed_idx = (((lf_mask_high as u128) << 64) | lf_mask_low as u128)
+                .trailing_zeros() as usize
+                / 8;
+
+            // Extract the high 64 bits of the separator mask
+            let sep_mask_high = vgetq_lane_u64(vreinterpretq_u64_u8(eq_sep), 1);
+            // Extract the low 64 bits of the separator mask
+            let sep_mask_low = vgetq_lane_u64(vreinterpretq_u64_u8(eq_sep), 0);
+            // Find the index of the first separator character in the 16-byte chunk
+            let sep_idx = (((sep_mask_high as u128) << 64) | sep_mask_low as u128).trailing_zeros()
+                as usize
+                / 8;
+
+            // If a newline character was found in the chunk
+            if line_feed_idx < 16 {
+                // Calculate the absolute end of the line
+                let line_end = bytes + line_feed_idx;
+                // Calculate the absolute position of the separator
+                let sep_pos = bytes + sep_idx;
+                // Get the name of the station
+                let name = &buf[line_start..sep_pos];
+                // Parse the temperature
+                let temp = parse_temp(&buf[sep_pos + 1..line_end]);
+                // Get the record for the station, or create a new one
+                let entry = if let Some(entry) = records
+                    .0
+                    .get_mut(unsafe { std::str::from_utf8_unchecked(name) })
+                {
+                    entry
+                } else {
+                    let name = unsafe { std::str::from_utf8_unchecked(name) }.to_string();
+                    records.0.entry(name).or_insert(Record::new())
+                };
+                // Update the record with the new temperature
+                entry.min = entry.min.min(temp);
+                entry.max = entry.max.max(temp);
+                entry.acc += temp as isize;
+                entry.count += 1;
+
+                // Update the start of the next line
+                line_start = line_end + 1;
+            }
+        }
+        // Advance to the next 16-byte chunk
+        bytes += 16;
     }
 }
 
@@ -471,7 +635,7 @@ mod tests {
     }
 
     mod process_chunk_tests {
-        use crate::{process_chunk, ChunkResult, ExecutionCtx, ReaderCtx, Record};
+        use crate::{ChunkResult, ExecutionCtx, ReaderCtx, Record, process_chunk};
         use once_cell::sync::Lazy;
         use std::collections::HashMap;
         use std::sync::mpsc;
